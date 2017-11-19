@@ -10,6 +10,7 @@ using namespace std;
 
 
 int main() {
+    cout<<"omer and lee"<<endl;
     GameFlow* myGame = new GameFlow(8);
     myGame->play();
     delete myGame;
