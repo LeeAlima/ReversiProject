@@ -8,6 +8,7 @@
 
 #include <string>
 #include "Screen.h"
+#include "GameLogic.h"
 
 using namespace std;
 
@@ -15,6 +16,7 @@ using namespace std;
  * this is an abstract class - in the way, different
  * kinds of players can be created.
  */
+class GameLogic;
 class Player {
 public:
     /**
@@ -33,7 +35,7 @@ public:
      * this method asks the user for a cell and returns it.
      * @return string - as the cell's location.
      */
-    virtual string chooseCell() const = 0;
+    virtual string chooseCell(GameLogic &gameLogic) const = 0;
 
     /**
      * this method sets the player's score

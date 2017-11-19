@@ -31,6 +31,9 @@ public:
      */
     void play();
 
+    void setUpGame();
+
+
 private:
     int size;
     GameLogic* game;

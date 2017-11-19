@@ -3,27 +3,25 @@
  *  ID: 313467441
  */
 
-#ifndef EX2_HUMANPLAYER_H
-#define EX2_HUMANPLAYER_H
+#ifndef EX2_AIPLAYER_H
+#define EX2_AIPLAYER_H
 
-#include "GameLogic.h"
 #include "Player.h"
-
-
-class HumanPlayer : public Player {
+#include "GameLogic.h"
+class AIPlayer : public Player {
 public:
     /**
      * constructor of HumanPlayer.
      * @param type - as char ('X' or 'O')
      * @param screen  - as the game screen
      */
-    HumanPlayer(char type,Screen* screen);
+    AIPlayer(char type,Screen* screen);
 
     char getType() const;
 
     int getScore() const;
 
-    string chooseCell(GameLogic &gameLogic) const;
+    string chooseCell(GameLogic &game) const;
 
     void setScore(int number);
 
@@ -35,4 +33,4 @@ protected:
 };
 
 
-#endif //EX2_HUMANPLAYER_H
+#endif //EX2_AIPLAYER_H

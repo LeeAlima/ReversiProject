@@ -12,13 +12,14 @@
 #include "HumanPlayer.h"
 #include "Screen.h"
 
+class Player;
 class GameLogic {
 public:
     /**
      * this is the constructor of the game's board size.
      * @param size - as a number.
      */
-    GameLogic(int size);
+    GameLogic(int size,Player* player1,Player* player2,Screen* screen);
 
     /**
      * this is the deconstructor of the game.
@@ -37,13 +38,13 @@ public:
      * @param type - as the current player's type.
      * @return true - if there are possibe moves and false otherwise.
      */
-    bool checksIfMovesArePossible(char type) const;
+    bool checksIfMovesArePossible(char type,Board &board) const;
 
     /**
      * this method checks if the game if over.
      * @return true if the game is over and false if not.
      */
-    bool checksIfGameOver() const;
+    bool checksIfGameOver(Board &board) const;
 
     /**
      * this method calculates the possible moves of player
@@ -51,7 +52,7 @@ public:
      * @param type - as the current player type.
      * @return vector of string - of the possible moves.
      */
-    vector <string> findPossibleCells(char type) const;
+    vector <string> findPossibleCells(Board & board,char type) const;
 
     /**
      * this method update the board based on the player's movement.
@@ -59,7 +60,7 @@ public:
      * @param col - as the col location.
      * @param type - as the user type.
      */
-    void updateBoard( int row, int col, char type) const;
+    Board* updateBoard( int row, int col, char type, Board &board) const;
 
     /**
      * this methos returns the board's game
@@ -71,7 +72,7 @@ public:
      * this method updates the scores.
      * @param type - as the player type.
      */
-    void updateScore() const;
+    void updateScore(Board &board) const;
 
     /**
      * this method returns the number of score of player 1.
@@ -97,13 +98,22 @@ public:
      * @param type - as the player's type.
      * @return true - if the movement is possible, false otherwise.
      */
-    bool checkPlayerMove(string s,char type) const;
+    bool checkPlayerMove(string s,char type,Board &board) const;
+
+    void changePlayer();
+
+    Player* getPlayer1(char type);
+
+    Board * getGameBoard();
+
+    int getXScore(Board &b);
 
 private:
     Player* first_player_;
     Player* second_player_;
     Board* my_board_;
     Screen* my_screen_;
+    char current_Player_;
 
     /**
      * this method make a move in the game
@@ -113,7 +123,7 @@ private:
      * @param rchange - as the change in row
      * @param cchange - as the change in col
      */
-    void makeAMove(int r, int c, char t, int rchange, int cchange) const;
+    void makeAMove(int r, int c, char t, int rchange, int cchange,Board &board) const;
 
     /**
     * this method finds possible cell
@@ -125,7 +135,7 @@ private:
      * @return "(" - if no cell is possible and the cell's location otherwise
      */
     string findEmptyCellGeneral(int r, int c, char t,
-                                int rchange, int cchange) const;
+                                int rchange, int cchange,Board &board) const;
 
     /**
      * this method converts int to string.

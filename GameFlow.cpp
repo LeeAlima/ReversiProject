@@ -14,11 +14,12 @@
 #include <cstdlib>
 #include <sstream>
 #include "GameFlow.h"
+#include "ConsoleScreen.h"
 
 GameFlow::GameFlow(int size):size(size){
     // creating a new game
-    this->game = new GameLogic(size);
-    this->screen = game->getScreen();
+    this->screen = new ConsoleScreen();;
+    setUpGame();
 }
 
 GameFlow::~GameFlow() {
@@ -28,22 +29,22 @@ GameFlow::~GameFlow() {
 void GameFlow::play() {
     // printing the board
     this->game->getBoard()->printBoard();
-    char current_player = 'X';
-    char other_player = 'O';
+    /*char current_player = 'X';
+    char other_player = 'O';*/
     string user_choice;
     string choice_to_compare;
     // as long as the game is not over
-    while (!this->game->checksIfGameOver()){
-        this->screen->printString(this->toStringC(current_player)
+    while (!this->game->checksIfGameOver(*this->game->getBoard())){
+        this->screen->printString(this->toStringC(game->getPlayer1('C')->getType())
                                   + ": It's your move!");
         this->screen->printEndl();
         // if the player can make a move
-        if (this->game->checksIfMovesArePossible(current_player)) {
+        if (this->game->checksIfMovesArePossible(game->getPlayer1('C')->getType(),*this->game->getBoard())) {
             // print the player's options
             this->screen->printString("Your possible moves are: ");
             // creating a vector of the options
             vector<string> options =
-                    this->game->findPossibleCells(current_player);
+                    this->game->findPossibleCells(*this->game->getBoard(),game->getPlayer1('C')->getType());
             vector<string>::iterator it;
             // going over the options and printing them
             for (it = options.begin(); it != options.end(); ++it) {
@@ -54,13 +55,13 @@ void GameFlow::play() {
                 }
             }
             this->screen->printEndl();
-            // ask the user for a point
-            this->screen->printString("Please, enter your move row,col:");
-            cin >> user_choice;
+
+            user_choice =this->game->getPlayer1('C')->chooseCell(*this->game);
+
             choice_to_compare = this->fixPointToCom(user_choice) ;
             // checking the player's move, if it's illegal then asks again
             while (!this->game->checkPlayerMove(choice_to_compare,
-                                                current_player)) {
+                                                game->getPlayer1('C')->getType(),*this->game->getBoard())) {
                 cin >> user_choice;
                 choice_to_compare = this->fixPointToCom(user_choice) ;
             }
@@ -72,21 +73,16 @@ void GameFlow::play() {
             int first_number = atoi( front_number.c_str());
             int second_number = atoi(back_number.c_str()) ;
             // updating the board and printing it
-            this->game->updateBoard(first_number-1,second_number-1,other_player);
+
+            this->game->updateBoard(first_number-1,second_number-1,
+                                    this->game->getPlayer1('D')->getType(),*this->game->getBoard());
             this->game->getBoard()->printBoard();
         }
         else { // if no move is possible
             this->screen->printString("No moves are possible for you");
             this->screen->printEndl();
         }
-        if (current_player == 'X'){
-            current_player = 'O';
-            other_player = 'X';
-        }
-        else {
-            current_player = 'X';
-            other_player = 'O';
-        }
+        this->game->changePlayer();
 
     }
     // when game is over , if it's a tie
@@ -162,6 +158,34 @@ string GameFlow::fixPointToCom(string user_choice) const {
     int second_number = atoi(back_number.c_str()) - 1;
     return "(" +  this->toStringI(first_number)+ ","
            + this->toStringI(second_number) + ")";
+}
+
+void GameFlow::setUpGame() {
+    this->screen->printString("Welcom to our game!!!!!!");
+    this->screen->printEndl();
+    this->screen->printString("Please choose game:");
+    this->screen->printEndl();
+    this->screen->printString("for a game with a computer please enter 1");
+    this->screen->printEndl();
+    this->screen->printString("for a game with a human please enter 2");
+    this->screen->printEndl();
+    int playerCheck;
+    cin >> playerCheck;
+    Player *player1;
+    Player *player2;
+    while (playerCheck != 1 && playerCheck!=2){
+        this->screen->printString("Bad choice,please try again");
+        this->screen->printEndl();
+        cin >> playerCheck;
+    }
+    if (playerCheck == 1){
+        player1 = new HumanPlayer('O',screen);
+        player2 = new HumanPlayer('X',screen);
+    } else {
+        player1 = new HumanPlayer('O',screen);
+        player2 = new HumanPlayer('X',screen);
+    }
+    this->game = new GameLogic(size,player1,player2,screen);
 }
 
 #endif //EX2_DSA_H
