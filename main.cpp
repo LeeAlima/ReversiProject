@@ -10,7 +10,7 @@ using namespace std;
 
 
 int main() {
-    cout<<"omer change"<<endl;
+    cout<<"lee change"<<endl;
     GameFlow* myGame = new GameFlow(8);
     myGame->play();
     delete myGame;
