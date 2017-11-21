@@ -10,7 +10,6 @@
 #include "Player.h"
 #include "AIPlayer.h"
 
-
 using namespace std;
 
 AIPlayer::AIPlayer(char type,Screen* screen):
@@ -74,7 +73,6 @@ string AIPlayer::chooseCell(GameLogic &game)  {
     return result;
 
 }
-
 
 void AIPlayer::setScore(int number) {
     this->score = number;
