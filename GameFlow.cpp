@@ -15,6 +15,7 @@
 #include <sstream>
 #include "GameFlow.h"
 #include "ConsoleScreen.h"
+#include "AIPlayer.h"
 
 GameFlow::GameFlow(int size):size(size){
     // creating a new game
@@ -59,11 +60,17 @@ void GameFlow::play() {
             user_choice =this->game->getPlayer1('C')->chooseCell(*this->game);
 
             choice_to_compare = this->fixPointToCom(user_choice) ;
+            if (computer && this->game->getCurrentPlayer() == 'O'){
+                choice_to_compare = user_choice;
+            }
             // checking the player's move, if it's illegal then asks again
             while (!this->game->checkPlayerMove(choice_to_compare,
                                                 game->getPlayer1('C')->getType(),*this->game->getBoard())) {
                 cin >> user_choice;
                 choice_to_compare = this->fixPointToCom(user_choice) ;
+                if (computer && this->game->getCurrentPlayer() == 'O'){
+                    choice_to_compare = user_choice;
+                }
             }
             // split the input
             vector <string> s = this->cutPoint(user_choice);
@@ -72,6 +79,12 @@ void GameFlow::play() {
             // converts the string into two numbers
             int first_number = atoi( front_number.c_str());
             int second_number = atoi(back_number.c_str()) ;
+            if (computer && this->game->getCurrentPlayer() == 'O'){
+                char front_number1 = s.front()[1];
+                char back_number1 = s.back()[0];
+                first_number = front_number1 - '0' + 1;
+                second_number = back_number1 - '0' + 1;
+            }
             // updating the board and printing it
 
             this->game->updateBoard(first_number-1,second_number-1,
@@ -179,11 +192,13 @@ void GameFlow::setUpGame() {
         cin >> playerCheck;
     }
     if (playerCheck == 1){
-        player1 = new HumanPlayer('O',screen);
+        player1 = new AIPlayer('O',screen);
         player2 = new HumanPlayer('X',screen);
+        this->computer = true;
     } else {
         player1 = new HumanPlayer('O',screen);
         player2 = new HumanPlayer('X',screen);
+        this->computer = false;
     }
     this->game = new GameLogic(size,player1,player2,screen);
 }

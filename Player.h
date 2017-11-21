@@ -35,7 +35,7 @@ public:
      * this method asks the user for a cell and returns it.
      * @return string - as the cell's location.
      */
-    virtual string chooseCell(GameLogic &gameLogic) const = 0;
+    virtual string chooseCell(GameLogic &gameLogic) = 0;
 
     /**
      * this method sets the player's score

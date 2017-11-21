@@ -21,7 +21,7 @@ int HumanPlayer::getScore() const {
     return this->score;
 }
 
-string HumanPlayer::chooseCell(GameLogic &gameLogic) const {
+string HumanPlayer::chooseCell(GameLogic &gameLogic) {
     string user_cell;
     // ask for cell
     this->player_screen_->printString("please choose a cell");

@@ -89,48 +89,56 @@ vector<string> GameLogic::findPossibleCells(Board & board,char type) const {
                                     if ((s_1.compare(empty_word) != 0)) {
                                         vector_of_cells.push_back(s_1);
                                     }
+                                   // cout << "1 is : " + s_1 <<endl;
                                 }
                                 if (a == 0 && b == 1) {
                                     string s_2 = findEmptyCellGeneral(i,j+1,other_type,0,1,board);
                                     if ( s_2.compare(empty_word) != 0) {
                                         vector_of_cells.push_back(s_2);
                                     }
+                                //    cout << "2 is : " + s_2 <<endl;
                                 }
                                 if (a == -1 && b == 0) {
                                     string s_3 = findEmptyCellGeneral(i-1,j,other_type,-1,0,board);
                                     if (s_3.compare(empty_word) != 0) {
                                         vector_of_cells.push_back(s_3);
                                     }
+                                 //   cout << "3 is : " + s_3 <<endl;
                                 }
                                 if (a == 1 && b == 0) {
                                     string s_4 = findEmptyCellGeneral(i+1,j,other_type,1,0,board);
                                     if (s_4.compare(empty_word) != 0) {
                                         vector_of_cells.push_back(s_4);
                                     }
+                                  //  cout << "4 is : " + s_4 <<endl;
                                 }
                                 if (a == -1 && b == -1) {
                                     string s_5 = findEmptyCellGeneral(i-1,j-1,other_type,-1,-1,board);
                                     if (s_5.compare(empty_word) != 0) {
                                         vector_of_cells.push_back(s_5);
                                     }
+                                   // cout << "5 is : " + s_5 <<endl;
                                 }
                                 if (a == 1 && b == -1) {
                                     string s_6 = findEmptyCellGeneral(i+1,j-1,other_type,1,-1,board);
                                     if (s_6.compare(empty_word) != 0) {
                                         vector_of_cells.push_back(s_6);
                                     }
+                                  //  cout << "6 is : " + s_6 <<endl;
                                 }
                                 if (a == -1 && b == 1) {
                                     string s_7 = findEmptyCellGeneral(i-1,j+1,other_type,-1,1,board);
                                     if (s_7.compare(empty_word) != 0) {
                                         vector_of_cells.push_back(s_7);
                                     }
+                                  //  cout << "7 is : " + s_7 <<endl;
                                 }
                                 if (a == 1 && b == 1) {
                                     string s_8 = findEmptyCellGeneral(i+1,j+1,other_type,1,1,board);
                                     if (s_8.compare(empty_word) != 0) {
                                         vector_of_cells.push_back(s_8);
                                     }
+                                   // cout << "8 is : " + s_8 <<endl;
                                 }
                             }
                         }
@@ -346,15 +354,21 @@ void GameLogic::updateScore(Board &board) const {
 }
 
 int GameLogic::getXScore(Board &b){
+    // going over the all matrix and counting the number
+    // of appearences to each player
+    int player_1=0;
     int player_2=0;
     for (int i=0;i< b.getRow();i++) {
         for (int j = 0; j < b.getCol(); j++) {
+            if(b.returnCellType(i,j) == 'X'){
+                player_1++;
+            }
             if(b.returnCellType(i,j) == 'O'){
                 player_2++;
             }
         }
     }
-    return player_2;
+    return player_1-player_2;
 }
 
 int GameLogic::getPlayer2Score() const {
@@ -422,4 +436,8 @@ Player *GameLogic::getPlayer1(char type) {
 
 Board *GameLogic::getGameBoard() {
     return this->my_board_;
+}
+
+char GameLogic::getCurrentPlayer() {
+    return this->current_Player_;
 }

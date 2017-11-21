@@ -63,7 +63,8 @@ public:
      * @param t - as the type to change to.
      */
     void setCellInBoard(int r, int c,char t) const;
-
+    Board* copyBoard(Board &board,Screen &sc);
+    int getSize();
 private:
     int row;
     int col;

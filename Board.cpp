@@ -133,3 +133,17 @@ void Board::printLine(int number) const {
     }
     this->game_screen_.printEndl();
 }
+
+Board *Board::copyBoard(Board &board,Screen &sc) {
+    Board* newBoard = new Board(board.getSize(),board.getSize(),sc);
+    for (int i= 0;i<newBoard->getSize() ;i++ ){
+        //col
+        for (int j = 0; j < newBoard->getSize(); j++) {
+            newBoard->setCellInBoard(i,j,board.returnCellType(i,j));
+        }
+    }
+}
+
+int Board::getSize() {
+    return this->row;
+}

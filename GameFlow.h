@@ -38,6 +38,7 @@ private:
     int size;
     GameLogic* game;
     Screen* screen;
+    bool computer;
 
     /**
      * this method split the user input to 2 strings;

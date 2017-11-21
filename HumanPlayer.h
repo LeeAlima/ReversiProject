@@ -23,7 +23,7 @@ public:
 
     int getScore() const;
 
-    string chooseCell(GameLogic &gameLogic) const;
+    string chooseCell(GameLogic &gameLogic) ;
 
     void setScore(int number);
 

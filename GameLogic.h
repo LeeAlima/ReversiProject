@@ -108,6 +108,8 @@ public:
 
     int getXScore(Board &b);
 
+    char getCurrentPlayer();
+
 private:
     Player* first_player_;
     Player* second_player_;

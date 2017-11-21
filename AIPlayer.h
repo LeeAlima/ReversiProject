@@ -21,9 +21,10 @@ public:
 
     int getScore() const;
 
-    string chooseCell(GameLogic &game) const;
+    string chooseCell(GameLogic &game) ;
 
     void setScore(int number);
+    vector<int> cutAPoint(string user_input);
 
 protected:
     char type;
