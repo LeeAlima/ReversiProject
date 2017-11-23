@@ -28,8 +28,11 @@ string AIPlayer::chooseCell(GameLogic &game)  {
     vector<string> vecOfOptions = game.findPossibleCells(*game.getBoard(),'O');
     vector<string> vecSec;
     // change with func to size^2
-    int min = 64;
-    string result;
+    int max = - game.getBoard()->getSize()^2;
+    int min = game.getBoard()->getSize()^2;
+    string resultMax;
+    string resultMin;
+
 
     for (int i=0; i<vecOfOptions.size();i++){
         Board* b = new Board(game.getBoard()->getSize(),game.getBoard()->getSize(),*game.getScreen());
@@ -61,16 +64,20 @@ string AIPlayer::chooseCell(GameLogic &game)  {
            // b->printBoard();
             b1 = game.updateBoard(XCOR,YCOR,'O',*b1);
           //b1->printBoard();
-            if (game.getXScore(*b1) < min){
-                min = game.getXScore(*b1);
-                result = vecOfOptions[i];
+            if (game.getXScore(*b1) > max){
+                max = game.getXScore(*b1);
+                resultMax = vecOfOptions[i];
             }
-            //delete b1;
+            if (max < min){
+                min = max;
+                resultMin = resultMax;
+            }
+            delete b1;
         }
-        //delete b;
+        delete b;
     }
-    cout<<result;
-    return result;
+    cout<<resultMax;
+    return resultMax;
 
 }
 
