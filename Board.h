@@ -65,6 +65,8 @@ public:
     void setCellInBoard(int r, int c,char t) const;
     Board* copyBoard(Board &board,Screen &sc);
     int getSize();
+    void copyBoardSourceAndTarget(Board &boardSource, Board &boardTarget);
+
 private:
     int row;
     int col;

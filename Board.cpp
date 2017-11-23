@@ -55,6 +55,14 @@ int Board::getCol() const {
     return this->col;
 }
 
+void Board::copyBoardSourceAndTarget(Board &boardSource, Board &boardTarget) {
+    for (int i= 0;i<boardTarget.getSize() ;i++ ){
+        for (int j = 0; j < boardTarget.getSize(); j++) {
+            boardTarget.setCellInBoard(i,j,boardSource.returnCellType(i,j));
+        }
+    }
+};
+
 void Board::printBoard() const {
     // printing the first line of the board
     for (int z=0; z<col+1 ;z++){

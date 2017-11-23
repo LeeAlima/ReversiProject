@@ -71,6 +71,8 @@ ConsoleScreen.h
 /home/lee/CLionProjects/reversi/ConsoleScreen.h
 AIPlayer.h
 /home/lee/CLionProjects/reversi/AIPlayer.h
+unistd.h
+-
 
 /home/lee/CLionProjects/reversi/GameFlow.h
 GameLogic.h

@@ -9,7 +9,6 @@
 #include "GameLogic.h"
 #include "Player.h"
 
-
 class HumanPlayer : public Player {
 public:
     /**

@@ -31,7 +31,15 @@ public:
      */
     void play();
 
+    /**
+     * this method is called from the constructor
+     * and by the user choice initialize the members.
+     */
     void setUpGame();
+
+    void showScores();
+
+    void writeMessageToPlayer(vector<string> options, char type);
 
 
 private:

@@ -16,6 +16,8 @@
 #include "GameFlow.h"
 #include "ConsoleScreen.h"
 #include "AIPlayer.h"
+#include <unistd.h>
+
 
 GameFlow::GameFlow(int size):size(size){
     // creating a new game
@@ -30,33 +32,23 @@ GameFlow::~GameFlow() {
 void GameFlow::play() {
     // printing the board
     this->game->getBoard()->printBoard();
-    /*char current_player = 'X';
-    char other_player = 'O';*/
     string user_choice;
     string choice_to_compare;
     // as long as the game is not over
     while (!this->game->checksIfGameOver(*this->game->getBoard())){
-        this->screen->printString(this->toStringC(game->getPlayer1('C')->getType())
-                                  + ": It's your move!");
-        this->screen->printEndl();
+        if (game->getCurrentPlayer()!='O'){
+            this->screen->printString(this->toStringC(game->getPlayer1('C')->getType())
+                                      + ": It's your move!");
+            this->screen->printEndl();
+        }
         // if the player can make a move
-        if (this->game->checksIfMovesArePossible(game->getPlayer1('C')->getType(),*this->game->getBoard())) {
+        if (this->game->checksIfMovesArePossible(game->getPlayer1('C')->getType()
+                ,*this->game->getBoard())) {
             // print the player's options
-            this->screen->printString("Your possible moves are: ");
             // creating a vector of the options
             vector<string> options =
                     this->game->findPossibleCells(*this->game->getBoard(),game->getPlayer1('C')->getType());
-            vector<string>::iterator it;
-            // going over the options and printing them
-            for (it = options.begin(); it != options.end(); ++it) {
-                vector <string> string_change = this->cutPoint(*it);
-                this->screen->printString(this->fixPointToUser(string_change));
-                if (it != options.end() - 1) {
-                    this->screen->printString(",");
-                }
-            }
-            this->screen->printEndl();
-
+            writeMessageToPlayer(options, this->game->getCurrentPlayer());
             user_choice =this->game->getPlayer1('C')->chooseCell(*this->game);
 
             choice_to_compare = this->fixPointToCom(user_choice) ;
@@ -98,7 +90,32 @@ void GameFlow::play() {
         this->game->changePlayer();
 
     }
-    // when game is over , if it's a tie
+    showScores();
+}
+
+void GameFlow::writeMessageToPlayer(vector<string> options, char type){
+    if (type != 'O'){
+        vector<string>::iterator it;
+        this->screen->printString("Your possible moves are: ");
+
+        for (it = options.begin(); it != options.end(); ++it) {
+            vector <string> string_change = this->cutPoint(*it);
+            this->screen->printString(this->fixPointToUser(string_change));
+            if (it != options.end() - 1) {
+                this->screen->printString(",");
+            }
+        }
+        this->screen->printEndl();
+    } else {
+        this->screen->printString("Computer is thinking...");
+        this->screen->printEndl();
+        usleep(1000000);
+
+    }
+}
+
+void GameFlow::showScores(){
+    //when game is over , if it's a tie
     if (this->game->returnsWhoWon() == '='){
         this->screen->printString(
                 "It's a tie!, each player got " +
@@ -184,8 +201,7 @@ void GameFlow::setUpGame() {
     this->screen->printEndl();
     int playerCheck;
     cin >> playerCheck;
-    Player *player1;
-    Player *player2;
+    Player *player1, *player2;
     while (playerCheck != 1 && playerCheck!=2){
         this->screen->printString("Bad choice,please try again");
         this->screen->printEndl();

@@ -27,56 +27,42 @@ int AIPlayer::getScore() const {
 string AIPlayer::chooseCell(GameLogic &game)  {
     vector<string> vecOfOptions = game.findPossibleCells(*game.getBoard(),'O');
     vector<string> vecSec;
-    // change with func to size^2
     int max = - game.getBoard()->getSize()^2;
     int min = game.getBoard()->getSize()^2;
     string resultMax;
     string resultMin;
-
-
     for (int i=0; i<vecOfOptions.size();i++){
-        Board* b = new Board(game.getBoard()->getSize(),game.getBoard()->getSize(),*game.getScreen());
-        for (int i= 0;i<b->getSize() ;i++ ){
-            //col
-            for (int j = 0; j < b->getSize(); j++) {
-                b->setCellInBoard(i,j,game.getBoard()->returnCellType(i,j));
-            }
-        }
+        Board* boardAfterComMove = new Board(game.getBoard()->getSize()
+                ,game.getBoard()->getSize(),*game.getScreen());
+        game.getBoard()->copyBoardSourceAndTarget(*game.getBoard(),*boardAfterComMove);
         vector<int> firstVec = cutAPoint(vecOfOptions[i]);
         int xCor = firstVec[0];
         int yCor = firstVec[1];
-        b = game.updateBoard(xCor,yCor,'X',*b);
-        //b->printBoard();
-        vecSec = game.findPossibleCells(*b,'X');
+        boardAfterComMove = game.updateBoard(xCor,yCor,'X',*boardAfterComMove);
+        //boardAfterComMove->printBoard();
+        vecSec = game.findPossibleCells(*boardAfterComMove,'X');
         int XCOR;
         int YCOR;
         for (int t = 0; t<vecSec.size();t++){
-            Board* b1 = new Board(game.getBoard()->getSize(),game.getBoard()->getSize(),*game.getScreen());
-            for (int i= 0;i<b1->getSize() ;i++ ){
-                //col
-                for (int j = 0; j < b1->getSize(); j++) {
-                    b1->setCellInBoard(i,j,b->returnCellType(i,j));
-                }
-            }
+            Board* boardAfterHumanMove = new Board(game.getBoard()->getSize()
+                    ,game.getBoard()->getSize(),*game.getScreen());
+            game.getBoard()->copyBoardSourceAndTarget(*game.getBoard(),*boardAfterHumanMove);
             vector<int> secondVecCor = cutAPoint(vecSec[t]);
             XCOR = secondVecCor[0];
             YCOR = secondVecCor[1];
-           // b->printBoard();
-            b1 = game.updateBoard(XCOR,YCOR,'O',*b1);
-          //b1->printBoard();
-            if (game.getXScore(*b1) > max){
-                max = game.getXScore(*b1);
+            boardAfterHumanMove = game.updateBoard(XCOR,YCOR,'O',*boardAfterHumanMove);
+            if (game.getXScore(*boardAfterHumanMove) > max){
+                max = game.getXScore(*boardAfterHumanMove);
                 resultMax = vecOfOptions[i];
             }
             if (max < min){
                 min = max;
                 resultMin = resultMax;
             }
-            delete b1;
+            delete boardAfterHumanMove;
         }
-        delete b;
+        delete boardAfterComMove;
     }
-    cout<<resultMax;
     return resultMax;
 
 }
