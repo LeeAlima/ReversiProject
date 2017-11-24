@@ -9,6 +9,17 @@
 #include "GameLogic.h"
 #include "ConsoleScreen.h"
 
+const int GameLogic::directionTable[8][2] = {
+        { 0, 1 },	// up
+        { 1, 1 },	// up-left
+        { 1, 0 },	// left
+        { 1, -1 },	// down-left
+        { 0, -1 },	// down
+        { -1, -1 },	// down-right
+        { -1, 0 },	// right
+        { -1, 1 }	// up-right
+};
+
 GameLogic::GameLogic(int size,Player *player1,Player *player2,Screen* screen){
     this->my_screen_ = screen;
     /*this->first_player_ = new HumanPlayer('X',my_screen_);
@@ -83,7 +94,12 @@ vector<string> GameLogic::findPossibleCells(Board & board,char type) const {
                             if (board.returnCellType(i + a, j + b)
                                 == other_type) {
                                 string empty_word = "(";
-                                if (a == 0 && b == -1) {
+                                    string s_1 = findEmptyCellGeneral(i+a,j+b,other_type,a,b,board);
+                                    //if the points exists add it to the vector
+                                    if ((s_1.compare(empty_word) != 0)) {
+                                        vector_of_cells.push_back(s_1);
+                                    }
+                                /*if (a == 0 && b == -1) {
                                     string s_1 = findEmptyCellGeneral(i,j-1,other_type,0,-1,board);
                                     //if the points exists add it to the vector
                                     if ((s_1.compare(empty_word) != 0)) {
@@ -139,7 +155,7 @@ vector<string> GameLogic::findPossibleCells(Board & board,char type) const {
                                         vector_of_cells.push_back(s_8);
                                     }
                                    // cout << "8 is : " + s_8 <<endl;
-                                }
+                                }*/
                             }
                         }
                     }

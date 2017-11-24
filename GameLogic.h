@@ -153,6 +153,7 @@ private:
      */
     vector<string> cutDuplicate(vector<string> befor_vec) const;
 
+    static const int directionTable[8][2];
 };
 
 #endif //EX2_GAMELOGIC_H
