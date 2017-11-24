@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ex2.dir/GameFlow.cpp.o"
   "CMakeFiles/ex2.dir/ConsoleScreen.cpp.o"
   "CMakeFiles/ex2.dir/AIPlayer.cpp.o"
+  "CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o"
   "ex2.pdb"
   "ex2"
 )

@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion-2017.2.3/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
+RM = /home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lee/CLionProjects/reversi
+CMAKE_SOURCE_DIR = /home/omer/CLionProjects/reversi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lee/CLionProjects/reversi/cmake-build-debug
+CMAKE_BINARY_DIR = /home/omer/CLionProjects/reversi/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ex2.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/ex2.dir/flags.make
 
 CMakeFiles/ex2.dir/main.cpp.o: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ex2.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/main.cpp.o -c /home/lee/CLionProjects/reversi/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ex2.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/main.cpp.o -c /home/omer/CLionProjects/reversi/main.cpp
 
 CMakeFiles/ex2.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/CLionProjects/reversi/main.cpp > CMakeFiles/ex2.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/main.cpp > CMakeFiles/ex2.dir/main.cpp.i
 
 CMakeFiles/ex2.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/CLionProjects/reversi/main.cpp -o CMakeFiles/ex2.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/main.cpp -o CMakeFiles/ex2.dir/main.cpp.s
 
 CMakeFiles/ex2.dir/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/ex2.dir/main.cpp.o.provides.build: CMakeFiles/ex2.dir/main.cpp.o
 
 CMakeFiles/ex2.dir/Board.cpp.o: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/Board.cpp.o: ../Board.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ex2.dir/Board.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/Board.cpp.o -c /home/lee/CLionProjects/reversi/Board.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ex2.dir/Board.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/Board.cpp.o -c /home/omer/CLionProjects/reversi/Board.cpp
 
 CMakeFiles/ex2.dir/Board.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/Board.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/CLionProjects/reversi/Board.cpp > CMakeFiles/ex2.dir/Board.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/Board.cpp > CMakeFiles/ex2.dir/Board.cpp.i
 
 CMakeFiles/ex2.dir/Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/Board.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/CLionProjects/reversi/Board.cpp -o CMakeFiles/ex2.dir/Board.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/Board.cpp -o CMakeFiles/ex2.dir/Board.cpp.s
 
 CMakeFiles/ex2.dir/Board.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/ex2.dir/Board.cpp.o.provides.build: CMakeFiles/ex2.dir/Board.cpp.o
 
 CMakeFiles/ex2.dir/Cell.cpp.o: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/Cell.cpp.o: ../Cell.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ex2.dir/Cell.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/Cell.cpp.o -c /home/lee/CLionProjects/reversi/Cell.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ex2.dir/Cell.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/Cell.cpp.o -c /home/omer/CLionProjects/reversi/Cell.cpp
 
 CMakeFiles/ex2.dir/Cell.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/Cell.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/CLionProjects/reversi/Cell.cpp > CMakeFiles/ex2.dir/Cell.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/Cell.cpp > CMakeFiles/ex2.dir/Cell.cpp.i
 
 CMakeFiles/ex2.dir/Cell.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/Cell.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/CLionProjects/reversi/Cell.cpp -o CMakeFiles/ex2.dir/Cell.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/Cell.cpp -o CMakeFiles/ex2.dir/Cell.cpp.s
 
 CMakeFiles/ex2.dir/Cell.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/ex2.dir/Cell.cpp.o.provides.build: CMakeFiles/ex2.dir/Cell.cpp.o
 
 CMakeFiles/ex2.dir/HumanPlayer.cpp.o: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/HumanPlayer.cpp.o: ../HumanPlayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ex2.dir/HumanPlayer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/HumanPlayer.cpp.o -c /home/lee/CLionProjects/reversi/HumanPlayer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ex2.dir/HumanPlayer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/HumanPlayer.cpp.o -c /home/omer/CLionProjects/reversi/HumanPlayer.cpp
 
 CMakeFiles/ex2.dir/HumanPlayer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/HumanPlayer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/CLionProjects/reversi/HumanPlayer.cpp > CMakeFiles/ex2.dir/HumanPlayer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/HumanPlayer.cpp > CMakeFiles/ex2.dir/HumanPlayer.cpp.i
 
 CMakeFiles/ex2.dir/HumanPlayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/HumanPlayer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/CLionProjects/reversi/HumanPlayer.cpp -o CMakeFiles/ex2.dir/HumanPlayer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/HumanPlayer.cpp -o CMakeFiles/ex2.dir/HumanPlayer.cpp.s
 
 CMakeFiles/ex2.dir/HumanPlayer.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/ex2.dir/HumanPlayer.cpp.o.provides.build: CMakeFiles/ex2.dir/HumanPla
 
 CMakeFiles/ex2.dir/GameLogic.cpp.o: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/GameLogic.cpp.o: ../GameLogic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ex2.dir/GameLogic.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/GameLogic.cpp.o -c /home/lee/CLionProjects/reversi/GameLogic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ex2.dir/GameLogic.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/GameLogic.cpp.o -c /home/omer/CLionProjects/reversi/GameLogic.cpp
 
 CMakeFiles/ex2.dir/GameLogic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/GameLogic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/CLionProjects/reversi/GameLogic.cpp > CMakeFiles/ex2.dir/GameLogic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/GameLogic.cpp > CMakeFiles/ex2.dir/GameLogic.cpp.i
 
 CMakeFiles/ex2.dir/GameLogic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/GameLogic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/CLionProjects/reversi/GameLogic.cpp -o CMakeFiles/ex2.dir/GameLogic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/GameLogic.cpp -o CMakeFiles/ex2.dir/GameLogic.cpp.s
 
 CMakeFiles/ex2.dir/GameLogic.cpp.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/ex2.dir/GameLogic.cpp.o.provides.build: CMakeFiles/ex2.dir/GameLogic.
 
 CMakeFiles/ex2.dir/GameFlow.cpp.o: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/GameFlow.cpp.o: ../GameFlow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ex2.dir/GameFlow.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/GameFlow.cpp.o -c /home/lee/CLionProjects/reversi/GameFlow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ex2.dir/GameFlow.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/GameFlow.cpp.o -c /home/omer/CLionProjects/reversi/GameFlow.cpp
 
 CMakeFiles/ex2.dir/GameFlow.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/GameFlow.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/CLionProjects/reversi/GameFlow.cpp > CMakeFiles/ex2.dir/GameFlow.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/GameFlow.cpp > CMakeFiles/ex2.dir/GameFlow.cpp.i
 
 CMakeFiles/ex2.dir/GameFlow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/GameFlow.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/CLionProjects/reversi/GameFlow.cpp -o CMakeFiles/ex2.dir/GameFlow.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/GameFlow.cpp -o CMakeFiles/ex2.dir/GameFlow.cpp.s
 
 CMakeFiles/ex2.dir/GameFlow.cpp.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/ex2.dir/GameFlow.cpp.o.provides.build: CMakeFiles/ex2.dir/GameFlow.cp
 
 CMakeFiles/ex2.dir/ConsoleScreen.cpp.o: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/ConsoleScreen.cpp.o: ../ConsoleScreen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ex2.dir/ConsoleScreen.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/ConsoleScreen.cpp.o -c /home/lee/CLionProjects/reversi/ConsoleScreen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ex2.dir/ConsoleScreen.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/ConsoleScreen.cpp.o -c /home/omer/CLionProjects/reversi/ConsoleScreen.cpp
 
 CMakeFiles/ex2.dir/ConsoleScreen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/ConsoleScreen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/CLionProjects/reversi/ConsoleScreen.cpp > CMakeFiles/ex2.dir/ConsoleScreen.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/ConsoleScreen.cpp > CMakeFiles/ex2.dir/ConsoleScreen.cpp.i
 
 CMakeFiles/ex2.dir/ConsoleScreen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/ConsoleScreen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/CLionProjects/reversi/ConsoleScreen.cpp -o CMakeFiles/ex2.dir/ConsoleScreen.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/ConsoleScreen.cpp -o CMakeFiles/ex2.dir/ConsoleScreen.cpp.s
 
 CMakeFiles/ex2.dir/ConsoleScreen.cpp.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/ex2.dir/ConsoleScreen.cpp.o.provides.build: CMakeFiles/ex2.dir/Consol
 
 CMakeFiles/ex2.dir/AIPlayer.cpp.o: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/AIPlayer.cpp.o: ../AIPlayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ex2.dir/AIPlayer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/AIPlayer.cpp.o -c /home/lee/CLionProjects/reversi/AIPlayer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ex2.dir/AIPlayer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/AIPlayer.cpp.o -c /home/omer/CLionProjects/reversi/AIPlayer.cpp
 
 CMakeFiles/ex2.dir/AIPlayer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/AIPlayer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/CLionProjects/reversi/AIPlayer.cpp > CMakeFiles/ex2.dir/AIPlayer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/AIPlayer.cpp > CMakeFiles/ex2.dir/AIPlayer.cpp.i
 
 CMakeFiles/ex2.dir/AIPlayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/AIPlayer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/CLionProjects/reversi/AIPlayer.cpp -o CMakeFiles/ex2.dir/AIPlayer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/AIPlayer.cpp -o CMakeFiles/ex2.dir/AIPlayer.cpp.s
 
 CMakeFiles/ex2.dir/AIPlayer.cpp.o.requires:
 
@@ -249,6 +249,30 @@ CMakeFiles/ex2.dir/AIPlayer.cpp.o.provides: CMakeFiles/ex2.dir/AIPlayer.cpp.o.re
 CMakeFiles/ex2.dir/AIPlayer.cpp.o.provides.build: CMakeFiles/ex2.dir/AIPlayer.cpp.o
 
 
+CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o: CMakeFiles/ex2.dir/flags.make
+CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o: ../UnitTests/TestGameLogic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o -c /home/omer/CLionProjects/reversi/UnitTests/TestGameLogic.cpp
+
+CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/omer/CLionProjects/reversi/UnitTests/TestGameLogic.cpp > CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.i
+
+CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/omer/CLionProjects/reversi/UnitTests/TestGameLogic.cpp -o CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.s
+
+CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o.requires:
+
+.PHONY : CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o.requires
+
+CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o.provides: CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o.provides.build
+.PHONY : CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o.provides
+
+CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o.provides.build: CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o
+
+
 # Object files for target ex2
 ex2_OBJECTS = \
 "CMakeFiles/ex2.dir/main.cpp.o" \
@@ -258,7 +282,8 @@ ex2_OBJECTS = \
 "CMakeFiles/ex2.dir/GameLogic.cpp.o" \
 "CMakeFiles/ex2.dir/GameFlow.cpp.o" \
 "CMakeFiles/ex2.dir/ConsoleScreen.cpp.o" \
-"CMakeFiles/ex2.dir/AIPlayer.cpp.o"
+"CMakeFiles/ex2.dir/AIPlayer.cpp.o" \
+"CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o"
 
 # External object files for target ex2
 ex2_EXTERNAL_OBJECTS =
@@ -271,9 +296,13 @@ ex2: CMakeFiles/ex2.dir/GameLogic.cpp.o
 ex2: CMakeFiles/ex2.dir/GameFlow.cpp.o
 ex2: CMakeFiles/ex2.dir/ConsoleScreen.cpp.o
 ex2: CMakeFiles/ex2.dir/AIPlayer.cpp.o
+ex2: CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o
 ex2: CMakeFiles/ex2.dir/build.make
+ex2: lib/googletest-master/googlemock/gtest/libgtestd.a
+ex2: lib/googletest-master/googlemock/gtest/libgtest_maind.a
+ex2: lib/googletest-master/googlemock/gtest/libgtestd.a
 ex2: CMakeFiles/ex2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable ex2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable ex2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ex2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -289,6 +318,7 @@ CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/GameLogic.cpp.o.requires
 CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/GameFlow.cpp.o.requires
 CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/ConsoleScreen.cpp.o.requires
 CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/AIPlayer.cpp.o.requires
+CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o.requires
 
 .PHONY : CMakeFiles/ex2.dir/requires
 
@@ -297,6 +327,6 @@ CMakeFiles/ex2.dir/clean:
 .PHONY : CMakeFiles/ex2.dir/clean
 
 CMakeFiles/ex2.dir/depend:
-	cd /home/lee/CLionProjects/reversi/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lee/CLionProjects/reversi /home/lee/CLionProjects/reversi /home/lee/CLionProjects/reversi/cmake-build-debug /home/lee/CLionProjects/reversi/cmake-build-debug /home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles/ex2.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/omer/CLionProjects/reversi/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/omer/CLionProjects/reversi /home/omer/CLionProjects/reversi /home/omer/CLionProjects/reversi/cmake-build-debug /home/omer/CLionProjects/reversi/cmake-build-debug /home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles/ex2.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ex2.dir/depend
 
