@@ -36,7 +36,7 @@ void GameFlow::play() {
     string choice_to_compare;
     // as long as the game is not over
     while (!this->game->checksIfGameOver(*this->game->getBoard())){
-        if (game->getCurrentPlayer()!='O'){
+        if (game->getCurrentPlayer()!='O'||!(this->computer)){
             this->screen->printString(this->toStringC(game->getPlayer1('C')->getType())
                                       + ": It's your move!");
             this->screen->printEndl();
@@ -94,7 +94,7 @@ void GameFlow::play() {
 }
 
 void GameFlow::writeMessageToPlayer(vector<string> options, char type){
-    if (type != 'O'){
+    if (type != 'O' || !(this->computer)){
         vector<string>::iterator it;
         this->screen->printString("Your possible moves are: ");
 
@@ -109,7 +109,7 @@ void GameFlow::writeMessageToPlayer(vector<string> options, char type){
     } else {
         this->screen->printString("Computer is thinking...");
         this->screen->printEndl();
-        usleep(1000000);
+        usleep(3000000);
 
     }
 }
