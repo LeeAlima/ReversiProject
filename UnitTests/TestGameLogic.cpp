@@ -21,9 +21,9 @@ namespace {
         Board *b;
 
         virtual void SetUp(){
-            gl = new GameLogic(8, new HumanPlayer('O', new ConsoleScreen()), new HumanPlayer('X', new ConsoleScreen()),
+            gl = new GameLogic(4, new HumanPlayer('O', new ConsoleScreen()), new HumanPlayer('X', new ConsoleScreen()),
                                new ConsoleScreen());
-            b=new Board(8,8, *(gl->getScreen()));
+            b=new Board(4,4, *(gl->getScreen()));
         }
 
         virtual void TearDown(){
@@ -34,37 +34,51 @@ namespace {
     };
 }
 
-TEST_F(TestGameLogic, findPossibleCells) {
+TEST_F(TestGameLogic, findPolssibleCells) {
 
     vector<string> vector_of_cells=gl->findPossibleCells(*(gl->getBoard()),'O');
-    ASSERT_EQ(vector_of_cells[0],"(3,5)");
-    ASSERT_EQ(vector_of_cells[1],"(5,3)");
-    ASSERT_EQ(vector_of_cells[2],"(2,4)");
-    ASSERT_EQ(vector_of_cells[3],"(4,2)");
-    b->setCellInBoard(3,5,'O');
-    b->setCellInBoard(3,4,'O');
+    ASSERT_EQ(vector_of_cells[0],"(1,3)");
+    ASSERT_EQ(vector_of_cells[1],"(3,1)");
+    ASSERT_EQ(vector_of_cells[2],"(0,2)");
+    ASSERT_EQ(vector_of_cells[3],"(2,0)");
+    b->setCellInBoard(1,3,'O');
+    b->setCellInBoard(0,2,'O');
     vector_of_cells= gl->findPossibleCells(*b,'X');
-    ASSERT_EQ(vector_of_cells[0],"(2,3)");
-    ASSERT_EQ(vector_of_cells[1],"(2,5)");
-    ASSERT_EQ(vector_of_cells[2],"(4,5)");
+    ASSERT_EQ(vector_of_cells[0],"(1,0)");
+    ASSERT_EQ(vector_of_cells[1],"(3,2)");
+    ASSERT_EQ(vector_of_cells[2],"(0,1)");
     clearBoard(*b);
 
 }
 
 TEST_F(TestGameLogic, checkPlayerMove) {
-    bool condition=gl->checkPlayerMove("(3,5)",'O',*(gl->getBoard()));
+    bool condition=gl->checkPlayerMove("(1,3)",'O',*(gl->getBoard()));
     ASSERT_TRUE(condition);
 }
 
 TEST_F(TestGameLogic, checksIfGameOver) {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
             b->setCellInBoard(i,j,'O');
         }
     }
     bool condition= gl->checksIfGameOver(*b);
     ASSERT_TRUE(condition);
     clearBoard(*b);
+    b->setCellInBoard(0,1,'O');
+    b->setCellInBoard(0,2,'O');
+    b->setCellInBoard(0,3,'O');
+    b->setCellInBoard(1,1,'O');
+    b->setCellInBoard(1,2,'O');
+    b->setCellInBoard(1,3,'O');
+    b->setCellInBoard(2,2,'O');
+    b->setCellInBoard(2,3,'O');
+    b->setCellInBoard(3,1,'X');
+    b->setCellInBoard(2,1,'E');
+    condition= gl->checksIfGameOver(*b);
+    ASSERT_TRUE(condition);
+    clearBoard(*b);
+
 }
 
 TEST_F(TestGameLogic, changeplayer) {
@@ -79,26 +93,42 @@ TEST_F(TestGameLogic, changeplayer) {
 }
 
 TEST_F(TestGameLogic, updateScore_and_getXscore){
-    b->setCellInBoard(5,5,'X');
-    b->setCellInBoard(6,6,'X');
-    b->setCellInBoard(2,2,'X');
+    b->setCellInBoard(3,3,'X');
+    b->setCellInBoard(0,0,'X');
+    b->setCellInBoard(2,3,'X');
     b->setCellInBoard(1,3,'X');
-    b->setCellInBoard(1,1,'X');
+    b->setCellInBoard(1,0,'X');
     gl->updateScore(*b);
     ASSERT_EQ(gl->getXScore(*b),5);
+}
+
+TEST_F(TestGameLogic,returnWhoWon){
+    b->setCellInBoard(0,1,'O');
+    b->setCellInBoard(0,2,'O');
+    b->setCellInBoard(0,3,'O');
+    b->setCellInBoard(1,1,'O');
+    b->setCellInBoard(1,2,'O');
+    b->setCellInBoard(1,3,'O');
+    b->setCellInBoard(2,2,'O');
+    b->setCellInBoard(2,3,'O');
+    b->setCellInBoard(3,1,'X');
+    b->setCellInBoard(2,1,'E');
+    gl->updateScore(*b);
+    char temp = gl->returnsWhoWon();
+    ASSERT_EQ(temp,'O');
 }
 
 
 
 void clearBoard(Board &b){
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
            b.setCellInBoard(i,j,'E');
         }
     }
-    b.setCellInBoard(3,3,'O');
-    b.setCellInBoard(3,4,'X');
-    b.setCellInBoard(4,4,'O');
-    b.setCellInBoard(4,3,'X');
+    b.setCellInBoard(1,1,'O');
+    b.setCellInBoard(1,2,'X');
+    b.setCellInBoard(2,2,'O');
+    b.setCellInBoard(2,1,'X');
 }
 

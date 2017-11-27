@@ -2,11 +2,11 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="ex2" targetName="gtest_main" />
-      <config projectName="ex2" targetName="ex2" />
-      <config projectName="ex2" targetName="gtest" />
-      <config projectName="ex2" targetName="gmock_main" />
-      <config projectName="ex2" targetName="gmock" />
+      <config projectName="reversi" targetName="gmock" />
+      <config projectName="reversi" targetName="gtest_main" />
+      <config projectName="reversi" targetName="reversi" />
+      <config projectName="reversi" targetName="gmock_main" />
+      <config projectName="reversi" targetName="gtest" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -16,9 +16,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02eaf3b8-09ff-42e8-ad9c-36a346a30661" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/ex2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/AIPlayer.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/Board.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/CXX.includecache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/Cell.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/ConsoleScreen.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/GameFlow.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/GameLogic.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/HumanPlayer.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/flags.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/link.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/main.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ex2.dir/progress.make" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameLogic.cpp" afterPath="$PROJECT_DIR$/GameLogic.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UnitTests/TestGameLogic.cpp" afterPath="$PROJECT_DIR$/UnitTests/TestGameLogic.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.8.2/CMakeSystem.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.8.2/CMakeSystem.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,74 +58,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="GameLogic.cpp" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/GameLogic.cpp">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="900">
-                    <caret line="204" column="78" lean-forward="false" selection-start-line="204" selection-start-column="78" selection-end-line="204" selection-end-column="78" />
-                    <folding>
-                      <element signature="e#48#66#0" expanded="true" />
-                      <element signature="e#836#961#0" expanded="false" />
-                      <element signature="e#966#1326#0" expanded="false" />
-                      <element signature="e#1328#1627#0" expanded="false" />
-                      <element signature="e#1629#1871#0" expanded="false" />
-                      <element signature="e#1873#7073#0" expanded="false" />
-                      <element signature="e#7075#8265#0" expanded="false" />
-                      <element signature="e#8267#10910#0" expanded="false" />
-                      <element signature="e#10912#12612#0" expanded="false" />
-                      <element signature="e#12614#13186#0" expanded="false" />
-                      <element signature="e#13188#13250#0" expanded="false" />
-                      <element signature="e#13252#13431#0" expanded="false" />
-                      <element signature="e#14004#14482#0" expanded="false" />
-                      <element signature="e#14484#14571#0" expanded="false" />
-                      <element signature="e#14573#14659#0" expanded="false" />
-                      <element signature="e#14661#14724#0" expanded="false" />
-                      <element signature="e#14726#15480#0" expanded="false" />
-                      <element signature="e#15482#15648#0" expanded="false" />
-                      <element signature="e#15650#16128#0" expanded="false" />
-                      <element signature="e#16130#16194#0" expanded="false" />
-                      <element signature="e#16196#16268#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="Board.cpp" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Board.cpp">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="449">
-                    <caret line="115" column="26" lean-forward="false" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="26" />
-                    <folding>
-                      <element signature="e#896#1232#0" expanded="false" />
-                      <element signature="e#1340#1621#0" expanded="false" />
-                      <element signature="e#1624#2751#0" expanded="false" />
-                      <element signature="e#2753#3064#0" expanded="false" />
-                      <element signature="e#3066#3154#0" expanded="false" />
-                      <element signature="e#3256#3385#0" expanded="false" />
-                      <element signature="e#3523#3787#0" expanded="false" />
-                      <element signature="e#3789#4113#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="GameFlow.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GameFlow.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="95" column="70" lean-forward="false" selection-start-line="95" selection-start-column="70" selection-end-line="95" selection-end-column="70" />
               <folding>
                 <element signature="e#274#401#0" expanded="false" />
                 <element signature="e#403#445#0" expanded="false" />
@@ -113,21 +82,65 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TestGameLogic.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UnitTests/TestGameLogic.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="80" column="48" lean-forward="false" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
+            <state relative-caret-position="295">
+              <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
               <folding>
-                <element signature="e#39#63#0" expanded="true" />
-                <element signature="e#211#675#1" expanded="false" />
-                <element signature="e#720#1244#0" expanded="false" />
-                <element signature="e#1284#1387#0" expanded="false" />
-                <element signature="e#1428#1654#0" expanded="false" />
-                <element signature="e#1691#1883#0" expanded="false" />
-                <element signature="e#1933#2157#0" expanded="false" />
-                <element signature="e#2161#2439#0" expanded="false" />
+                <element signature="e#721#1245#0" expanded="false" />
+                <element signature="e#1285#1388#0" expanded="false" />
+                <element signature="e#1429#2065#0" expanded="false" />
+                <element signature="e#2102#2294#0" expanded="false" />
+                <element signature="e#2344#2568#0" expanded="false" />
+                <element signature="e#2604#3014#0" expanded="false" />
+                <element signature="e#3018#3296#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameLogic.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameLogic.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="378" column="45" lean-forward="true" selection-start-line="378" selection-start-column="45" selection-end-line="378" selection-end-column="45" />
+              <folding>
+                <element signature="e#1328#1627#0" expanded="false" />
+                <element signature="e#1629#1871#0" expanded="false" />
+                <element signature="e#1873#7073#0" expanded="false" />
+                <element signature="e#7075#8265#0" expanded="false" />
+                <element signature="e#8267#10910#0" expanded="false" />
+                <element signature="e#10912#12612#0" expanded="false" />
+                <element signature="e#12614#13186#0" expanded="false" />
+                <element signature="e#13188#13250#0" expanded="false" />
+                <element signature="e#13252#13431#0" expanded="false" />
+                <element signature="e#14726#15480#0" expanded="false" />
+                <element signature="e#15482#15648#0" expanded="false" />
+                <element signature="e#15650#16128#0" expanded="false" />
+                <element signature="e#16130#16194#0" expanded="false" />
+                <element signature="e#16196#16268#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameLogic.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameLogic.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="597">
+              <caret line="155" column="42" lean-forward="false" selection-start-line="155" selection-start-column="42" selection-end-line="155" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -169,13 +182,13 @@
         <option value="$PROJECT_DIR$/HumanPlayer.h" />
         <option value="$PROJECT_DIR$/GameFlow.h" />
         <option value="$PROJECT_DIR$/AIPlayer.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/UnitTests/TestGameLogic.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/GameLogic.h" />
-        <option value="$PROJECT_DIR$/GameLogic.cpp" />
         <option value="$PROJECT_DIR$/GameFlow.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/UnitTests/TestGameLogic.cpp" />
+        <option value="$PROJECT_DIR$/GameLogic.cpp" />
       </list>
     </option>
   </component>
@@ -186,11 +199,11 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="1389" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="142" />
     <option name="y" value="24" />
     <option name="width" value="1218" />
-    <option name="height" value="696" />
+    <option name="height" value="639" />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
@@ -214,11 +227,11 @@
         <subPane>
           <expand>
             <path>
-              <item name="ex2" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="reversi" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="reversi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ex2" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="reversi" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="reversi" type="462c0819:PsiDirectoryNode" />
               <item name="UnitTests" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -230,7 +243,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CS2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmake-build-debug/ex2" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/lee/CLionProjects/reversi/Board.h" />
   </component>
   <component name="RunDashboard">
@@ -245,28 +258,31 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.gtest_main">
-    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+  <component name="RunManager" selected="Application.reversi">
+    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+      <method>
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration name="gmock" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="reversi" TARGET_NAME="gmock" CONFIG_NAME="Debug">
       <envs />
     </configuration>
-    <configuration name="ex2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ex2" TARGET_NAME="ex2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ex2" RUN_TARGET_NAME="ex2">
+    <configuration name="gmock_main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="reversi" TARGET_NAME="gmock_main" CONFIG_NAME="Debug">
       <envs />
     </configuration>
-    <configuration name="gmock" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ex2" TARGET_NAME="gmock" CONFIG_NAME="Debug">
+    <configuration name="gtest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="reversi" TARGET_NAME="gtest" CONFIG_NAME="Debug">
       <envs />
     </configuration>
-    <configuration name="gmock_main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ex2" TARGET_NAME="gmock_main" CONFIG_NAME="Debug">
+    <configuration name="gtest_main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="reversi" TARGET_NAME="gtest_main" CONFIG_NAME="Debug">
       <envs />
     </configuration>
-    <configuration name="gtest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ex2" TARGET_NAME="gtest" CONFIG_NAME="Debug">
-      <envs />
-    </configuration>
-    <configuration name="gtest_main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ex2" TARGET_NAME="gtest_main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ex2" RUN_TARGET_NAME="ex2">
+    <configuration name="reversi" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="reversi" TARGET_NAME="reversi" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="reversi" RUN_TARGET_NAME="reversi">
       <envs />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ex2" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Application.reversi" />
       <item index="2" class="java.lang.String" itemvalue="Application.gmock" />
       <item index="3" class="java.lang.String" itemvalue="Application.gmock_main" />
       <item index="4" class="java.lang.String" itemvalue="Application.gtest" />
@@ -295,6 +311,10 @@
       <workItem from="1511603472302" duration="16000" />
       <workItem from="1511603517098" duration="7000" />
       <workItem from="1511788502045" duration="3523000" />
+      <workItem from="1511805928180" duration="586000" />
+      <workItem from="1511806558821" duration="251000" />
+      <workItem from="1511807440690" duration="845000" />
+      <workItem from="1511808310226" duration="3148000" />
     </task>
     <task id="LOCAL-00001" summary="Lee check update">
       <created>1511111883558</created>
@@ -356,23 +376,23 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49297000" />
+    <option name="totallyTimeSpent" value="54127000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1389" y="24" width="1218" height="696" extended-state="4" />
+    <frame x="142" y="24" width="1297" height="675" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19458129" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18223938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13435374" sideWeight="0.8555008" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.49761903" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13095239" sideWeight="0.4720854" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6969697" sideWeight="0.76679534" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24866785" sideWeight="0.53667957" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30481285" sideWeight="0.53127414" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30481285" sideWeight="0.46872586" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13095239" sideWeight="0.52791464" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14376321" sideWeight="0.49285713" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -406,37 +426,17 @@
           <line>5</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/UnitTests/TestGameLogic.cpp</url>
+          <line>34</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Board.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GameLogic.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="110" column="21" lean-forward="true" selection-start-line="110" selection-start-column="21" selection-end-line="110" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AIPlayer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#48#67#0" expanded="false" />
-            <element signature="e#2300#3084#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Player.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -473,29 +473,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6246">
           <caret line="347" column="34" lean-forward="false" selection-start-line="347" selection-start-column="34" selection-end-line="347" selection-end-column="34" />
-          <folding>
-            <element signature="e#48#66#0" expanded="true" />
-            <element signature="e#836#961#0" expanded="false" />
-            <element signature="e#966#1326#0" expanded="false" />
-            <element signature="e#1328#1627#0" expanded="false" />
-            <element signature="e#1629#1871#0" expanded="false" />
-            <element signature="e#1873#7073#0" expanded="false" />
-            <element signature="e#7075#8265#0" expanded="false" />
-            <element signature="e#8267#10910#0" expanded="false" />
-            <element signature="e#10912#12612#0" expanded="false" />
-            <element signature="e#12614#13186#0" expanded="false" />
-            <element signature="e#13188#13250#0" expanded="false" />
-            <element signature="e#13252#13431#0" expanded="false" />
-            <element signature="e#14004#14482#0" expanded="false" />
-            <element signature="e#14484#14571#0" expanded="false" />
-            <element signature="e#14573#14659#0" expanded="false" />
-            <element signature="e#14661#14724#0" expanded="false" />
-            <element signature="e#14726#15480#0" expanded="false" />
-            <element signature="e#15482#15648#0" expanded="false" />
-            <element signature="e#15650#16128#0" expanded="false" />
-            <element signature="e#16130#16194#0" expanded="false" />
-            <element signature="e#16196#16268#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -563,29 +540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6246">
           <caret line="347" column="34" lean-forward="false" selection-start-line="347" selection-start-column="34" selection-end-line="347" selection-end-column="34" />
-          <folding>
-            <element signature="e#48#66#0" expanded="true" />
-            <element signature="e#836#961#0" expanded="false" />
-            <element signature="e#966#1326#0" expanded="false" />
-            <element signature="e#1328#1627#0" expanded="false" />
-            <element signature="e#1629#1871#0" expanded="false" />
-            <element signature="e#1873#7073#0" expanded="false" />
-            <element signature="e#7075#8265#0" expanded="false" />
-            <element signature="e#8267#10910#0" expanded="false" />
-            <element signature="e#10912#12612#0" expanded="false" />
-            <element signature="e#12614#13186#0" expanded="false" />
-            <element signature="e#13188#13250#0" expanded="false" />
-            <element signature="e#13252#13431#0" expanded="false" />
-            <element signature="e#14004#14482#0" expanded="false" />
-            <element signature="e#14484#14571#0" expanded="false" />
-            <element signature="e#14573#14659#0" expanded="false" />
-            <element signature="e#14661#14724#0" expanded="false" />
-            <element signature="e#14726#15480#0" expanded="false" />
-            <element signature="e#15482#15648#0" expanded="false" />
-            <element signature="e#15650#16128#0" expanded="false" />
-            <element signature="e#16130#16194#0" expanded="false" />
-            <element signature="e#16196#16268#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -685,28 +639,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UnitTests/TestGameLogic.h" />
-    <entry file="file://$PROJECT_DIR$/lib/googletest-master/googletest/include/gtest/gtest.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="2215" column="8" lean-forward="false" selection-start-line="2215" selection-start-column="8" selection-end-line="2215" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GameLogic.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="155" column="42" lean-forward="false" selection-start-line="155" selection-start-column="42" selection-end-line="155" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/googletest-master/googletest/include/gtest/gtest.h" />
     <entry file="file:///usr/include/c++/5/bits/ios_base.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
@@ -760,7 +694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -768,7 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2070">
           <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3258">
           <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,7 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1872">
           <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13320">
           <caret line="740" column="0" lean-forward="false" selection-start-line="740" selection-start-column="0" selection-end-line="740" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,7 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5778">
           <caret line="321" column="0" lean-forward="false" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,16 +736,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding>
-            <element signature="e#48#67#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Board.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="115" column="26" lean-forward="false" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/googletest-master/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GameFlow.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="95" column="70" lean-forward="false" selection-start-line="95" selection-start-column="70" selection-end-line="95" selection-end-column="70" />
           <folding>
             <element signature="e#274#401#0" expanded="false" />
             <element signature="e#403#445#0" expanded="false" />
@@ -834,31 +780,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Board.cpp">
+    <entry file="file://$PROJECT_DIR$/lib/googletest-master/googlemock/src/gmock-all.cc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="115" column="26" lean-forward="false" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="26" />
-          <folding>
-            <element signature="e#896#1232#0" expanded="false" />
-            <element signature="e#1340#1621#0" expanded="false" />
-            <element signature="e#1624#2751#0" expanded="false" />
-            <element signature="e#2753#3064#0" expanded="false" />
-            <element signature="e#3066#3154#0" expanded="false" />
-            <element signature="e#3256#3385#0" expanded="false" />
-            <element signature="e#3523#3787#0" expanded="false" />
-            <element signature="e#3789#4113#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="99">
+          <caret line="39" column="24" lean-forward="false" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameLogic.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="155" column="42" lean-forward="false" selection-start-line="155" selection-start-column="42" selection-end-line="155" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GameLogic.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="204" column="78" lean-forward="false" selection-start-line="204" selection-start-column="78" selection-end-line="204" selection-end-column="78" />
+        <state relative-caret-position="374">
+          <caret line="378" column="45" lean-forward="true" selection-start-line="378" selection-start-column="45" selection-end-line="378" selection-end-column="45" />
           <folding>
-            <element signature="e#48#66#0" expanded="true" />
-            <element signature="e#836#961#0" expanded="false" />
-            <element signature="e#966#1326#0" expanded="false" />
             <element signature="e#1328#1627#0" expanded="false" />
             <element signature="e#1629#1871#0" expanded="false" />
             <element signature="e#1873#7073#0" expanded="false" />
@@ -868,10 +818,6 @@
             <element signature="e#12614#13186#0" expanded="false" />
             <element signature="e#13188#13250#0" expanded="false" />
             <element signature="e#13252#13431#0" expanded="false" />
-            <element signature="e#14004#14482#0" expanded="false" />
-            <element signature="e#14484#14571#0" expanded="false" />
-            <element signature="e#14573#14659#0" expanded="false" />
-            <element signature="e#14661#14724#0" expanded="false" />
             <element signature="e#14726#15480#0" expanded="false" />
             <element signature="e#15482#15648#0" expanded="false" />
             <element signature="e#15650#16128#0" expanded="false" />
@@ -883,17 +829,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UnitTests/TestGameLogic.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="80" column="48" lean-forward="false" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
+        <state relative-caret-position="295">
+          <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
           <folding>
-            <element signature="e#39#63#0" expanded="true" />
-            <element signature="e#211#675#1" expanded="false" />
-            <element signature="e#720#1244#0" expanded="false" />
-            <element signature="e#1284#1387#0" expanded="false" />
-            <element signature="e#1428#1654#0" expanded="false" />
-            <element signature="e#1691#1883#0" expanded="false" />
-            <element signature="e#1933#2157#0" expanded="false" />
-            <element signature="e#2161#2439#0" expanded="false" />
+            <element signature="e#721#1245#0" expanded="false" />
+            <element signature="e#1285#1388#0" expanded="false" />
+            <element signature="e#1429#2065#0" expanded="false" />
+            <element signature="e#2102#2294#0" expanded="false" />
+            <element signature="e#2344#2568#0" expanded="false" />
+            <element signature="e#2604#3014#0" expanded="false" />
+            <element signature="e#3018#3296#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -357,10 +357,10 @@ void GameLogic::updateScore(Board &board) const {
     int player_2=0;
     for (int i=0;i< board.getRow();i++) {
         for (int j = 0; j < board.getCol(); j++) {
-            if(board.returnCellType(i,j) == 'X'){
+            if(board.returnCellType(i,j) == 'O'){
                 player_1++;
             }
-            if(board.returnCellType(i,j) == 'O'){
+            if(board.returnCellType(i,j) == 'X'){
                 player_2++;
             }
         }
@@ -372,19 +372,19 @@ void GameLogic::updateScore(Board &board) const {
 int GameLogic::getXScore(Board &b){
     // going over the all matrix and counting the number
     // of appearences to each player
-    int player_1=0;
-    int player_2=0;
+    int player_X=0;
+    int player_O=0;
     for (int i=0;i< b.getRow();i++) {
         for (int j = 0; j < b.getCol(); j++) {
             if(b.returnCellType(i,j) == 'X'){
-                player_1++;
+                player_X++;
             }
             if(b.returnCellType(i,j) == 'O'){
-                player_2++;
+                player_O++;
             }
         }
     }
-    return player_1-player_2;
+    return player_X-player_O;
 }
 
 int GameLogic::getPlayer2Score() const {

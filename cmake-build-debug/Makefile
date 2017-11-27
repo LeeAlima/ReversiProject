@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake
+CMAKE_COMMAND = /opt/clion-2017.2.3/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
+RM = /opt/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/omer/CLionProjects/reversi
+CMAKE_SOURCE_DIR = /home/lee/CLionProjects/reversi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/omer/CLionProjects/reversi/cmake-build-debug
+CMAKE_BINARY_DIR = /home/lee/CLionProjects/reversi/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,37 +59,37 @@ CMAKE_BINARY_DIR = /home/omer/CLionProjects/reversi/cmake-build-debug
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -P cmake_install.cmake
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -P cmake_install.cmake
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target list_install_components
@@ -105,7 +105,7 @@ list_install_components/fast: list_install_components
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -116,7 +116,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/opt/clion-2017.2.3/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -126,9 +126,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles /home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles /home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lee/CLionProjects/reversi/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,17 +157,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ex2
+# Target rules for targets named reversi
 
 # Build rule for target.
-ex2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ex2
-.PHONY : ex2
+reversi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 reversi
+.PHONY : reversi
 
 # fast build rule for target.
-ex2/fast:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/build
-.PHONY : ex2/fast
+reversi/fast:
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/build
+.PHONY : reversi/fast
 
 #=============================================================================
 # Target rules for targets named gmock_main
@@ -227,7 +227,7 @@ AIPlayer.o: AIPlayer.cpp.o
 
 # target to build an object file
 AIPlayer.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/AIPlayer.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/AIPlayer.cpp.o
 .PHONY : AIPlayer.cpp.o
 
 AIPlayer.i: AIPlayer.cpp.i
@@ -236,7 +236,7 @@ AIPlayer.i: AIPlayer.cpp.i
 
 # target to preprocess a source file
 AIPlayer.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/AIPlayer.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/AIPlayer.cpp.i
 .PHONY : AIPlayer.cpp.i
 
 AIPlayer.s: AIPlayer.cpp.s
@@ -245,7 +245,7 @@ AIPlayer.s: AIPlayer.cpp.s
 
 # target to generate assembly for a file
 AIPlayer.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/AIPlayer.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/AIPlayer.cpp.s
 .PHONY : AIPlayer.cpp.s
 
 Board.o: Board.cpp.o
@@ -254,7 +254,7 @@ Board.o: Board.cpp.o
 
 # target to build an object file
 Board.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Board.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/Board.cpp.o
 .PHONY : Board.cpp.o
 
 Board.i: Board.cpp.i
@@ -263,7 +263,7 @@ Board.i: Board.cpp.i
 
 # target to preprocess a source file
 Board.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Board.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/Board.cpp.i
 .PHONY : Board.cpp.i
 
 Board.s: Board.cpp.s
@@ -272,7 +272,7 @@ Board.s: Board.cpp.s
 
 # target to generate assembly for a file
 Board.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Board.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/Board.cpp.s
 .PHONY : Board.cpp.s
 
 Cell.o: Cell.cpp.o
@@ -281,7 +281,7 @@ Cell.o: Cell.cpp.o
 
 # target to build an object file
 Cell.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Cell.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/Cell.cpp.o
 .PHONY : Cell.cpp.o
 
 Cell.i: Cell.cpp.i
@@ -290,7 +290,7 @@ Cell.i: Cell.cpp.i
 
 # target to preprocess a source file
 Cell.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Cell.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/Cell.cpp.i
 .PHONY : Cell.cpp.i
 
 Cell.s: Cell.cpp.s
@@ -299,7 +299,7 @@ Cell.s: Cell.cpp.s
 
 # target to generate assembly for a file
 Cell.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Cell.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/Cell.cpp.s
 .PHONY : Cell.cpp.s
 
 ConsoleScreen.o: ConsoleScreen.cpp.o
@@ -308,7 +308,7 @@ ConsoleScreen.o: ConsoleScreen.cpp.o
 
 # target to build an object file
 ConsoleScreen.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/ConsoleScreen.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/ConsoleScreen.cpp.o
 .PHONY : ConsoleScreen.cpp.o
 
 ConsoleScreen.i: ConsoleScreen.cpp.i
@@ -317,7 +317,7 @@ ConsoleScreen.i: ConsoleScreen.cpp.i
 
 # target to preprocess a source file
 ConsoleScreen.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/ConsoleScreen.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/ConsoleScreen.cpp.i
 .PHONY : ConsoleScreen.cpp.i
 
 ConsoleScreen.s: ConsoleScreen.cpp.s
@@ -326,7 +326,7 @@ ConsoleScreen.s: ConsoleScreen.cpp.s
 
 # target to generate assembly for a file
 ConsoleScreen.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/ConsoleScreen.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/ConsoleScreen.cpp.s
 .PHONY : ConsoleScreen.cpp.s
 
 GameFlow.o: GameFlow.cpp.o
@@ -335,7 +335,7 @@ GameFlow.o: GameFlow.cpp.o
 
 # target to build an object file
 GameFlow.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/GameFlow.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/GameFlow.cpp.o
 .PHONY : GameFlow.cpp.o
 
 GameFlow.i: GameFlow.cpp.i
@@ -344,7 +344,7 @@ GameFlow.i: GameFlow.cpp.i
 
 # target to preprocess a source file
 GameFlow.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/GameFlow.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/GameFlow.cpp.i
 .PHONY : GameFlow.cpp.i
 
 GameFlow.s: GameFlow.cpp.s
@@ -353,7 +353,7 @@ GameFlow.s: GameFlow.cpp.s
 
 # target to generate assembly for a file
 GameFlow.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/GameFlow.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/GameFlow.cpp.s
 .PHONY : GameFlow.cpp.s
 
 GameLogic.o: GameLogic.cpp.o
@@ -362,7 +362,7 @@ GameLogic.o: GameLogic.cpp.o
 
 # target to build an object file
 GameLogic.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/GameLogic.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/GameLogic.cpp.o
 .PHONY : GameLogic.cpp.o
 
 GameLogic.i: GameLogic.cpp.i
@@ -371,7 +371,7 @@ GameLogic.i: GameLogic.cpp.i
 
 # target to preprocess a source file
 GameLogic.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/GameLogic.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/GameLogic.cpp.i
 .PHONY : GameLogic.cpp.i
 
 GameLogic.s: GameLogic.cpp.s
@@ -380,7 +380,7 @@ GameLogic.s: GameLogic.cpp.s
 
 # target to generate assembly for a file
 GameLogic.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/GameLogic.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/GameLogic.cpp.s
 .PHONY : GameLogic.cpp.s
 
 HumanPlayer.o: HumanPlayer.cpp.o
@@ -389,7 +389,7 @@ HumanPlayer.o: HumanPlayer.cpp.o
 
 # target to build an object file
 HumanPlayer.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/HumanPlayer.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/HumanPlayer.cpp.o
 .PHONY : HumanPlayer.cpp.o
 
 HumanPlayer.i: HumanPlayer.cpp.i
@@ -398,7 +398,7 @@ HumanPlayer.i: HumanPlayer.cpp.i
 
 # target to preprocess a source file
 HumanPlayer.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/HumanPlayer.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/HumanPlayer.cpp.i
 .PHONY : HumanPlayer.cpp.i
 
 HumanPlayer.s: HumanPlayer.cpp.s
@@ -407,7 +407,7 @@ HumanPlayer.s: HumanPlayer.cpp.s
 
 # target to generate assembly for a file
 HumanPlayer.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/HumanPlayer.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/HumanPlayer.cpp.s
 .PHONY : HumanPlayer.cpp.s
 
 UnitTests/TestGameLogic.o: UnitTests/TestGameLogic.cpp.o
@@ -416,7 +416,7 @@ UnitTests/TestGameLogic.o: UnitTests/TestGameLogic.cpp.o
 
 # target to build an object file
 UnitTests/TestGameLogic.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestGameLogic.cpp.o
 .PHONY : UnitTests/TestGameLogic.cpp.o
 
 UnitTests/TestGameLogic.i: UnitTests/TestGameLogic.cpp.i
@@ -425,7 +425,7 @@ UnitTests/TestGameLogic.i: UnitTests/TestGameLogic.cpp.i
 
 # target to preprocess a source file
 UnitTests/TestGameLogic.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestGameLogic.cpp.i
 .PHONY : UnitTests/TestGameLogic.cpp.i
 
 UnitTests/TestGameLogic.s: UnitTests/TestGameLogic.cpp.s
@@ -434,7 +434,7 @@ UnitTests/TestGameLogic.s: UnitTests/TestGameLogic.cpp.s
 
 # target to generate assembly for a file
 UnitTests/TestGameLogic.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/UnitTests/TestGameLogic.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestGameLogic.cpp.s
 .PHONY : UnitTests/TestGameLogic.cpp.s
 
 main.o: main.cpp.o
@@ -443,7 +443,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -452,7 +452,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -461,7 +461,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -476,7 +476,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ex2"
+	@echo "... reversi"
 	@echo "... gmock_main"
 	@echo "... gmock"
 	@echo "... gtest_main"
