@@ -118,7 +118,23 @@ TEST_F(TestGameLogic,returnWhoWon){
     ASSERT_EQ(temp,'O');
 }
 
+TEST_F(TestGameLogic,getScoresDifference){
 
+    b->setCellInBoard(0,1,'O');
+    b->setCellInBoard(0,2,'O');
+    b->setCellInBoard(0,3,'O');
+    b->setCellInBoard(1,1,'O');
+    b->setCellInBoard(1,2,'X');
+    b->setCellInBoard(1,3,'X');
+    b->setCellInBoard(2,2,'X');
+    b->setCellInBoard(2,3,'X');
+    b->setCellInBoard(3,1,'X');
+    b->setCellInBoard(2,1,'E');
+    gl->updateScore(*b);
+    int temp = gl->getScoresDifference(*b);
+    ASSERT_EQ(temp,1);
+
+}
 
 void clearBoard(Board &b){
     for (int i = 0; i < 4; i++) {
