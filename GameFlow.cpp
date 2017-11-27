@@ -9,12 +9,12 @@
  *  Omer havakok 203345087
  */
 #include <iostream>
-#include <cstdlib>
 #include <sstream>
 #include "GameFlow.h"
 #include "ConsoleScreen.h"
 #include "AIPlayer.h"
 #include <unistd.h>
+#include <cstdlib>
 
 
 GameFlow::GameFlow(int size):size(size){
@@ -64,8 +64,9 @@ void GameFlow::play() {
             }
             // split the input
             vector <string> s = this->cutPoint(user_choice);
-            string front_number = s.front();
-            string back_number = s.back();
+            string front_number,back_number;
+            front_number = s.front();
+            back_number = s.back();
             // converts the string into two numbers
             int first_number = atoi( front_number.c_str());
             int second_number = atoi(back_number.c_str()) ;
@@ -179,8 +180,9 @@ string GameFlow::fixPointToUser(vector <string> s) const {
 string GameFlow::fixPointToCom(string user_choice) const {
     // split the point by ","
     vector <string> s = this->cutPoint(user_choice);
-    string front_number = s.front();
-    string back_number = s.back();
+    string front_number,back_number;
+    front_number = s.front();
+    back_number = s.back();
     // converts the string into two numbers (-1 to fit array show)
     int first_number = atoi( front_number.c_str()) -1 ;
     int second_number = atoi(back_number.c_str()) - 1;

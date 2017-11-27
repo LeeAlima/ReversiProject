@@ -82,7 +82,8 @@ vector<int> AIPlayer::cutAPoint(string user_input) {
     size_t prev = 0, pos = 0;
     do {
         // split by ,
-        pos = user_input.find(",", prev);
+        char symbol = ',';
+        pos = user_input.find(symbol, prev);
         if (pos == string::npos) pos = user_input.length();
         string token = user_input.substr(prev, pos - prev);
         if (!token.empty()) tokens.push_back(token);
