@@ -1,13 +1,11 @@
-
-
-#ifndef EX2_DSA_H
-#define EX2_DSA_H
-
-
 /*
  *  Lee alima 313467441
  *  Omer havakok 203345087
  */
+
+#ifndef EX2_DSA_H
+#define EX2_DSA_H
+
 #include <iostream>
 #include <sstream>
 #include "GameFlow.h"
@@ -15,7 +13,6 @@
 #include "AIPlayer.h"
 #include <unistd.h>
 #include <cstdlib>
-
 
 GameFlow::GameFlow(int size):size(size){
     // creating a new game
@@ -35,17 +32,19 @@ void GameFlow::play() {
     // as long as the game is not over
     while (!this->game->checksIfGameOver(*this->game->getBoard())){
         if (game->getCurrentPlayer()!='O'||!(this->computer)){
-            this->screen->printString(this->toStringC(game->getPlayer('C')->getType())
+            this->screen->printString(this->toStringC
+                    (game->getPlayer('C')->getType())
                                       + ": It's your move!");
             this->screen->printEndl();
         }
         // if the player can make a move
-        if (this->game->checksIfMovesArePossible(game->getPlayer('C')->getType()
-                ,*this->game->getBoard())) {
+        if (this->game->checksIfMovesArePossible(
+                game->getPlayer('C')->getType(),*this->game->getBoard())) {
             // print the player's options
             // creating a vector of the options
             vector<string> options =
-                    this->game->findPossibleCells(*this->game->getBoard(), game->getPlayer('C')->getType());
+                    this->game->findPossibleCells(*this->game->getBoard()
+                            , game->getPlayer('C')->getType());
             writeMessageToPlayer(options, this->game->getCurrentPlayer());
             user_choice = this->game->getPlayer('C')->chooseCell(*this->game);
 
@@ -54,8 +53,8 @@ void GameFlow::play() {
                 choice_to_compare = user_choice;
             }
             // checking the player's move, if it's illegal then asks again
-            while (!this->game->checkPlayerMove(choice_to_compare,
-                                                game->getPlayer('C')->getType(),*this->game->getBoard())) {
+            while (!this->game->checkPlayerMove(choice_to_compare
+                    ,game->getPlayer('C')->getType(),*this->game->getBoard())){
                 cin >> user_choice;
                 choice_to_compare = this->fixPointToCom(user_choice) ;
                 if (computer && this->game->getCurrentPlayer() == 'O'){
@@ -77,9 +76,9 @@ void GameFlow::play() {
                 second_number = back_number1 - '0' + 1;
             }
             // updating the board and printing it
-
-            this->game->updateBoard(first_number-1,second_number-1,
-                                    this->game->getPlayer('D')->getType(),*this->game->getBoard());
+            this->game->updateBoard(first_number-1,second_number-1
+                    , this->game->getPlayer('D')->getType()
+                    ,*this->game->getBoard());
             this->game->getBoard()->printBoard();
         }
         else { // if no move is possible
@@ -87,16 +86,15 @@ void GameFlow::play() {
             this->screen->printEndl();
         }
         this->game->changePlayer();
-
     }
     showScores();
 }
 
 void GameFlow::writeMessageToPlayer(vector<string> options, char type){
+    // show possible moves
     if (type != 'O' || !(this->computer)){
         vector<string>::iterator it;
         this->screen->printString("Your possible moves are: ");
-
         for (it = options.begin(); it != options.end(); ++it) {
             vector <string> string_change = this->cutPoint(*it);
             this->screen->printString(this->fixPointToUser(string_change));
@@ -105,11 +103,10 @@ void GameFlow::writeMessageToPlayer(vector<string> options, char type){
             }
         }
         this->screen->printEndl();
-    } else {
+    } else { // show a message
         this->screen->printString("Computer is thinking...");
         this->screen->printEndl();
         usleep(1500000);
-
     }
 }
 

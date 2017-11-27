@@ -63,9 +63,19 @@ public:
      * @param t - as the type to change to.
      */
     void setCellInBoard(int r, int c,char t) const;
-    Board* copyBoard(Board &board,Screen &sc);
+
+    /**
+     * this method returns the board size
+     * @return int
+     */
     int getSize();
-    void copyBoardSourceAndTarget(Board &boardSource, Board &boardTarget);
+
+    /**
+     * this method copy a board into another board
+     * @param source_board - source board
+     * @param target_board - target board
+     */
+    void copyBoardSourceAndTarget(Board &source_board, Board &target_board);
 
 private:
     int row;

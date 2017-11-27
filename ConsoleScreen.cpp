@@ -6,9 +6,7 @@
 #include <iostream>
 #include "ConsoleScreen.h"
 
-ConsoleScreen::ConsoleScreen() { //empty constructor
-}
-
+ConsoleScreen::ConsoleScreen() = default;
 
 void ConsoleScreen::printEndl() const {
     cout << endl;
@@ -18,5 +16,4 @@ void ConsoleScreen::printString(string s) const {
     cout << s;
 }
 
-ConsoleScreen::~ConsoleScreen() {
-}
+ConsoleScreen::~ConsoleScreen() = default;

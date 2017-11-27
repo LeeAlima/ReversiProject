@@ -55,10 +55,10 @@ int Board::getCol() const {
     return this->col;
 }
 
-void Board::copyBoardSourceAndTarget(Board &boardSource, Board &boardTarget) {
-    for (int i= 0;i<boardTarget.getSize() ;i++ ){
-        for (int j = 0; j < boardTarget.getSize(); j++) {
-            boardTarget.setCellInBoard(i,j,boardSource.returnCellType(i,j));
+void Board::copyBoardSourceAndTarget(Board &source_board, Board &target_board) {
+    for (int i= 0;i<target_board.getSize() ;i++ ){
+        for (int j = 0; j < target_board.getSize(); j++) {
+            target_board.setCellInBoard(i,j,source_board.returnCellType(i,j));
         }
     }
 };
@@ -140,16 +140,6 @@ void Board::printLine(int number) const {
     this->game_screen_.printString("----");
     }
     this->game_screen_.printEndl();
-}
-
-Board *Board::copyBoard(Board &board,Screen &sc) {
-    Board* newBoard = new Board(board.getSize(),board.getSize(),sc);
-    for (int i= 0;i<newBoard->getSize() ;i++ ){
-        //col
-        for (int j = 0; j < newBoard->getSize(); j++) {
-            newBoard->setCellInBoard(i,j,board.returnCellType(i,j));
-        }
-    }
 }
 
 int Board::getSize() {

@@ -36,7 +36,7 @@ char GameLogic::returnsWhoWon() const {
     return second_player_->getType();
 }
 
-bool GameLogic::checksIfGameOver(Board &board) const {
+bool GameLogic::checksIfGameOver(Board &board) {
     // if all cells are full or the are no possible moves for each side
     if ( board.checkAllCellsFull() ||
             (!checksIfMovesArePossible('X',board)
@@ -45,7 +45,7 @@ bool GameLogic::checksIfGameOver(Board &board) const {
     }
 }
 
-bool GameLogic::checksIfMovesArePossible(char type,Board &board) const {
+bool GameLogic::checksIfMovesArePossible(char type,Board &board) {
     vector<string> vector_to_check = findPossibleCells(board,type);
     if (vector_to_check.size() == 0){ // if it's empty
         return false;
@@ -53,12 +53,9 @@ bool GameLogic::checksIfMovesArePossible(char type,Board &board) const {
     return true;
 }
 
-vector<string> GameLogic::findPossibleCells(Board & board,char type) const {
+vector<string> GameLogic::findPossibleCells(Board & board,char type) {
     vector<string> vector_of_cells;
-    char other_type;
-    if (type == 'X'){
-        other_type = 'O';
-    }
+    char other_type = 'O';
     if (type == 'O'){
         other_type = 'X';
     }
@@ -77,11 +74,11 @@ vector<string> GameLogic::findPossibleCells(Board & board,char type) const {
                             if (board.returnCellType(i + a, j + b)
                                 == other_type) {
                                 string empty_word = "(";
-                                    string s_1 = findEmptyCellGeneral(
+                                    string point = findEmptyCellGeneral(
                                             i+a,j+b,other_type,a,b,board);
                                     //if the points exists add it to the vector
-                                    if ((s_1.compare(empty_word) != 0)) {
-                                        vector_of_cells.push_back(s_1);
+                                    if ((point.compare(empty_word) != 0)) {
+                                        vector_of_cells.push_back(point);
                                     }
                             }
                         }
@@ -93,23 +90,14 @@ vector<string> GameLogic::findPossibleCells(Board & board,char type) const {
     return this->cutDuplicate(vector_of_cells);
 }
 
-string GameLogic::findEmptyCellGeneral(int r, int c,
-                                       char t, int rchange, int cchange,Board &board) const{
+string GameLogic::findEmptyCellGeneral(int r, int c, char t, int row_change,
+                                       int col_change,Board &board) {
     int index_row = r;
     int index_col=c;
     for (int i = 1; i<board.getCol();i++){
-        if (rchange == -1) {
-            index_row =r -i;
-        }
-        if (rchange == 1) {
-            index_row  =r+ i;
-        }
-        if (cchange == -1){
-            index_col =c- i;
-        }
-        if (cchange == 1){
-            index_col =c+ i;
-        }
+        changeNumber(index_row,row_change,r,i);
+        changeNumber(index_col,col_change,c,i);
+        // check if in limits
         if (index_row >=0 && index_row < board.getCol()
             && index_col >=0 && index_col < board.getCol()){
             // if an empty cell was found
@@ -128,45 +116,26 @@ string GameLogic::findEmptyCellGeneral(int r, int c,
     return "(";
 }
 
-void GameLogic::makeAMove(int r, int c,
-                          char t, int rchange, int cchange,Board &board) const{
+void GameLogic::makeAMove(int r, int c, char t, int row_change,
+                          int col_change,Board &board) {
     int index_row=r;
     int index_col=c;
     char other_type = 'X';
     if (t == 'X'){
         other_type = 'O';
     }
-    for (int i = 0; i<board.getCol();i++){
-        if (rchange == -1) {
-            index_row = r - i;
-        }
-        if (rchange == 1) {
-            index_row  = r + i;
-        }
-        if (cchange == -1){
-            index_col = c - i;
-        }
-        if (cchange == 1){
-            index_col = c + i;
-        }
+    for (int i = 0; i< board.getCol();i++){
+        // change the index variables, add or reduce i from r\c
+        changeNumber(index_row,row_change,r,i);
+        changeNumber(index_col,col_change,c,i);
     if (index_row >=0 && index_row < board.getCol()
         && index_col >=0 && index_col < board.getCol()) {
             if (board.returnCellType(index_row,index_col)
                 == other_type){
                 int row_new = index_row;
                 int col_new = index_col;
-                if (rchange == 1){
-                    row_new +=1;
-                }
-                if (rchange== -1){
-                    row_new -=1;
-                }
-                if ( cchange == 1){
-                    col_new += 1;
-                }
-                if (cchange == -1){
-                    col_new -= 1;
-                }
+                row_new +=row_change;
+                col_new +=col_change;
                 if (row_new >=0  && row_new < board.getRow()
                         && col_new >=0 && col_new < board.getCol()){
                     // if an empty cell was found
@@ -181,21 +150,11 @@ void GameLogic::makeAMove(int r, int c,
                 } // if access is possible checks its type
                 if (board.returnCellType(row_new,col_new) == t){
                     for ( int j = 0;j<=i+1;j++){
-                        int rowLoop = r;
-                        int colLoop = c;
-                        if (rchange == -1){
-                            rowLoop -= j;
-                        }
-                        if (rchange == 1){
-                            rowLoop +=j;
-                        }
-                        if (cchange == -1){
-                            colLoop -= j;
-                        }
-                        if (cchange == 1){
-                            colLoop += j;
-                        }
-                        board.setCellInBoard(rowLoop,colLoop,t);
+                        int row_loop = r;
+                        int col_loop = c;
+                        changeNumber(row_loop,row_change,row_loop,j);
+                        changeNumber(col_loop,col_change,col_loop,j);
+                        board.setCellInBoard(row_loop,col_loop,t);
                         this->updateScore(board);
                     }
                     return;
@@ -205,11 +164,17 @@ void GameLogic::makeAMove(int r, int c,
     }
 }
 
-Board* GameLogic::updateBoard(int x,int y , char type, Board& board) const {
-    char other_type;
-    if (type == 'X') {
-        other_type = 'O';
+void GameLogic::changeNumber(int &number,int flag,
+                             int default_number,int add_number){
+    if (flag == 1){
+        number = default_number + add_number;
+    } if (flag == -1) {
+        number = default_number - add_number;
     }
+}
+
+Board* GameLogic::updateBoard(int x,int y , char type, Board& board) {
+    char other_type = 'O';
     if (type == 'O') {
         other_type = 'X';
     } // set the cell in the matrix
@@ -228,13 +193,13 @@ Board* GameLogic::updateBoard(int x,int y , char type, Board& board) const {
     return &board;
 }
 
-bool GameLogic::checkPlayerMove(string userInput, char type,Board & board) const {
+bool GameLogic::checkPlayerMove(string user_input, char type,Board & board) {
         vector<string> allPoints = this->findPossibleCells(board,type);
         vector<string>::iterator it;
         // go over all of the possible moves and compare
         // the user choice to them
         for (it = allPoints.begin(); it != allPoints.end(); ++it) {
-            if ((*it).compare(userInput) == 0) { // if the player choice is llegal
+            if ((*it).compare(user_input) == 0) { // if the player choice is llegal
                 return true;
             }
         }
@@ -305,10 +270,10 @@ Screen* GameLogic::getScreen() {
     return this->my_screen_;
 }
 
-vector<string> GameLogic::cutDuplicate(vector<string> befor_vec) const {
+vector<string> GameLogic::cutDuplicate(vector<string> vector_before) const {
     vector<string> vector_without_dup;
     vector<string>::iterator iterat;
-    for (iterat = befor_vec.begin(); iterat != befor_vec.end(); ++iterat) {
+    for (iterat = vector_before.begin(); iterat != vector_before.end(); ++iterat) {
         bool flag = false;
         vector<string>::iterator it2;
         for (it2 = vector_without_dup.begin();

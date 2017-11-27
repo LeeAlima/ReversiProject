@@ -44,12 +44,8 @@ public:
      */
     virtual void setScore(int number) = 0;
 
-
-
 protected:
     char type;
-    int score;
-    Screen* player_screen_;
 };
 
 

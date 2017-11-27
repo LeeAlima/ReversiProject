@@ -16,21 +16,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02eaf3b8-09ff-42e8-ad9c-36a346a30661" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/ex2" afterPath="$PROJECT_DIR$/cmake-build-debug/ex2" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AIPlayer.cpp" afterPath="$PROJECT_DIR$/AIPlayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Board.cpp" afterPath="$PROJECT_DIR$/Board.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Board.h" afterPath="$PROJECT_DIR$/Board.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ConsoleScreen.cpp" afterPath="$PROJECT_DIR$/ConsoleScreen.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameFlow.cpp" afterPath="$PROJECT_DIR$/GameFlow.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameLogic.cpp" afterPath="$PROJECT_DIR$/GameLogic.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UnitTests/TestGameLogic.cpp" afterPath="$PROJECT_DIR$/UnitTests/TestGameLogic.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.8.2/CMakeSystem.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.8.2/CMakeSystem.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameLogic.h" afterPath="$PROJECT_DIR$/GameLogic.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Player.h" afterPath="$PROJECT_DIR$/Player.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Screen.h" afterPath="$PROJECT_DIR$/Screen.h" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,90 +36,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameFlow.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GameFlow.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="66" column="44" lean-forward="true" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
-              <folding>
-                <element signature="e#98#117#0" expanded="true" />
-                <marker date="1511812202071" expanded="false" signature="4101:4942" ph="{...}" />
-                <marker date="1511812202071" expanded="false" signature="5500:5585" ph="{...}" />
-                <marker date="1511812202071" expanded="false" signature="5628:5721" ph="{...}" />
-                <marker date="1511812202071" expanded="false" signature="5780:6212" ph="{...}" />
-                <marker date="1511812202071" expanded="false" signature="6271:6711" ph="{...}" />
-                <marker date="1511812202071" expanded="false" signature="6740:7743" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestGameLogic.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/UnitTests/TestGameLogic.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="134" column="20" lean-forward="false" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
-              <folding>
-                <element signature="e#195#678#0" expanded="false" />
-                <element signature="e#211#675#1" expanded="false" />
-                <element signature="e#721#1245#0" expanded="false" />
-                <element signature="e#1285#1388#0" expanded="false" />
-                <element signature="e#1429#2065#0" expanded="false" />
-                <element signature="e#2102#2293#0" expanded="false" />
-                <element signature="e#2343#2577#0" expanded="false" />
-                <marker date="1511813388967" expanded="false" signature="3510:3763" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameLogic.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GameLogic.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="277" column="34" lean-forward="false" selection-start-line="277" selection-start-column="15" selection-end-line="277" selection-end-column="34" />
-              <folding>
-                <element signature="e#59#77#0" expanded="true" />
-                <element signature="e#142#415#0" expanded="false" />
-                <element signature="e#417#542#0" expanded="false" />
-                <element signature="e#544#904#0" expanded="false" />
-                <element signature="e#906#1205#0" expanded="false" />
-                <element signature="e#1207#1449#0" expanded="false" />
-                <element signature="e#1451#3061#0" expanded="false" />
-                <element signature="e#3063#4253#0" expanded="false" />
-                <element signature="e#4255#6898#0" expanded="false" />
-                <element signature="e#6900#7600#0" expanded="false" />
-                <element signature="e#7602#8283#0" expanded="false" />
-                <element signature="e#8349#8528#0" expanded="false" />
-                <element signature="e#8530#9099#0" expanded="false" />
-                <element signature="e#9833#10587#0" expanded="false" />
-                <element signature="e#10757#11284#0" expanded="false" />
-                <marker date="1511812976492" expanded="false" signature="11321:11358" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AIPlayer.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AIPlayer.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <element signature="e#369#2624#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>current_player</find>
       <find>findPossibleCells</find>
-      <find>update</find>
       <find>cutPoint</find>
       <find>push</find>
       <find>updateBoard</find>
@@ -139,6 +56,8 @@
       <find>cout</find>
       <find>changepl</find>
       <find>setCellInBoard</find>
+      <find>make</find>
+      <find>update</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,21 +66,23 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Player.h" />
         <option value="$PROJECT_DIR$/HumanPlayer.cpp" />
         <option value="$PROJECT_DIR$/AIPlayer.h" />
-        <option value="$PROJECT_DIR$/Board.h" />
-        <option value="$PROJECT_DIR$/Board.cpp" />
         <option value="$PROJECT_DIR$/HumanPlayer.h" />
         <option value="$PROJECT_DIR$/GameFlow.h" />
-        <option value="$PROJECT_DIR$/AIPlayer.cpp" />
         <option value="$PROJECT_DIR$/UnitTests/TestGameLogic.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/GameFlow.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/UnitTests/TestGameLogic.cpp" />
+        <option value="$PROJECT_DIR$/Screen.h" />
+        <option value="$PROJECT_DIR$/ConsoleScreen.cpp" />
+        <option value="$PROJECT_DIR$/Player.h" />
+        <option value="$PROJECT_DIR$/Board.cpp" />
+        <option value="$PROJECT_DIR$/Board.h" />
+        <option value="$PROJECT_DIR$/GameFlow.cpp" />
         <option value="$PROJECT_DIR$/GameLogic.h" />
         <option value="$PROJECT_DIR$/GameLogic.cpp" />
-        <option value="$PROJECT_DIR$/UnitTests/TestGameLogic.cpp" />
+        <option value="$PROJECT_DIR$/AIPlayer.cpp" />
       </list>
     </option>
   </component>
@@ -228,25 +149,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/AIPlayer.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/AIPlayer.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Board.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Board.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CMakeLists.txt</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Cell.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Cell.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/ConsoleScreen.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/ConsoleScreen.h</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/GameFlow.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/GameFlow.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/GameLogic.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/GameLogic.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HumanPlayer.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HumanPlayer.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Player.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Screen.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/UnitTests/TestGameLogic.cpp</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.8.2/CMakeSystem.cmake</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake</PATH>
@@ -258,8 +162,6 @@
           <PATH vcs="Git" revision="">$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/cmake-build-debug/Makefile</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/cmake-build-debug/ex2</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/main.cpp</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -423,7 +325,8 @@
       <workItem from="1511805928180" duration="586000" />
       <workItem from="1511806558821" duration="251000" />
       <workItem from="1511807440690" duration="845000" />
-      <workItem from="1511808310226" duration="5076000" />
+      <workItem from="1511808310226" duration="5351000" />
+      <workItem from="1511813901703" duration="6367000" />
     </task>
     <task id="LOCAL-00001" summary="Lee check update">
       <created>1511111883558</created>
@@ -488,27 +391,33 @@
       <option name="project" value="LOCAL" />
       <updated>1511811500913</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add test .">
+      <created>1511813420910</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1511813420910</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56055000" />
+    <option name="totallyTimeSpent" value="62697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="142" y="24" width="1297" height="675" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18223938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18223938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5472371" sideWeight="0.75752896" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34581104" sideWeight="0.75752896" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24866785" sideWeight="0.53667957" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10695187" sideWeight="0.5405405" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.112299465" sideWeight="0.45945945" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6791444" sideWeight="0.45945945" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14376321" sideWeight="0.49285713" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14376321" sideWeight="0.49285713" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -518,27 +427,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.007797271" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5472371" sideWeight="0.75752896" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24866785" sideWeight="0.53667957" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10695187" sideWeight="0.5405405" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.04456328" sideWeight="0.45945945" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18223938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.007797271" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14376321" sideWeight="0.49285713" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -565,24 +453,22 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="30" />
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AIPlayer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AIPlayer.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
           <folding>
-            <element signature="e#369#2624#0" expanded="false" />
+            <element signature="e#59#78#0" expanded="true" />
+            <element signature="e#250#307#0" expanded="false" />
+            <element signature="e#309#367#0" expanded="false" />
+            <element signature="e#369#2861#0" expanded="false" />
+            <element signature="e#2863#2928#0" expanded="false" />
+            <element signature="e#2930#3744#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -606,13 +492,7 @@
         <state relative-caret-position="1368">
           <caret line="76" column="30" lean-forward="false" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="30" />
           <folding>
-            <element signature="e#98#117#0" expanded="true" />
-            <marker date="1511812202071" expanded="false" signature="4101:4942" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5500:5585" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5628:5721" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5780:6212" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="6271:6711" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="6740:7743" ph="{...}" />
+            <element signature="e#96#115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -644,7 +524,12 @@
         <state relative-caret-position="126">
           <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
           <folding>
-            <element signature="e#369#2624#0" expanded="false" />
+            <element signature="e#59#78#0" expanded="true" />
+            <element signature="e#250#307#0" expanded="false" />
+            <element signature="e#309#367#0" expanded="false" />
+            <element signature="e#369#2861#0" expanded="false" />
+            <element signature="e#2863#2928#0" expanded="false" />
+            <element signature="e#2930#3744#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -668,13 +553,7 @@
         <state relative-caret-position="1368">
           <caret line="76" column="30" lean-forward="false" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="30" />
           <folding>
-            <element signature="e#98#117#0" expanded="true" />
-            <marker date="1511812202071" expanded="false" signature="4101:4942" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5500:5585" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5628:5721" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5780:6212" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="6271:6711" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="6740:7743" ph="{...}" />
+            <element signature="e#96#115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -692,48 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="350" column="0" lean-forward="false" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Screen.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Player.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HumanPlayer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Board.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="64" column="32" lean-forward="false" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AIPlayer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cell.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="3" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -764,34 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="4825" column="0" lean-forward="false" selection-start-line="4825" selection-start-column="0" selection-end-line="4825" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ConsoleScreen.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cell.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HumanPlayer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GameFlow.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -830,24 +639,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Board.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="115" column="26" lean-forward="false" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -862,15 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
           <caret line="39" column="24" lean-forward="false" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GameLogic.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -878,7 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1548">
           <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,7 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -898,61 +682,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GameFlow.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="66" column="44" lean-forward="true" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
-          <folding>
-            <element signature="e#98#117#0" expanded="true" />
-            <marker date="1511812202071" expanded="false" signature="4101:4942" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5500:5585" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5628:5721" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="5780:6212" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="6271:6711" ph="{...}" />
-            <marker date="1511812202071" expanded="false" signature="6740:7743" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AIPlayer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#369#2624#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GameLogic.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="277" column="34" lean-forward="false" selection-start-line="277" selection-start-column="15" selection-end-line="277" selection-end-column="34" />
-          <folding>
-            <element signature="e#59#77#0" expanded="true" />
-            <element signature="e#142#415#0" expanded="false" />
-            <element signature="e#417#542#0" expanded="false" />
-            <element signature="e#544#904#0" expanded="false" />
-            <element signature="e#906#1205#0" expanded="false" />
-            <element signature="e#1207#1449#0" expanded="false" />
-            <element signature="e#1451#3061#0" expanded="false" />
-            <element signature="e#3063#4253#0" expanded="false" />
-            <element signature="e#4255#6898#0" expanded="false" />
-            <element signature="e#6900#7600#0" expanded="false" />
-            <element signature="e#7602#8283#0" expanded="false" />
-            <element signature="e#8349#8528#0" expanded="false" />
-            <element signature="e#8530#9099#0" expanded="false" />
-            <element signature="e#9833#10587#0" expanded="false" />
-            <element signature="e#10757#11284#0" expanded="false" />
-            <marker date="1511812976492" expanded="false" signature="11321:11358" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UnitTests/TestGameLogic.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="134" column="20" lean-forward="false" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
+        <state relative-caret-position="792">
+          <caret line="126" column="31" lean-forward="true" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
           <folding>
             <element signature="e#195#678#0" expanded="false" />
             <element signature="e#211#675#1" expanded="false" />
@@ -962,6 +695,201 @@
             <element signature="e#2102#2293#0" expanded="false" />
             <element signature="e#2343#2577#0" expanded="false" />
             <marker date="1511813388967" expanded="false" signature="3510:3763" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIPlayer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Screen.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Player.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HumanPlayer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HumanPlayer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameLogic.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2011">
+          <caret line="59" column="7" lean-forward="true" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIPlayer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="23" column="6" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="6" />
+          <folding>
+            <element signature="e#59#78#0" expanded="true" />
+            <element signature="e#250#307#0" expanded="false" />
+            <element signature="e#309#367#0" expanded="false" />
+            <element signature="e#369#2861#0" expanded="false" />
+            <element signature="e#2863#2928#0" expanded="false" />
+            <element signature="e#2930#3744#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Board.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="e#140#905#0" expanded="false" />
+            <element signature="e#907#1243#0" expanded="false" />
+            <element signature="e#1245#1296#0" expanded="false" />
+            <element signature="e#1298#1349#0" expanded="false" />
+            <element signature="e#1351#1638#0" expanded="false" />
+            <element signature="e#1641#2768#0" expanded="false" />
+            <element signature="e#2770#3081#0" expanded="false" />
+            <element signature="e#3083#3171#0" expanded="false" />
+            <element signature="e#3173#3271#0" expanded="false" />
+            <element signature="e#3273#3402#0" expanded="false" />
+            <element signature="e#3404#3538#0" expanded="false" />
+            <element signature="e#3540#3804#0" expanded="false" />
+            <element signature="e#3806#3852#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Board.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="77" column="74" lean-forward="false" selection-start-line="77" selection-start-column="74" selection-end-line="77" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cell.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cell.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ConsoleScreen.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <element signature="e#59#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ConsoleScreen.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameFlow.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="132" column="0" lean-forward="true" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding>
+            <element signature="e#246#373#0" expanded="false" />
+            <element signature="e#375#417#0" expanded="false" />
+            <element signature="e#419#3408#0" expanded="false" />
+            <element signature="e#3410#4168#0" expanded="false" />
+            <element signature="e#4170#5038#0" expanded="false" />
+            <element signature="e#5040#5549#0" expanded="false" />
+            <element signature="e#5551#5681#0" expanded="false" />
+            <element signature="e#5683#5817#0" expanded="false" />
+            <element signature="e#5819#6308#0" expanded="false" />
+            <element signature="e#6310#6830#0" expanded="false" />
+            <element signature="e#6832#7862#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameFlow.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameLogic.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="223" column="33" lean-forward="false" selection-start-line="223" selection-start-column="33" selection-end-line="223" selection-end-column="33" />
+          <folding>
+            <element signature="e#59#77#0" expanded="true" />
+            <element signature="e#142#415#0" expanded="false" />
+            <element signature="e#417#542#0" expanded="false" />
+            <element signature="e#544#904#0" expanded="false" />
+            <element signature="e#906#1199#0" expanded="false" />
+            <element signature="e#1201#1437#0" expanded="false" />
+            <element signature="e#1439#3001#0" expanded="false" />
+            <element signature="e#3003#4051#0" expanded="false" />
+            <element signature="e#4053#6008#0" expanded="false" />
+            <element signature="e#6010#6269#0" expanded="false" />
+            <element signature="e#6271#6916#0" expanded="false" />
+            <element signature="e#6918#7595#0" expanded="false" />
+            <element signature="e#7597#7659#0" expanded="false" />
+            <element signature="e#7661#7840#0" expanded="false" />
+            <element signature="e#7842#8411#0" expanded="false" />
+            <element signature="e#8413#8901#0" expanded="false" />
+            <element signature="e#8903#8990#0" expanded="false" />
+            <element signature="e#8992#9078#0" expanded="false" />
+            <element signature="e#9080#9143#0" expanded="false" />
+            <element signature="e#9145#9911#0" expanded="false" />
+            <element signature="e#9913#10079#0" expanded="false" />
+            <element signature="e#10081#10608#0" expanded="false" />
+            <element signature="e#10610#10682#0" expanded="false" />
           </folding>
         </state>
       </provider>

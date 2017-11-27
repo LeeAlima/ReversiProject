@@ -42,14 +42,14 @@ public:
      * @param board - to check if moves are possible
      * @return true - if there are possibe moves and false otherwise.
      */
-    bool checksIfMovesArePossible(char type,Board &board) const;
+    bool checksIfMovesArePossible(char type,Board &board);
 
     /**
      * this method checks if the game if over.
      * @param board - to check if game is over on it
      * @return true if the game is over and false if not.
      */
-    bool checksIfGameOver(Board &board) const;
+    bool checksIfGameOver(Board &board);
 
     /**
      * this method calculates the possible moves of player
@@ -58,7 +58,7 @@ public:
      * @param type - as the current player type.
      * @return vector of string - of the possible moves.
      */
-    vector <string> findPossibleCells(Board & board,char type) const;
+    vector <string> findPossibleCells(Board & board,char type);
 
     /**
      * this method update the board based on the player's movement.
@@ -67,7 +67,7 @@ public:
      * @param type - as the user type.
      * @param board - to update
      */
-    Board* updateBoard(int row, int col, char type, Board &board) const;
+    Board* updateBoard(int row, int col, char type, Board &board);
 
     /**
      * this methos returns the board's game
@@ -101,12 +101,12 @@ public:
 
     /**
      * this method checks if the player can make the movement he chose.
-     * @param userInput - as string of the point.
+     * @param user_input - as string of the point.
      * @param type - as the player's type.
      * @param board - to check a movement on it
      * @return true - if the movement is possible, false otherwise.
      */
-    bool checkPlayerMove(string userInput,char type,Board &board) const;
+    bool checkPlayerMove(string user_input,char type,Board &board);
 
     /**
      * this method changes the current player member
@@ -121,12 +121,6 @@ public:
     Player* getPlayer(char type);
 
     /**
-     * this method return the board member of game
-     * @return Board
-     */
-    Board * getGameBoard();
-
-    /**
      * this method return the difference between the player's score
      * @param b - the board to calculate the difference between the scores
      * @return the difference
@@ -138,6 +132,15 @@ public:
      * @return char
      */
     char getCurrentPlayer();
+
+    /**
+     * this method changes a number
+     * @param number - the number to change
+     * @param flag - 1 or -1
+     * @param default_number - the number i want to change
+     * @param add_number - the number I want to add default_number
+     */
+    void changeNumber(int &number,int flag,int default_number,int add_number);
 
 private:
     Player* first_player_;
@@ -151,24 +154,25 @@ private:
      * @param r - as the row location
      * @param c - as the col location
      * @param t - as the player's type
-     * @param rchange - as the change in row
-     * @param cchange - as the change in col
+     * @param row_change - as the change in row
+     * @param col_change - as the change in col
      * @param board - board to make a move on it
      */
-    void makeAMove(int r, int c, char t, int rchange, int cchange,Board &board) const;
+    void makeAMove(int r, int c, char t, int row_change,
+                   int col_change,Board &board);
 
     /**
     * this method finds possible cell
      * @param r - as the row location
      * @param c - as the col location
      * @param t - as the player's type
-     * @param rchange - as the change in row
-     * @param cchange - as the change in col
+     * @param row_change - as the change in row
+     * @param col_change - as the change in col
      * @param board - to fint empty cell on it
      * @return "(" - if no cell is possible and the cell's location otherwise
      */
-    string findEmptyCellGeneral(int r, int c, char t,
-                                int rchange, int cchange,Board &board) const;
+    string findEmptyCellGeneral(int r, int c, char t, int row_change,
+                                int col_change,Board &board) ;
 
     /**
      * this method converts int to string.
@@ -179,12 +183,11 @@ private:
 
     /**
      * this method cuts duplication in a vector
-     * @param befor_vec - as the vector with the duplication
+     * @param vector_before - as the vector with the duplication
      * @return new vector
      */
-    vector<string> cutDuplicate(vector<string> befor_vec) const;
+    vector<string> cutDuplicate(vector<string> vector_before) const;
 
-    static const int directionTable[8][2];
 };
 
 #endif //EX2_GAMELOGIC_H
