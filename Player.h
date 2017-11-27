@@ -1,6 +1,6 @@
 /*
- *  Author: lee alima
- *  ID: 313467441
+ *  Lee alima 313467441
+ *  Omer havakok 203345087
  */
 
 #ifndef EX2_PLAYER_H
@@ -33,6 +33,7 @@ public:
 
     /**
      * this method asks the user for a cell and returns it.
+     * @param gameLogic - the game in order to use the methods of gameLogic.
      * @return string - as the cell's location.
      */
     virtual string chooseCell(GameLogic &gameLogic) = 0;

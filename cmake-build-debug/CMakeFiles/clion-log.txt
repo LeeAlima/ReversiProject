@@ -1,4 +1,9 @@
-/opt/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/lee/CLionProjects/reversi
--- Configuring done
--- Generating done
--- Build files have been written to: /home/lee/CLionProjects/reversi/cmake-build-debug
+/home/omer/Downloads/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/omer/CLionProjects/reversi
+CMake Error at CMakeLists.txt:14 (target_link_libraries):
+  Cannot specify link libraries for target "ex2" which is not built by this
+  project.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/home/omer/CLionProjects/reversi/cmake-build-debug/CMakeFiles/CMakeError.log".

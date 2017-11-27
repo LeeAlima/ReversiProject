@@ -1,13 +1,10 @@
 /*
- *  Author: lee alima
- *  ID: 313467441
+ *  Lee alima 313467441
+ *  Omer havakok 203345087
  */
 
 #include <iostream>
-#include <cstdlib>
 #include "GameLogic.h"
-#include "Board.h"
-#include "Player.h"
 #include "AIPlayer.h"
 
 using namespace std;
@@ -25,36 +22,45 @@ int AIPlayer::getScore() const {
 }
 
 string AIPlayer::chooseCell(GameLogic &game)  {
+    // find possible moves to the computer
     vector<string> vecOfOptions = game.findPossibleCells(*game.getBoard(),'O');
     vector<string> vecSec;
     int max = - game.getBoard()->getSize()^2;
     int min = game.getBoard()->getSize()^2;
     string resultMax;
     string resultMin;
+    // going over all of the possible computer options
     for (int i=0; i<vecOfOptions.size();i++){
+        // create a board with vals of the current board
         Board* boardAfterComMove = new Board(game.getBoard()->getSize()
                 ,game.getBoard()->getSize(),*game.getScreen());
         game.getBoard()->copyBoardSourceAndTarget(*game.getBoard(),*boardAfterComMove);
         vector<int> firstVec = cutAPoint(vecOfOptions[i]);
         int xCor = firstVec[0];
         int yCor = firstVec[1];
+        // update board
         boardAfterComMove = game.updateBoard(xCor,yCor,'X',*boardAfterComMove);
-        //boardAfterComMove->printBoard();
+        // find possible moves to the human player
         vecSec = game.findPossibleCells(*boardAfterComMove,'X');
         int XCOR;
         int YCOR;
+        // going over the human player possible moves
         for (int t = 0; t<vecSec.size();t++){
+            // create board with the boardAfterComMove values
             Board* boardAfterHumanMove = new Board(game.getBoard()->getSize()
                     ,game.getBoard()->getSize(),*game.getScreen());
             game.getBoard()->copyBoardSourceAndTarget(*game.getBoard(),*boardAfterHumanMove);
             vector<int> secondVecCor = cutAPoint(vecSec[t]);
             XCOR = secondVecCor[0];
             YCOR = secondVecCor[1];
+            // update the game
             boardAfterHumanMove = game.updateBoard(XCOR,YCOR,'O',*boardAfterHumanMove);
-            if (game.getXScore(*boardAfterHumanMove) > max){
-                max = game.getXScore(*boardAfterHumanMove);
+            // save the max difference
+            if (game.getScoresDifference(*boardAfterHumanMove) > max){
+                max = game.getScoresDifference(*boardAfterHumanMove);
                 resultMax = vecOfOptions[i];
             }
+            // save the lowest between the max
             if (max < min){
                 min = max;
                 resultMin = resultMax;

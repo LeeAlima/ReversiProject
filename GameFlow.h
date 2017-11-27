@@ -1,6 +1,6 @@
 /*
- *  Author: lee alima
- *  ID: 313467441
+ *  Lee alima 313467441
+ *  Omer havakok 203345087
  */
 
 #ifndef EX2_GAMEFLOW_H
@@ -37,8 +37,18 @@ public:
      */
     void setUpGame();
 
+    /**
+     * this method prints the scores to the user
+     */
     void showScores();
 
+    /**
+     * this method write the right message to the user, if it's
+     * the computer turn then show "computer is thinking", else
+     * show the possible moves and ask for one.
+     * @param options - vector of possible moves
+     * @param type - the type of the player
+     */
     void writeMessageToPlayer(vector<string> options, char type);
 
 

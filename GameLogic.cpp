@@ -1,6 +1,6 @@
 /*
- *  Author: lee alima
- *  ID: 313467441
+ *  Lee alima 313467441
+ *  Omer havakok 203345087
  */
 
 #include <cstring>
@@ -22,14 +22,11 @@ const int GameLogic::directionTable[8][2] = {
 
 GameLogic::GameLogic(int size,Player *player1,Player *player2,Screen* screen){
     this->my_screen_ = screen;
-    /*this->first_player_ = new HumanPlayer('X',my_screen_);
-    this->second_player_ = new HumanPlayer('O',my_screen_);*/
     this->first_player_ = player1;
     this->second_player_ = player2;
     this->my_board_ = new Board(size,size, * my_screen_);
     this->current_Player_ = 'O';
 }
-
 
 GameLogic::~GameLogic() {
     delete my_screen_;
@@ -37,9 +34,6 @@ GameLogic::~GameLogic() {
     delete second_player_;
     delete my_board_;
 }
-
-
-
 
 char GameLogic::returnsWhoWon() const {
     int player_1_score = first_player_->getScore();
@@ -94,68 +88,12 @@ vector<string> GameLogic::findPossibleCells(Board & board,char type) const {
                             if (board.returnCellType(i + a, j + b)
                                 == other_type) {
                                 string empty_word = "(";
-                                    string s_1 = findEmptyCellGeneral(i+a,j+b,other_type,a,b,board);
+                                    string s_1 = findEmptyCellGeneral(
+                                            i+a,j+b,other_type,a,b,board);
                                     //if the points exists add it to the vector
                                     if ((s_1.compare(empty_word) != 0)) {
                                         vector_of_cells.push_back(s_1);
                                     }
-                                /*if (a == 0 && b == -1) {
-                                    string s_1 = findEmptyCellGeneral(i,j-1,other_type,0,-1,board);
-                                    //if the points exists add it to the vector
-                                    if ((s_1.compare(empty_word) != 0)) {
-                                        vector_of_cells.push_back(s_1);
-                                    }
-                                   // cout << "1 is : " + s_1 <<endl;
-                                }
-                                if (a == 0 && b == 1) {
-                                    string s_2 = findEmptyCellGeneral(i,j+1,other_type,0,1,board);
-                                    if ( s_2.compare(empty_word) != 0) {
-                                        vector_of_cells.push_back(s_2);
-                                    }
-                                //    cout << "2 is : " + s_2 <<endl;
-                                }
-                                if (a == -1 && b == 0) {
-                                    string s_3 = findEmptyCellGeneral(i-1,j,other_type,-1,0,board);
-                                    if (s_3.compare(empty_word) != 0) {
-                                        vector_of_cells.push_back(s_3);
-                                    }
-                                 //   cout << "3 is : " + s_3 <<endl;
-                                }
-                                if (a == 1 && b == 0) {
-                                    string s_4 = findEmptyCellGeneral(i+1,j,other_type,1,0,board);
-                                    if (s_4.compare(empty_word) != 0) {
-                                        vector_of_cells.push_back(s_4);
-                                    }
-                                  //  cout << "4 is : " + s_4 <<endl;
-                                }
-                                if (a == -1 && b == -1) {
-                                    string s_5 = findEmptyCellGeneral(i-1,j-1,other_type,-1,-1,board);
-                                    if (s_5.compare(empty_word) != 0) {
-                                        vector_of_cells.push_back(s_5);
-                                    }
-                                   // cout << "5 is : " + s_5 <<endl;
-                                }
-                                if (a == 1 && b == -1) {
-                                    string s_6 = findEmptyCellGeneral(i+1,j-1,other_type,1,-1,board);
-                                    if (s_6.compare(empty_word) != 0) {
-                                        vector_of_cells.push_back(s_6);
-                                    }
-                                  //  cout << "6 is : " + s_6 <<endl;
-                                }
-                                if (a == -1 && b == 1) {
-                                    string s_7 = findEmptyCellGeneral(i-1,j+1,other_type,-1,1,board);
-                                    if (s_7.compare(empty_word) != 0) {
-                                        vector_of_cells.push_back(s_7);
-                                    }
-                                  //  cout << "7 is : " + s_7 <<endl;
-                                }
-                                if (a == 1 && b == 1) {
-                                    string s_8 = findEmptyCellGeneral(i+1,j+1,other_type,1,1,board);
-                                    if (s_8.compare(empty_word) != 0) {
-                                        vector_of_cells.push_back(s_8);
-                                    }
-                                   // cout << "8 is : " + s_8 <<endl;
-                                }*/
                             }
                         }
                     }
@@ -291,32 +229,9 @@ Board* GameLogic::updateBoard(int x,int y , char type, Board& board) const {
         for (int b = -1; b < 2; b++) {
             if ((x + a >= 0) && (x + a < board.getRow())
                 && (y + b >= 0) && (y + b < board.getCol())) {
-                // found a cell of type
+                // make a move
                 if (board.returnCellType(x + a, y + b) == type) {
-                    if (a == 0 && b == -1) {
-                        makeAMove(x,y-1,other_type,0,-1,board);
-                    }
-                    if (a == 0 && b == 1) {
-                        makeAMove(x,y+1,other_type,0,1,board);
-                    }
-                    if (a == -1 && b == 0) {
-                        makeAMove(x-1,y,other_type,-1,0,board);
-                    }
-                    if (a == 1 && b == 0) {
-                        makeAMove(x+1,y,other_type,1,0,board);
-                    }
-                    if (a == -1 && b == -1) {
-                        makeAMove(x-1,y-1,other_type,-1,-1,board);
-                    }
-                    if (a == 1 && b == -1) {
-                        makeAMove(x+1,y-1,other_type,1,-1,board);
-                    }
-                    if (a == -1 && b == 1) {
-                        makeAMove(x-1,y+1,other_type,-1,1,board);
-                    }
-                    if (a == 1 && b == 1) {
-                        makeAMove(x+1,y+1,other_type,1,1,board);
-                    }
+                    makeAMove(x+a,y+b,other_type,a,b,board);
                 }
             }
         }
@@ -324,11 +239,13 @@ Board* GameLogic::updateBoard(int x,int y , char type, Board& board) const {
     return &board;
 }
 
-bool GameLogic::checkPlayerMove(string s, char type,Board & board) const {
+bool GameLogic::checkPlayerMove(string userInput, char type,Board & board) const {
         vector<string> allPoints = this->findPossibleCells(board,type);
         vector<string>::iterator it;
+        // go over all of the possible moves and compare
+        // the user choice to them
         for (it = allPoints.begin(); it != allPoints.end(); ++it) {
-            if ((*it).compare(s) == 0) { // if the player chois is llegal
+            if ((*it).compare(userInput) == 0) { // if the player choice is llegal
                 return true;
             }
         }
@@ -369,7 +286,7 @@ void GameLogic::updateScore(Board &board) const {
     this->second_player_->setScore(player_2);
 }
 
-int GameLogic::getXScore(Board &b){
+int GameLogic::getScoresDifference(Board &b){
     // going over the all matrix and counting the number
     // of appearences to each player
     int player_X=0;
@@ -429,7 +346,8 @@ void GameLogic::changePlayer() {
     }
 }
 
-Player *GameLogic::getPlayer1(char type) {
+Player *GameLogic::getPlayer(char type) {
+    // check the type and return the right player
     if (type == 'X') {
         return this->second_player_;
     }
@@ -448,10 +366,6 @@ Player *GameLogic::getPlayer1(char type) {
         }
         return this->second_player_;
     }
-}
-
-Board *GameLogic::getGameBoard() {
-    return this->my_board_;
 }
 
 char GameLogic::getCurrentPlayer() {

@@ -1,6 +1,6 @@
 /*
- *  Author: lee alima
- *  ID: 313467441
+ *  Lee alima 313467441
+ *  Omer havakok 203345087
  */
 
 #ifndef EX2_GAMELOGIC_H
@@ -17,7 +17,10 @@ class GameLogic {
 public:
     /**
      * this is the constructor of the game's board size.
-     * @param size - as a number.
+     * @param size - as the matrix size
+     * @param player1 - one player
+     * @param player2 - second player
+     * @param screen - a screen to show the game to the user
      */
     GameLogic(int size,Player* player1,Player* player2,Screen* screen);
 
@@ -36,12 +39,14 @@ public:
     /**
      * this method checks if the player has possible moves.
      * @param type - as the current player's type.
+     * @param board - to check if moves are possible
      * @return true - if there are possibe moves and false otherwise.
      */
     bool checksIfMovesArePossible(char type,Board &board) const;
 
     /**
      * this method checks if the game if over.
+     * @param board - to check if game is over on it
      * @return true if the game is over and false if not.
      */
     bool checksIfGameOver(Board &board) const;
@@ -49,6 +54,7 @@ public:
     /**
      * this method calculates the possible moves of player
      * and returns a vector of the possible moves.
+     * @param board - a board to fins possible moves on it
      * @param type - as the current player type.
      * @return vector of string - of the possible moves.
      */
@@ -59,8 +65,9 @@ public:
      * @param row - as the row location.
      * @param col - as the col location.
      * @param type - as the user type.
+     * @param board - to update
      */
-    Board* updateBoard( int row, int col, char type, Board &board) const;
+    Board* updateBoard(int row, int col, char type, Board &board) const;
 
     /**
      * this methos returns the board's game
@@ -69,8 +76,8 @@ public:
     Board* getBoard();
 
     /**
-     * this method updates the scores.
-     * @param type - as the player type.
+     * this method  the scores.
+     * @param board - to update the players's scores based on the board.
      */
     void updateScore(Board &board) const;
 
@@ -87,27 +94,49 @@ public:
     int getPlayer2Score() const;
 
     /**
-     * this method returns the game's screen object.
+     * this method returns the game's screen object
      * @return Screen* - as the game's screen.
      */
     Screen* getScreen();
 
     /**
-     * this method chrcks if the player can make the movement he chose.
-     * @param s - as string of the point.
+     * this method checks if the player can make the movement he chose.
+     * @param userInput - as string of the point.
      * @param type - as the player's type.
+     * @param board - to check a movement on it
      * @return true - if the movement is possible, false otherwise.
      */
-    bool checkPlayerMove(string s,char type,Board &board) const;
+    bool checkPlayerMove(string userInput,char type,Board &board) const;
 
+    /**
+     * this method changes the current player member
+     */
     void changePlayer();
 
-    Player* getPlayer1(char type);
+    /**
+     * this method returns one of the players base on a char.
+     * @param type - as the player type
+     * @return Player
+     */
+    Player* getPlayer(char type);
 
+    /**
+     * this method return the board member of game
+     * @return Board
+     */
     Board * getGameBoard();
 
-    int getXScore(Board &b);
+    /**
+     * this method return the difference between the player's score
+     * @param b - the board to calculate the difference between the scores
+     * @return the difference
+     */
+    int getScoresDifference(Board &b);
 
+    /**
+     * this method returns the current players type
+     * @return char
+     */
     char getCurrentPlayer();
 
 private:
@@ -124,6 +153,7 @@ private:
      * @param t - as the player's type
      * @param rchange - as the change in row
      * @param cchange - as the change in col
+     * @param board - board to make a move on it
      */
     void makeAMove(int r, int c, char t, int rchange, int cchange,Board &board) const;
 
@@ -134,6 +164,7 @@ private:
      * @param t - as the player's type
      * @param rchange - as the change in row
      * @param cchange - as the change in col
+     * @param board - to fint empty cell on it
      * @return "(" - if no cell is possible and the cell's location otherwise
      */
     string findEmptyCellGeneral(int r, int c, char t,

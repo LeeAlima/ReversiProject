@@ -82,7 +82,7 @@ TEST_F(TestGameLogic, checksIfGameOver) {
 }
 
 TEST_F(TestGameLogic, changeplayer) {
-    ASSERT_EQ(gl->getPlayer1('C')->getType(),'O');
+    ASSERT_EQ(gl->getPlayer('C')->getType(),'O');
 
     gl->changePlayer();
     ASSERT_EQ(gl->getCurrentPlayer(),'X');
@@ -99,7 +99,7 @@ TEST_F(TestGameLogic, updateScore_and_getXscore){
     b->setCellInBoard(1,3,'X');
     b->setCellInBoard(1,0,'X');
     gl->updateScore(*b);
-    ASSERT_EQ(gl->getXScore(*b),5);
+    ASSERT_EQ(gl->getScoresDifference(*b),5);
 }
 
 TEST_F(TestGameLogic,returnWhoWon){

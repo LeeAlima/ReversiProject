@@ -1,6 +1,6 @@
 /*
- *  Author: lee alima
- *  ID: 313467441
+ *  Lee alima 313467441
+ *  Omer havakok 203345087
  */
 
 #ifndef EX2_AIPLAYER_H
@@ -8,6 +8,7 @@
 
 #include "Player.h"
 #include "GameLogic.h"
+
 class AIPlayer : public Player {
 public:
     /**

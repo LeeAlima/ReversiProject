@@ -1,6 +1,6 @@
 /*
- *  Author: lee alima
- *  ID: 313467441
+ *  Lee alima 313467441
+ *  Omer havakok 203345087
  */
 
 
@@ -13,7 +13,7 @@ using namespace std;
 
 /**
  * this is an abstract class - in this way the game can
- * be shown in different ways (like: console and gui).
+ * be shown in different wayss (like: console and gui).
  */
 class Screen {
 public:
