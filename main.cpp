@@ -1,7 +1,3 @@
-/*
- *  Lee alima 313467441
- *  Omer havakok 203345087
- */
 
 #include <iostream>
 #include <gtest/gtest.h>
@@ -11,9 +7,8 @@ using namespace std;
 
 
 int main(int argc, char *argv[]) {
-    testing::InitGoogleTest(&argc, argv);
-    RUN_ALL_TESTS();
-    GameFlow* myGame = new GameFlow(4);
+    GameFlow* myGame = new GameFlow(6);
+    myGame->setUpGame();
     myGame->play();
     delete myGame;
 }

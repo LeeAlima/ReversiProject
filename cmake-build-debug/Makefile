@@ -410,32 +410,32 @@ HumanPlayer.cpp.s:
 	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/HumanPlayer.cpp.s
 .PHONY : HumanPlayer.cpp.s
 
-UnitTests/TestGameLogic.o: UnitTests/TestGameLogic.cpp.o
+UnitTests/TestFixture.o: UnitTests/TestFixture.cpp.o
 
-.PHONY : UnitTests/TestGameLogic.o
+.PHONY : UnitTests/TestFixture.o
 
 # target to build an object file
-UnitTests/TestGameLogic.cpp.o:
-	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestGameLogic.cpp.o
-.PHONY : UnitTests/TestGameLogic.cpp.o
+UnitTests/TestFixture.cpp.o:
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestFixture.cpp.o
+.PHONY : UnitTests/TestFixture.cpp.o
 
-UnitTests/TestGameLogic.i: UnitTests/TestGameLogic.cpp.i
+UnitTests/TestFixture.i: UnitTests/TestFixture.cpp.i
 
-.PHONY : UnitTests/TestGameLogic.i
+.PHONY : UnitTests/TestFixture.i
 
 # target to preprocess a source file
-UnitTests/TestGameLogic.cpp.i:
-	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestGameLogic.cpp.i
-.PHONY : UnitTests/TestGameLogic.cpp.i
+UnitTests/TestFixture.cpp.i:
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestFixture.cpp.i
+.PHONY : UnitTests/TestFixture.cpp.i
 
-UnitTests/TestGameLogic.s: UnitTests/TestGameLogic.cpp.s
+UnitTests/TestFixture.s: UnitTests/TestFixture.cpp.s
 
-.PHONY : UnitTests/TestGameLogic.s
+.PHONY : UnitTests/TestFixture.s
 
 # target to generate assembly for a file
-UnitTests/TestGameLogic.cpp.s:
-	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestGameLogic.cpp.s
-.PHONY : UnitTests/TestGameLogic.cpp.s
+UnitTests/TestFixture.cpp.s:
+	$(MAKE) -f CMakeFiles/reversi.dir/build.make CMakeFiles/reversi.dir/UnitTests/TestFixture.cpp.s
+.PHONY : UnitTests/TestFixture.cpp.s
 
 main.o: main.cpp.o
 
@@ -502,9 +502,9 @@ help:
 	@echo "... HumanPlayer.o"
 	@echo "... HumanPlayer.i"
 	@echo "... HumanPlayer.s"
-	@echo "... UnitTests/TestGameLogic.o"
-	@echo "... UnitTests/TestGameLogic.i"
-	@echo "... UnitTests/TestGameLogic.s"
+	@echo "... UnitTests/TestFixture.o"
+	@echo "... UnitTests/TestFixture.i"
+	@echo "... UnitTests/TestFixture.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

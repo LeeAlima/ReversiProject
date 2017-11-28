@@ -1,7 +1,3 @@
-/*
- *  Lee alima 313467441
- *  Omer havakok 203345087
- */
 
 #ifndef EX2_GAMELOGIC_H
 #define EX2_GAMELOGIC_H
@@ -79,7 +75,7 @@ public:
      * this method  the scores.
      * @param board - to update the players's scores based on the board.
      */
-    void updateScore(Board &board) const;
+    void updateScore(Board &board);
 
     /**
      * this method returns the number of score of player 1.
@@ -187,6 +183,15 @@ private:
      * @return new vector
      */
     vector<string> cutDuplicate(vector<string> vector_before) const;
+
+    /**
+     * this method receive 2 numbers and change them
+     * by going over the board
+     * @param x_score - as the x score
+     * @param o_score - as the o score
+     * @param board - as the board
+     */
+    void calculateScores(int &x_score, int &o_score, Board &board);
 
 };
 

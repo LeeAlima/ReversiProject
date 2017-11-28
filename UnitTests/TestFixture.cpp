@@ -25,8 +25,8 @@ namespace {
         AIPlayer *ai;
 
         virtual void SetUp(){
-            gl = new GameLogic(4, new HumanPlayer('O', new ConsoleScreen()),
-                               new HumanPlayer('X', new ConsoleScreen()),
+            gl = new GameLogic(4, new HumanPlayer('X', new ConsoleScreen()),
+                               new HumanPlayer('O', new ConsoleScreen()),
                                new ConsoleScreen());
             b=new Board(4,4, *(gl->getScreen()));
             gf=new GameFlow(4);
@@ -107,13 +107,13 @@ TEST_F(TestFixture, checksIfGameOver) {
  * switch between players and compare.
  */
 TEST_F(TestFixture, changeplayer) {
-    ASSERT_EQ(gl->getPlayer('C')->getType(),'O');
-
-    gl->changePlayer();
-    ASSERT_EQ(gl->getCurrentPlayer(),'X');
+    ASSERT_EQ(gl->getPlayer('C')->getType(),'X');
 
     gl->changePlayer();
     ASSERT_EQ(gl->getCurrentPlayer(),'O');
+
+    gl->changePlayer();
+    ASSERT_EQ(gl->getCurrentPlayer(),'X');
 
 }
 
@@ -148,6 +148,8 @@ TEST_F(TestFixture,returnWhoWon){
     b->setCellInBoard(3,1,'X');
     b->setCellInBoard(2,1,'E');
     gl->updateScore(*b);
+    ASSERT_EQ(gl->getPlayer1Score(),1);
+    ASSERT_EQ(gl->getPlayer2Score(),8);
     char temp = gl->returnsWhoWon();
     ASSERT_EQ(temp,'O');
 }

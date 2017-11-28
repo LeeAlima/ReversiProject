@@ -1,7 +1,3 @@
-/*
- *  Lee alima 313467441
- *  Omer havakok 203345087
- */
 
 #include "Cell.h"
 using namespace std;

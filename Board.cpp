@@ -1,7 +1,3 @@
-/*
- *  Lee alima 313467441
- *  Omer havakok 203345087
- */
 
 #include "Board.h"
 #include <iostream>
@@ -55,7 +51,7 @@ int Board::getCol() const {
     return this->col;
 }
 
-void Board::copyBoardSourceAndTarget(Board &source_board, Board &target_board) {
+void Board::copyBoardSourceAndTarget(Board &source_board, Board &target_board){
     for (int i= 0;i<target_board.getSize() ;i++ ){
         for (int j = 0; j < target_board.getSize(); j++) {
             target_board.setCellInBoard(i,j,source_board.returnCellType(i,j));

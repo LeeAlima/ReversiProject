@@ -1,7 +1,3 @@
-/*
- *  Lee alima 313467441
- *  Omer havakok 203345087
- */
 
 #ifndef EX2_CONSOLESCREEN_H
 #define EX2_CONSOLESCREEN_H

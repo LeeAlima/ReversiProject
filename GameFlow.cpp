@@ -1,7 +1,3 @@
-/*
- *  Lee alima 313467441
- *  Omer havakok 203345087
- */
 
 #ifndef EX2_DSA_H
 #define EX2_DSA_H
@@ -14,8 +10,7 @@
 
 GameFlow::GameFlow(int size):size(size){
     // creating a new game
-    this->screen = new ConsoleScreen();;
-    setUpGame();
+    this->screen = new ConsoleScreen();
 }
 
 GameFlow::~GameFlow() {
@@ -44,12 +39,13 @@ void GameFlow::play() {
                             , game->getPlayer('C')->getType());
             writeMessageToPlayer(options, this->game->getCurrentPlayer());
             user_choice = this->game->getPlayer('C')->chooseCell(*this->game);
-
+            string befor_change = user_choice;
             choice_to_compare = this->fixPointToCom(user_choice) ;
             if (computer && this->game->getCurrentPlayer() == 'O'){
                 choice_to_compare = user_choice;
             }
-            // checking the player'point_coordinate move, if it'point_coordinate illegal then asks again
+            // checking the player'point_coordinate move,
+            // if it'point_coordinate illegal then asks again
             while (!this->game->checkPlayerMove(choice_to_compare
                     ,game->getPlayer('C')->getType(),*this->game->getBoard())){
                 cin >> user_choice;
@@ -66,10 +62,19 @@ void GameFlow::play() {
                 first_number = point_coordinate.front() + 1;
                 second_number = point_coordinate.back() + 1;
             }
+            if (computer && this->game->getCurrentPlayer() == 'O'){
+                string message = "'O' chose (" + this->game->getBoard()->
+                        toStringInt(first_number)+ ","+this->game->getBoard()->
+                        toStringInt(second_number) + ")";
+                this->screen->printString(message);
+                this->screen->printEndl();
+                this->screen->printEndl();
+            }
             // updating the board and printing it
             this->game->updateBoard(first_number-1,second_number-1
                     , this->game->getPlayer('D')->getType()
                     ,*this->game->getBoard());
+            this->screen->printEndl();
             this->game->getBoard()->printBoard();
         }
         else { // if no move is possible
@@ -149,18 +154,20 @@ void GameFlow::setUpGame() {
     int playerCheck;
     cin >> playerCheck;
     Player *player1, *player2;
-    while (playerCheck != 1 && playerCheck!=2){
+    while (playerCheck != 1 && playerCheck != 2 ){
         this->screen->printString("Bad choice,please try again");
         this->screen->printEndl();
+        cin.clear();
+        cin.ignore(100,'\n');
         cin >> playerCheck;
     }
     if (playerCheck == 1){
-        player1 = new AIPlayer('O',screen);
-        player2 = new HumanPlayer('X',screen);
+        player1 = new HumanPlayer('X',screen);
+        player2 = new AIPlayer('O',screen);
         this->computer = true;
     } else {
-        player1 = new HumanPlayer('O',screen);
-        player2 = new HumanPlayer('X',screen);
+        player1 = new HumanPlayer('X',screen);
+        player2 = new HumanPlayer('O',screen);
         this->computer = false;
     }
     this->game = new GameLogic(size,player1,player2,screen);

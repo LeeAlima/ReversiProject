@@ -8,7 +8,7 @@ include_directories(lib/googletest-master/googletest/include)
 include_directories(lib/googletest-master/googlemock/include)
 
 
-set(SOURCE_FILES main.cpp Board.cpp Board.h Cell.cpp Cell.h Player.h HumanPlayer.cpp HumanPlayer.h GameLogic.cpp GameLogic.h GameFlow.cpp GameFlow.h Screen.h ConsoleScreen.cpp ConsoleScreen.h AIPlayer.cpp AIPlayer.h UnitTests/TestGameLogic.cpp)
+set(SOURCE_FILES main.cpp Board.cpp Board.h Cell.cpp Cell.h Player.h HumanPlayer.cpp HumanPlayer.h GameLogic.cpp GameLogic.h GameFlow.cpp GameFlow.h Screen.h ConsoleScreen.cpp ConsoleScreen.h AIPlayer.cpp AIPlayer.h UnitTests/TestFixture.cpp)
 
-add_executable(reversi ${SOURCE_FILES} UnitTests/TestGameLogic.cpp)
+add_executable(reversi ${SOURCE_FILES} UnitTests/TestFixture.cpp)
 target_link_libraries(reversi gtest gtest_main)

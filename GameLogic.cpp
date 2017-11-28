@@ -1,7 +1,3 @@
-/*
- *  Lee alima 313467441
- *  Omer havakok 203345087
- */
 
 #include <cstring>
 #include <iostream>
@@ -12,7 +8,7 @@ GameLogic::GameLogic(int size,Player *player1,Player *player2,Screen* screen){
     this->first_player_ = player1;
     this->second_player_ = player2;
     this->my_board_ = new Board(size,size, * my_screen_);
-    this->current_Player_ = 'O';
+    this->current_Player_ = 'X';
 }
 
 GameLogic::~GameLogic() {
@@ -23,12 +19,14 @@ GameLogic::~GameLogic() {
 }
 
 char GameLogic::returnsWhoWon() const {
-    int player_1_score = first_player_->getScore();
-    int player_2_score = second_player_->getScore();
-    if (player_1_score == player_2_score ){ // if it's a tie
+    // save the scores and compare
+    int player_X_score ,player_O_score;
+    player_X_score = first_player_->getScore();
+    player_O_score = second_player_->getScore();
+    if (player_X_score == player_O_score ){ // if it's a tie
         return '=';
     }
-    if (player_1_score > player_2_score){
+    if (player_X_score > player_O_score){
         return first_player_->getType();
     }
     return second_player_->getType();
@@ -197,7 +195,8 @@ bool GameLogic::checkPlayerMove(string user_input, char type,Board & board) {
         // go over all of the possible moves and compare
         // the user choice to them
         for (it = allPoints.begin(); it != allPoints.end(); ++it) {
-            if ((*it).compare(user_input) == 0) { // if the player choice is llegal
+            if ((*it).compare(user_input) == 0) {
+                // if the player choice is llegal
                 return true;
             }
         }
@@ -211,41 +210,36 @@ Board* GameLogic::getBoard() {
         return my_board_;
     }
 
-void GameLogic::updateScore(Board &board) const {
-    // going over the all matrix and counting the number
-    // of appearences to each player
-    int player_1=0;
-    int player_2=0;
-    for (int i=0;i< board.getRow();i++) {
-        for (int j = 0; j < board.getCol(); j++) {
-            if(board.returnCellType(i,j) == 'O'){
-                player_1++;
-            }
-            if(board.returnCellType(i,j) == 'X'){
-                player_2++;
-            }
-        }
-    }
-    this->first_player_->setScore(player_1);
-    this->second_player_->setScore(player_2);
-}
-
-int GameLogic::getScoresDifference(Board &b){
+void GameLogic::updateScore(Board &board) {
     // going over the all matrix and counting the number
     // of appearences to each player
     int player_X=0;
     int player_O=0;
-    for (int i=0;i< b.getRow();i++) {
-        for (int j = 0; j < b.getCol(); j++) {
-            if(b.returnCellType(i,j) == 'X'){
-                player_X++;
+    calculateScores(player_X,player_O,board);
+    this->first_player_->setScore(player_X);
+    this->second_player_->setScore(player_O);
+}
+
+int GameLogic::getScoresDifference(Board &b) {
+    // going over the all matrix and counting the number
+    // of appearences to each player
+    int player_X=0;
+    int player_O=0;
+    calculateScores(player_X,player_O,b);
+    return player_X-player_O;
+}
+
+void GameLogic::calculateScores(int &x_score, int &o_score, Board &board){
+    for (int i=0;i< board.getRow();i++) {
+        for (int j = 0; j < board.getCol(); j++) {
+            if(board.returnCellType(i,j) == 'X'){
+                x_score++;
             }
-            if(b.returnCellType(i,j) == 'O'){
-                player_O++;
+            if(board.returnCellType(i,j) == 'O'){
+                o_score++;
             }
         }
     }
-    return player_X-player_O;
 }
 
 int GameLogic::getPlayer2Score() const {
@@ -293,22 +287,22 @@ void GameLogic::changePlayer() {
 Player *GameLogic::getPlayer(char type) {
     // check the type and return the right player
     if (type == 'X') {
-        return this->second_player_;
+        return this->first_player_;
     }
     if (type == 'O'){
-        return this->first_player_;
+        return this->second_player_;
     }
     if (type == 'C'){
-        if (current_Player_ == 'X'){
-            return this->second_player_;
-        }
-        return this->first_player_;
-    }
-    if (type == 'D'){
         if (current_Player_ == 'X'){
             return this->first_player_;
         }
         return this->second_player_;
+    }
+    if (type == 'D'){
+        if (current_Player_ == 'X'){
+            return this->second_player_;
+        }
+        return this->first_player_;
     }
 }
 

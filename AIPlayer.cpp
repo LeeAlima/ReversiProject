@@ -1,7 +1,3 @@
-/*
- *  Lee alima 313467441
- *  Omer havakok 203345087
- */
 
 #include <iostream>
 #include "GameLogic.h"
@@ -21,7 +17,7 @@ int AIPlayer::getScore() const {
     return this->score;
 }
 
-string AIPlayer::chooseCell(GameLogic &game)  {
+string AIPlayer::chooseCell(GameLogic &game) {
     // find possible moves to the computer
     vector<string> vec_of_options=game.findPossibleCells(*game.getBoard(),'O');
     vector<string> vec_sec;
@@ -29,6 +25,10 @@ string AIPlayer::chooseCell(GameLogic &game)  {
     int min = game.getBoard()->getSize()^2;
     string result_max,result_min;
     // going over all of the possible computer options
+    if (vec_of_options.size() == 1){
+        return vec_of_options.front();
+    }
+    result_max = vec_of_options.front();
     for (int i=0; i<vec_of_options.size();i++){
         // create a board with vals of the current board
         Board* board_after_com_move = new Board(game.getBoard()->getSize()
@@ -44,7 +44,10 @@ string AIPlayer::chooseCell(GameLogic &game)  {
         // find possible moves to the human player
         vec_sec = game.findPossibleCells(*board_after_com_move,'X');
         int X_x_coordinate,X_y_coordinate;
-        // going over the human player possible moves
+        // if there are not possible moves for X
+        if (vec_sec.size() == 0){
+            continue;
+        } // going over the human player possible moves
         for (int t = 0; t<vec_sec.size();t++){
             // create board with the board_after_com_move values
             Board* board_after_human_move =new Board(game.getBoard()->getSize()
