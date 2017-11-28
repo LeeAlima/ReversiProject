@@ -25,7 +25,6 @@ public:
     string chooseCell(GameLogic &game) ;
 
     void setScore(int number);
-    vector<int> cutAPoint(string user_input);
 
 protected:
     char type;
@@ -33,6 +32,5 @@ protected:
     Screen* player_screen_;
 
 };
-
 
 #endif //EX2_AIPLAYER_H

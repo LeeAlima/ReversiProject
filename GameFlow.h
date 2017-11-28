@@ -25,11 +25,16 @@ public:
      * this is the deconstructor of the game.
      */
     ~GameFlow();
-
     /**
      * this method runs the game.
      */
     void play();
+
+private:
+    int size;
+    GameLogic* game;
+    Screen* screen;
+    bool computer;
 
     /**
      * this method is called from the constructor
@@ -51,41 +56,13 @@ public:
      */
     void writeMessageToPlayer(vector<string> options, char type);
 
-
-private:
-    int size;
-    GameLogic* game;
-    Screen* screen;
-    bool computer;
-
-    /**
-     * this method split the user input to 2 strings;
-     * @param user_input - as the user input.
-     * @return vector of string.
-     */
-    vector<string> cutPoint(string user_input) const;
-
-    /**
-     * this method converts char to string.
-     * @param c - as char to convert.
-     * @return string.
-     */
-    string toStringC(char c) const;
-
-    /**
-     * this method converts int to string.
-     * @param number - as int.
-     * @return string.
-     */
-    string toStringI(int number) const ;
-
     /**
      * this method converts points with the computer vals
      * to the matrix val - like (0,0) to (1,1)
      * @param s - as the point
      * @return new string
      */
-    string fixPointToUser(vector <string> s) const;
+    string fixPointToUser(vector <int> s) const;
 
     /**
      * this method converts points with the matrix vals

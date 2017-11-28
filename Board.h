@@ -77,16 +77,11 @@ public:
      */
     void copyBoardSourceAndTarget(Board &source_board, Board &target_board);
 
-private:
-    int row;
-    int col;
-    Cell *** my_matrix_;
-    Screen & game_screen_;
     /**
      * this method converts int to string.
-     * @param number - int.
-     * @return string.
-     */
+    * @param number - int.
+    * @return string.
+    */
     string toStringInt(int number) const ;
 
     /**
@@ -95,6 +90,12 @@ private:
      * @return string.
      */
     string toStringChar(char c) const;
+
+private:
+    int row;
+    int col;
+    Cell *** my_matrix_;
+    Screen & game_screen_;
 
     /**
      * this method prints a line between rows.

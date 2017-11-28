@@ -13,7 +13,7 @@ using namespace std;
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);
     RUN_ALL_TESTS();
-    GameFlow* myGame = new GameFlow(8);
+    GameFlow* myGame = new GameFlow(4);
     myGame->play();
     delete myGame;
 }

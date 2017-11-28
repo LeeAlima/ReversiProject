@@ -35,7 +35,7 @@ string AIPlayer::chooseCell(GameLogic &game)  {
                 ,game.getBoard()->getSize(),*game.getScreen());
         game.getBoard()->copyBoardSourceAndTarget(
                 *game.getBoard(),*board_after_com_move);
-        vector<int> point_coordinate = cutAPoint(vec_of_options[i]);
+        vector<int> point_coordinate = game.cutPoint(vec_of_options[i]);
         int O_x_coordinate = point_coordinate[0];
         int O_y_coordinate = point_coordinate[1];
         // update board
@@ -51,7 +51,7 @@ string AIPlayer::chooseCell(GameLogic &game)  {
                     ,game.getBoard()->getSize(),*game.getScreen());
             game.getBoard()->copyBoardSourceAndTarget(
                     *game.getBoard(),*board_after_human_move);
-            vector<int> second_vec_cor = cutAPoint(vec_sec[t]);
+            vector<int> second_vec_cor = game.cutPoint(vec_sec[t]);
             X_x_coordinate = second_vec_cor[0];
             X_y_coordinate = second_vec_cor[1];
             // update the game
@@ -76,28 +76,4 @@ string AIPlayer::chooseCell(GameLogic &game)  {
 
 void AIPlayer::setScore(int number) {
     this->score = number;
-}
-
-vector<int> AIPlayer::cutAPoint(string user_input) {
-    vector<string> tokens;
-    size_t prev = 0, pos = 0;
-    do {
-        // split by ,
-        char symbol = ',';
-        pos = user_input.find(symbol, prev);
-        if (pos == string::npos) pos = user_input.length();
-        string token = user_input.substr(prev, pos - prev);
-        if (!token.empty()) tokens.push_back(token);
-        prev = pos + 1;
-    } while (pos < user_input.length() && prev < user_input.length());
-
-    char front_number1 = tokens.front()[1];
-    char back_number1 = tokens.back()[0];
-    // converts the string into two numbers
-    int first_number = front_number1 - '0';
-    int second_number = back_number1 - '0' ;
-    vector<int> point;
-    point.push_back(first_number);
-    point.push_back(second_number);
-    return point;
 }

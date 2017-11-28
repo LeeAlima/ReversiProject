@@ -142,6 +142,13 @@ public:
      */
     void changeNumber(int &number,int flag,int default_number,int add_number);
 
+    /**
+     * this method split the user input to 2 strings;
+     * @param user_input - as the user input.
+     * @return vector of string.
+     */
+    vector<int> cutPoint(string user_input) const;
+
 private:
     Player* first_player_;
     Player* second_player_;
@@ -173,13 +180,6 @@ private:
      */
     string findEmptyCellGeneral(int r, int c, char t, int row_change,
                                 int col_change,Board &board) ;
-
-    /**
-     * this method converts int to string.
-     * @param number - as int type.
-     * @return string
-     */
-    string toString(int number) const;
 
     /**
      * this method cuts duplication in a vector

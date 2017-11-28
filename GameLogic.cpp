@@ -5,9 +5,7 @@
 
 #include <cstring>
 #include <iostream>
-#include <sstream>
 #include "GameLogic.h"
-
 
 GameLogic::GameLogic(int size,Player *player1,Player *player2,Screen* screen){
     this->my_screen_ = screen;
@@ -102,8 +100,8 @@ string GameLogic::findEmptyCellGeneral(int r, int c, char t, int row_change,
             && index_col >=0 && index_col < board.getCol()){
             // if an empty cell was found
             if (board.returnCellType(index_row,index_col) == 'E'){
-                return "(" + this->toString(index_row) +
-                        "," +this->toString(index_col) +")";
+                return "(" + this->getBoard()->toStringInt(index_row) +
+                       "," + this->getBoard()->toStringInt(index_col) +")";
             } // if the cell is on the same player's type
             if (board.returnCellType(index_row,index_col) == t ){
                 continue;
@@ -213,14 +211,6 @@ Board* GameLogic::getBoard() {
         return my_board_;
     }
 
-string GameLogic::toString(int number) const {
-        // using stringStram
-        stringstream ss;
-        ss << number;
-        string str = ss.str();
-        return str;
-    }
-
 void GameLogic::updateScore(Board &board) const {
     // going over the all matrix and counting the number
     // of appearences to each player
@@ -291,7 +281,7 @@ vector<string> GameLogic::cutDuplicate(vector<string> vector_before) const {
     }
     return vector_without_dup;
 }
-
+getPlayer2Score
 void GameLogic::changePlayer() {
     if (this->current_Player_ == 'O'){
         this->current_Player_ = 'X';
@@ -324,4 +314,33 @@ Player *GameLogic::getPlayer(char type) {
 
 char GameLogic::getCurrentPlayer() {
     return this->current_Player_;
+}
+
+vector<int> GameLogic::cutPoint(string user_input) const {
+    vector<string> tokens;
+    size_t prev = 0, pos = 0;
+    do {
+        // split by ,
+        pos = user_input.find(",", prev);
+        if (pos == string::npos) pos = user_input.length();
+        string token = user_input.substr(prev, pos - prev);
+        if (!token.empty()) tokens.push_back(token);
+        prev = pos + 1;
+    } while (pos < user_input.length() && prev < user_input.length());
+    // return the point value
+    char front_number1 ;
+    char back_number1 ;
+    if (tokens.front()[0] == '('){
+        front_number1 = tokens.front()[1];
+    } else {
+        front_number1 = tokens.front()[0];
+    }
+    back_number1 = tokens.back()[0];
+    // converts the string into two numbers
+    int first_number = front_number1 - '0';
+    int second_number = back_number1 - '0' ;
+    vector<int> point;
+    point.push_back(first_number);
+    point.push_back(second_number);
+    return point;
 }

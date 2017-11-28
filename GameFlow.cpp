@@ -7,12 +7,10 @@
 #define EX2_DSA_H
 
 #include <iostream>
-#include <sstream>
 #include "GameFlow.h"
 #include "ConsoleScreen.h"
 #include "AIPlayer.h"
 #include <unistd.h>
-#include <cstdlib>
 
 GameFlow::GameFlow(int size):size(size){
     // creating a new game
@@ -32,15 +30,14 @@ void GameFlow::play() {
     // as long as the game is not over
     while (!this->game->checksIfGameOver(*this->game->getBoard())){
         if (game->getCurrentPlayer()!='O'||!(this->computer)){
-            this->screen->printString(this->toStringC
-                    (game->getPlayer('C')->getType())
-                                      + ": It's your move!");
+            this->screen->printString(this->game->getBoard()->toStringChar(
+                    game->getPlayer('C')->getType()) + ": It's your move!");
             this->screen->printEndl();
         }
         // if the player can make a move
         if (this->game->checksIfMovesArePossible(
                 game->getPlayer('C')->getType(),*this->game->getBoard())) {
-            // print the player's options
+            // print the player'point_coordinate options
             // creating a vector of the options
             vector<string> options =
                     this->game->findPossibleCells(*this->game->getBoard()
@@ -52,7 +49,7 @@ void GameFlow::play() {
             if (computer && this->game->getCurrentPlayer() == 'O'){
                 choice_to_compare = user_choice;
             }
-            // checking the player's move, if it's illegal then asks again
+            // checking the player'point_coordinate move, if it'point_coordinate illegal then asks again
             while (!this->game->checkPlayerMove(choice_to_compare
                     ,game->getPlayer('C')->getType(),*this->game->getBoard())){
                 cin >> user_choice;
@@ -62,18 +59,12 @@ void GameFlow::play() {
                 }
             }
             // split the input
-            vector <string> s = this->cutPoint(user_choice);
-            string front_number,back_number;
-            front_number = s.front();
-            back_number = s.back();
-            // converts the string into two numbers
-            int first_number = atoi( front_number.c_str());
-            int second_number = atoi(back_number.c_str()) ;
+            vector <int> point_coordinate = this->game->cutPoint(user_choice);
+            int first_number = point_coordinate.front();
+            int second_number = point_coordinate.back();
             if (computer && this->game->getCurrentPlayer() == 'O'){
-                char front_number1 = s.front()[1];
-                char back_number1 = s.back()[0];
-                first_number = front_number1 - '0' + 1;
-                second_number = back_number1 - '0' + 1;
+                first_number = point_coordinate.front() + 1;
+                second_number = point_coordinate.back() + 1;
             }
             // updating the board and printing it
             this->game->updateBoard(first_number-1,second_number-1
@@ -96,7 +87,7 @@ void GameFlow::writeMessageToPlayer(vector<string> options, char type){
         vector<string>::iterator it;
         this->screen->printString("Your possible moves are: ");
         for (it = options.begin(); it != options.end(); ++it) {
-            vector <string> string_change = this->cutPoint(*it);
+            vector <int> string_change = this->game->cutPoint(*it);
             this->screen->printString(this->fixPointToUser(string_change));
             if (it != options.end() - 1) {
                 this->screen->printString(",");
@@ -106,7 +97,7 @@ void GameFlow::writeMessageToPlayer(vector<string> options, char type){
     } else { // show a message
         this->screen->printString("Computer is thinking...");
         this->screen->printEndl();
-        usleep(1500000);
+        usleep(1000000);
     }
 }
 
@@ -115,76 +106,35 @@ void GameFlow::showScores(){
     if (this->game->returnsWhoWon() == '='){
         this->screen->printString(
                 "It's a tie!, each player got " +
-                this->toStringI(this->game->getPlayer1Score())
-                + " points.");
+                this->game->getBoard()->toStringInt
+                        (this->game->getPlayer1Score()) + " points.");
         this->screen->printEndl();
         return;
     }
     // if it's not a tie, print a message of the winner and the player's points
-    this->screen->printString("Game Is Over, the winner is: " +
-                              toStringC(this->game->returnsWhoWon()));
+    this->screen->printString("Game Is Over, the winner is: " + this->game->
+            getBoard()->toStringChar(this->game->returnsWhoWon()));
     this->screen->printEndl();
-    this->screen->printString("X: You got " + this->toStringI
-            (this->game->getPlayer1Score()) + " points");
+
+    this->screen->printString("X: You got " + this->game->getBoard()->
+            toStringInt(this->game->getPlayer1Score()) + " points");
     this->screen->printEndl();
-    this->screen->printString("O: You got " + this->toStringI
-            (this->game->getPlayer2Score()) + " points");
+    this->screen->printString("O: You got " + this->game->getBoard()->
+            toStringInt(this->game->getPlayer2Score()) + " points");
 }
 
-vector<string> GameFlow::cutPoint(string user_input) const {
-    vector<string> tokens;
-    size_t prev = 0, pos = 0;
-    do {
-        // split by ,
-        pos = user_input.find(",", prev);
-        if (pos == string::npos) pos = user_input.length();
-        string token = user_input.substr(prev, pos - prev);
-        if (!token.empty()) tokens.push_back(token);
-        prev = pos + 1;
-    } while (pos < user_input.length() && prev < user_input.length());
-    // return the point value
-    return tokens;
-}
-
-string GameFlow::toStringI(int number) const {
-    stringstream ss;
-    ss << number;
-    string str = ss.str();
-    return str;
-}
-
-string GameFlow::toStringC(char c) const {
-    stringstream ss;
-    string target;
-    ss << c;
-    ss >> target;
-    return target;
-}
-
-string GameFlow::fixPointToUser(vector <string> s) const {
-    // saving the "numbers"
-    char front_number1 = s.front()[1];
-    char back_number1 = s.back()[0];
-    // converts the string into two numbers
-    int first_number = front_number1 - '0';
-    int first_number_up = first_number + 1;
-    int second_number = back_number1 - '0' ;
-    int second_number_up = second_number +1;
-    return "(" + this->toStringI(first_number_up)
-    + "," + this->toStringI(second_number_up) + ")";
+string GameFlow::fixPointToUser(vector <int> s) const {
+    int first_number = s.front() +1;
+    int second_number = s.back() +1;
+    return "(" + this->game->getBoard()->toStringInt(first_number) +"," +
+            this->game->getBoard()->toStringInt(second_number) + ")";
 }
 
 string GameFlow::fixPointToCom(string user_choice) const {
     // split the point by ","
-    vector <string> s = this->cutPoint(user_choice);
-    string front_number,back_number;
-    front_number = s.front();
-    back_number = s.back();
-    // converts the string into two numbers (-1 to fit array show)
-    int first_number = atoi( front_number.c_str()) -1 ;
-    int second_number = atoi(back_number.c_str()) - 1;
-    return "(" +  this->toStringI(first_number)+ ","
-           + this->toStringI(second_number) + ")";
+    vector <int> s = this->game->cutPoint(user_choice);
+    return "(" +  this->game->getBoard()->toStringInt(s.front()-1) + ","
+           + this->game->getBoard()->toStringInt(s.back()-1) + ")";
 }
 
 void GameFlow::setUpGame() {
