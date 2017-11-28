@@ -281,7 +281,7 @@ vector<string> GameLogic::cutDuplicate(vector<string> vector_before) const {
     }
     return vector_without_dup;
 }
-getPlayer2Score
+
 void GameLogic::changePlayer() {
     if (this->current_Player_ == 'O'){
         this->current_Player_ = 'X';
