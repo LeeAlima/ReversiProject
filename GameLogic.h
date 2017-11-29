@@ -145,6 +145,15 @@ public:
      */
     vector<int> cutPoint(string user_input) const;
 
+    /**
+    * this method receive 2 numbers and change them
+    * by going over the board
+    * @param x_score - as the x score
+    * @param o_score - as the o score
+    * @param board - as the board
+    */
+    void calculateScores(int &x_score, int &o_score, Board &board);
+
 private:
     Player* first_player_;
     Player* second_player_;
@@ -183,15 +192,6 @@ private:
      * @return new vector
      */
     vector<string> cutDuplicate(vector<string> vector_before) const;
-
-    /**
-     * this method receive 2 numbers and change them
-     * by going over the board
-     * @param x_score - as the x score
-     * @param o_score - as the o score
-     * @param board - as the board
-     */
-    void calculateScores(int &x_score, int &o_score, Board &board);
 
 };
 

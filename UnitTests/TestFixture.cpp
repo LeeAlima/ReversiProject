@@ -1,6 +1,3 @@
-//
-// Created by omer on 24/11/17.
-//
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -172,6 +169,7 @@ TEST_F(TestFixture,getScoresDifference){
     gl->updateScore(*b);
     int temp = gl->getScoresDifference(*b);
     ASSERT_EQ(temp,1);
+    clearBoard(*b);
 
 }
 
@@ -193,6 +191,10 @@ TEST_F(TestFixture,chooseCellAi){
     ASSERT_EQ(s,"(0,0)");
 }
 
+/*
+ * test to check if the program changes a point from
+ * computer pattern into user pattern
+ */
 TEST_F(TestFixture,fixPointToUser){
     vector<int> vector;
     vector.push_back(4);
@@ -201,6 +203,25 @@ TEST_F(TestFixture,fixPointToUser){
     ASSERT_EQ(s,"(5,4)");
 }
 
+/*
+ * test to check if 2 number changes by reference
+ */
+TEST_F(TestFixture,changeNumber){
+    b->setCellInBoard(0,1,'O');
+    b->setCellInBoard(0,2,'O');
+    b->setCellInBoard(0,3,'O');
+    b->setCellInBoard(1,1,'O');
+    b->setCellInBoard(1,3,'X');
+    b->setCellInBoard(2,2,'X');
+    b->setCellInBoard(2,3,'X');
+    b->setCellInBoard(3,1,'X');
+    int Number1 = 0;
+    int Number2 = 0;
+    gl->calculateScores(Number1,Number2,*b);
+    ASSERT_EQ(Number1,6);
+    ASSERT_EQ(Number2,4);
+
+}
 
 void clearBoard(Board &b){
     for (int i = 0; i < 4; i++) {
