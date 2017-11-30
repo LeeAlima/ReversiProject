@@ -45,36 +45,38 @@ string AIPlayer::chooseCell(GameLogic &game) {
         vec_sec = game.findPossibleCells(*board_after_com_move,'X');
         int X_x_coordinate,X_y_coordinate;
         // if there are not possible moves for X
-        if (vec_sec.size() == 0){
-            continue;
-        } // going over the human player possible moves
-        for (int t = 0; t<vec_sec.size();t++){
-            // create board with the board_after_com_move values
-            Board* board_after_human_move =new Board(game.getBoard()->getSize()
-                    ,game.getBoard()->getSize(),*game.getScreen());
-            game.getBoard()->copyBoardSourceAndTarget(
-                    *game.getBoard(),*board_after_human_move);
-            vector<int> second_vec_cor = game.cutPoint(vec_sec[t]);
-            X_x_coordinate = second_vec_cor[0];
-            X_y_coordinate = second_vec_cor[1];
-            // update the game
-            board_after_human_move = game.updateBoard(
-                    X_x_coordinate,X_y_coordinate,'O',*board_after_human_move);
-            // save the max difference
-            if (game.getScoresDifference(*board_after_human_move) > max){
-                max = game.getScoresDifference(*board_after_human_move);
-                result_max = vec_of_options[i];
+        if (vec_sec.size()==0){
+            max = game.getScoresDifference(*board_after_com_move);
+        } else {
+            // going over the human player possible moves
+            for (int t = 0; t<vec_sec.size();t++){
+                max = -game.getBoard()->getSize()^2;
+                // create board with the board_after_com_move values
+                Board* board_after_human_move =new Board(game.getBoard()->
+                        getSize(),game.getBoard()->getSize(),*game.getScreen());
+                game.getBoard()->copyBoardSourceAndTarget(
+                        *board_after_com_move,*board_after_human_move);
+                vector<int> second_vec_cor = game.cutPoint(vec_sec[t]);
+                X_x_coordinate = second_vec_cor[0];
+                X_y_coordinate = second_vec_cor[1];
+                // update the game
+                board_after_human_move = game.updateBoard(X_x_coordinate
+                        , X_y_coordinate,'O',*board_after_human_move);
+                // save the max difference
+                if (game.getScoresDifference(*board_after_human_move) > max){
+                    max = game.getScoresDifference(*board_after_human_move);
+                    result_max = vec_of_options[i];
+                }
+                delete board_after_human_move;
             }
-            // save the lowest between the max
-            if (max < min){
-                min = max;
-                result_min = result_max;
-            }
-            delete board_after_human_move;
         }
+        if (max < min){
+            min = max;
+            result_min = result_max;
+        } // save the lowest between the max
         delete board_after_com_move;
     }
-    return result_max;
+    return result_min;
 }
 
 void AIPlayer::setScore(int number) {

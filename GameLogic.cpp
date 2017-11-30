@@ -190,20 +190,19 @@ Board* GameLogic::updateBoard(int x,int y , char type, Board& board) {
 }
 
 bool GameLogic::checkPlayerMove(string user_input, char type,Board & board) {
-        vector<string> allPoints = this->findPossibleCells(board,type);
-        vector<string>::iterator it;
-        // go over all of the possible moves and compare
-        // the user choice to them
-        for (it = allPoints.begin(); it != allPoints.end(); ++it) {
-            if ((*it).compare(user_input) == 0) {
-                // if the player choice is llegal
-                return true;
+            vector<string> allPoints = this->findPossibleCells(board,type);
+            vector<string>::iterator it;
+            // go over all of the possible moves and compare
+            // the user choice to them
+            for (it = allPoints.begin(); it != allPoints.end(); ++it) {
+                if ((*it).compare(user_input) == 0) {
+                    // if the player choice is llegal
+                    return true;
+                }
             }
-        }
-        // ask the player to enter a new point
-        this->my_screen_->printString("Bad choise, please enter a new point:");
-        this->my_screen_->printEndl();
-        return false;
+    this->my_screen_->printString("Bad choice, please enter a new point:");
+    this->my_screen_->printEndl();
+    return false;
     }
 
 Board* GameLogic::getBoard() {

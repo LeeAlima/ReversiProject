@@ -24,6 +24,15 @@ string HumanPlayer::chooseCell(GameLogic &gameLogic) {
     this->player_screen_->printEndl();
     // scan what the user typed
     cin >> user_cell;
+    size_t prev = 0;
+    while (user_cell.size() >3 || user_cell.find(",",prev) == -1){
+        this->player_screen_->printString("Bad choice, please enter a"
+                                                  " new point:");
+        this->player_screen_->printEndl();
+        cin.clear();
+        cin.ignore(100,'\n');
+        cin >> user_cell;
+    }
     return user_cell;
 }
 

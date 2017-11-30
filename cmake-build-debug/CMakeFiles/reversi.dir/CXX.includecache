@@ -585,8 +585,6 @@ gmock/gmock.h
 /home/lee/CLionProjects/reversi/main.cpp
 iostream
 -
-gtest/gtest.h
--
 GameFlow.h
 /home/lee/CLionProjects/reversi/GameFlow.h
 

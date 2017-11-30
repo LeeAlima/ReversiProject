@@ -48,7 +48,9 @@ void GameFlow::play() {
             // if it'point_coordinate illegal then asks again
             while (!this->game->checkPlayerMove(choice_to_compare
                     ,game->getPlayer('C')->getType(),*this->game->getBoard())){
-                cin >> user_choice;
+                cin.clear();
+                cin.ignore(100,'\n');
+                user_choice = this->game->getPlayer('C')->chooseCell(*this->game);
                 choice_to_compare = this->fixPointToCom(user_choice) ;
                 if (computer && this->game->getCurrentPlayer() == 'O'){
                     choice_to_compare = user_choice;

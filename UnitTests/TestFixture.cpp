@@ -170,7 +170,19 @@ TEST_F(TestFixture,getScoresDifference){
     int temp = gl->getScoresDifference(*b);
     ASSERT_EQ(temp,1);
     clearBoard(*b);
-
+    b->setCellInBoard(0,1,'X');
+    b->setCellInBoard(1,2,'X');
+    b->setCellInBoard(2,1,'X');
+    b->setCellInBoard(2,2,'X');
+    b->setCellInBoard(2,3,'X');
+    b->setCellInBoard(3,2,'X');
+    b->setCellInBoard(0,0,'O');
+    b->setCellInBoard(1,0,'O');
+    b->setCellInBoard(2,0,'O');
+    b->setCellInBoard(1,1,'O');
+    b->setCellInBoard(1,3,'O');
+    gl->getBoard()->setCellInBoard(0,0,'X');
+    ASSERT_EQ(gl->getScoresDifference(*b),1);
 }
 
 /*
@@ -189,6 +201,18 @@ TEST_F(TestFixture,chooseCellAi){
     gl->getBoard()->setCellInBoard(1,1,'X');
     string s= ai->chooseCell(*gl);
     ASSERT_EQ(s,"(0,0)");
+    clearBoard(*b);
+    gl->getBoard()->setCellInBoard(0,1,'X');
+    gl->getBoard()->setCellInBoard(1,1,'X');
+    gl->getBoard()->setCellInBoard(2,1,'X');
+    gl->getBoard()->setCellInBoard(1,2,'X');
+    gl->getBoard()->setCellInBoard(2,2,'X');
+    gl->getBoard()->setCellInBoard(3,2,'X');
+    gl->getBoard()->setCellInBoard(0,0,'O');
+    gl->getBoard()->setCellInBoard(1,0,'O');
+    gl->getBoard()->setCellInBoard(2,0,'O');
+    s= ai->chooseCell(*gl);
+    ASSERT_EQ(s,"(0,2)");
 }
 
 /*
