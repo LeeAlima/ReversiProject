@@ -1,5 +1,5 @@
 #include <iostream>
-#include "GameFlow.h"
+#include "../include/GameFlow.h"
 
 using namespace std;
 

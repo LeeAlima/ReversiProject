@@ -4,11 +4,11 @@
 #include <cstring>
 #include <iostream>
 
-GameLogic::GameLogic(int size,Player *player1,Player *player2,Screen* screen){
+GameLogic::GameLogic(int size,Player *player1,Player *player2,ConsoleScreen *screen){
     this->my_screen_ = screen;
     this->first_player_ = player1;
     this->second_player_ = player2;
-    this->my_board_ = new Board(size,size, * my_screen_);
+    this->my_board_ = new Board(size,size);
     this->current_Player_ = 'X';
 }
 
@@ -250,10 +250,6 @@ int GameLogic::getPlayer1Score() const {
     return this->first_player_->getScore();
 }
 
-Screen* GameLogic::getScreen() {
-    return this->my_screen_;
-}
-
 vector<string> GameLogic::cutDuplicate(vector<string> vector_before) const {
     vector<string> vector_without_dup;
     vector<string>::iterator iterat;
@@ -306,35 +302,3 @@ Player *GameLogic::getPlayer(char type) {
     }
 }
 
-char GameLogic::getCurrentPlayer() {
-    return this->current_Player_;
-}
-
-vector<int> GameLogic::cutPoint(string user_input) const {
-    vector<string> tokens;
-    size_t prev = 0, pos = 0;
-    do {
-        // split by ,
-        pos = user_input.find(",", prev);
-        if (pos == string::npos) pos = user_input.length();
-        string token = user_input.substr(prev, pos - prev);
-        if (!token.empty()) tokens.push_back(token);
-        prev = pos + 1;
-    } while (pos < user_input.length() && prev < user_input.length());
-    // return the point value
-    char front_number1 ;
-    char back_number1 ;
-    if (tokens.front()[0] == '('){
-        front_number1 = tokens.front()[1];
-    } else {
-        front_number1 = tokens.front()[0];
-    }
-    back_number1 = tokens.back()[0];
-    // converts the string into two numbers
-    int first_number = front_number1 - '0';
-    int second_number = back_number1 - '0' ;
-    vector<int> point;
-    point.push_back(first_number);
-    point.push_back(second_number);
-    return point;
-}

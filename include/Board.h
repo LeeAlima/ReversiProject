@@ -3,7 +3,9 @@
 #define EX2_BOARD_H
 
 #include "../include/Cell.h"
-#include "../include/Screen.h"
+//#include "Screen.h"
+//#include "../include/Screen.h"
+
 
 class Board {
 public:
@@ -13,7 +15,7 @@ public:
      * @param col - as the col location.
      * @param screen - as the game's screen to communicate with the users.
      */
-    Board(int row, int col,Screen& screen);
+    Board(int row, int col);
 
     /**
      * as the deconstructor - to free all the objects that were allocated.
@@ -31,11 +33,6 @@ public:
      * @return int - the number of columns.
      */
     int getCol() const;
-    
-    /**
-     * this method prints the board.
-     */
-    void printBoard() const;
     
     /**
      * this method runs over the board's cells and checks
@@ -80,24 +77,10 @@ public:
     */
     string toStringInt(int number) const ;
 
-    /**
-     * this method converts char into string.
-     * @param c - as the char.
-     * @return string.
-     */
-    string toStringChar(char c) const;
-
 private:
     int row;
     int col;
     Cell *** my_matrix_;
-    Screen & game_screen_;
-
-    /**
-     * this method prints a line between rows.
-     * @param number - of cols
-     */
-    void printLine(int number) const;
 };
 
 #endif //EX2_BOARD_H

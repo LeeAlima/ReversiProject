@@ -5,7 +5,6 @@
 #include <string>
 
 #include "../include/GameLogic.h"
-#include "../include/Screen.h"
 
 using namespace std;
 

@@ -1,13 +1,9 @@
 
 #include "../include/AIPlayer.h"
 
-#include <iostream>
-
-#include "../include/GameLogic.h"
-
 using namespace std;
 
-AIPlayer::AIPlayer(char type,Screen* screen):
+AIPlayer::AIPlayer(char type, ConsoleScreen *screen):
         score(2), type(type), player_screen_(screen){
 }
 
@@ -34,10 +30,10 @@ string AIPlayer::chooseCell(GameLogic &game) {
     for (int i=0; i<vec_of_options.size();i++){
         // create a board with vals of the current board
         Board* board_after_com_move = new Board(game.getBoard()->getSize()
-                ,game.getBoard()->getSize(),*game.getScreen());
+                ,game.getBoard()->getSize());
         game.getBoard()->copyBoardSourceAndTarget(
                 *game.getBoard(),*board_after_com_move);
-        vector<int> point_coordinate = game.cutPoint(vec_of_options[i]);
+        vector<int> point_coordinate = player_screen_->cutPoint(vec_of_options[i]);
         int O_x_coordinate = point_coordinate[0];
         int O_y_coordinate = point_coordinate[1];
         // update board
@@ -55,10 +51,10 @@ string AIPlayer::chooseCell(GameLogic &game) {
                 max = -game.getBoard()->getSize()^2;
                 // create board with the board_after_com_move values
                 Board* board_after_human_move =new Board(game.getBoard()->
-                        getSize(),game.getBoard()->getSize(),*game.getScreen());
+                        getSize(),game.getBoard()->getSize());
                 game.getBoard()->copyBoardSourceAndTarget(
                         *board_after_com_move,*board_after_human_move);
-                vector<int> second_vec_cor = game.cutPoint(vec_sec[t]);
+                vector<int> second_vec_cor = player_screen_->cutPoint(vec_sec[t]);
                 X_x_coordinate = second_vec_cor[0];
                 X_y_coordinate = second_vec_cor[1];
                 // update the game

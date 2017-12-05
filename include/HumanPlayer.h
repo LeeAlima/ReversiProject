@@ -4,6 +4,9 @@
 
 #include "../include/GameLogic.h"
 #include "../include/Player.h"
+#include "../include/ConsoleScreen.h"
+
+
 
 class HumanPlayer : public Player {
 public:
@@ -12,7 +15,7 @@ public:
      * @param type - as char ('X' or 'O')
      * @param screen  - as the game screen
      */
-    HumanPlayer(char type,Screen* screen);
+    HumanPlayer(char type,ConsoleScreen *screen);
 
     char getType() const;
 
@@ -22,10 +25,12 @@ public:
 
     void setScore(int number);
 
+    string fixPointToCom(string user_choice) const;
+
 protected:
     char type;
     int score;
-    Screen* player_screen_;
+    ConsoleScreen *player_screen_;
 
 };
 

@@ -12,7 +12,7 @@ public:
      * @param type - as char ('X' or 'O')
      * @param screen  - as the game screen
      */
-    AIPlayer(char type,Screen* screen);
+    AIPlayer(char type,ConsoleScreen *screen);
 
     char getType() const;
 
@@ -25,7 +25,7 @@ public:
 protected:
     char type;
     int score;
-    Screen* player_screen_;
+    ConsoleScreen *player_screen_;
 
 };
 
