@@ -4,9 +4,8 @@
 
 #include <vector>
 
-#include "../include/Board.h"
-#include "../include/HumanPlayer.h"
-#include "../include/Player.h"
+#include "Board.h"
+#include "Player.h"
 #include "ConsoleScreen.h"
 
 class Player;
@@ -19,7 +18,7 @@ public:
      * @param player2 - second player
      * @param screen - a screen to show the game to the user
      */
-    GameLogic(int size,Player* player1,Player* player2,ConsoleScreen *screen);
+    GameLogic(int size,Player *player1,Player *player2,ConsoleScreen *screen);
 
     /**
      * this is the deconstructor of the game.

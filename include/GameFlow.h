@@ -3,7 +3,7 @@
 #define EX2_GAMEFLOW_H
 
 
-#include "../include/GameLogic.h"
+#include "GameLogic.h"
 #include "ConsoleScreen.h"
 
 /**

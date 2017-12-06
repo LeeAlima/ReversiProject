@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include "../include/AIPlayer.h"
 #include "../include/ConsoleScreen.h"
+#include "../include/HumanPlayer.h"
+#include "../include/Client.h"
 
 GameFlow::GameFlow(int size):size(size){
     // creating a new game
@@ -33,14 +35,8 @@ void GameFlow::play() {
             screen->printPlayerOrder(player->getType());
         }
         // if the player can make a move
-        if (this->game->checksIfMovesArePossible(
-                game->getPlayer('C')->getType(), *this->game->getBoard())) {
-            // print the player'point_coordinate options
-            // creating a vector of the options
-            vector<string> options = this->game->findPossibleCells(
-                    *this->game->getBoard(), game->getPlayer('C')->getType());
-            screen->printPossibleMoves(options, computer,player->getType());
-            user_choice = this->game->getPlayer('C')->chooseCell(*this->game);
+        user_choice = this->game->getPlayer('C')->chooseCell(*this->game);
+        if (user_choice.compare("NO MOVE")){
             // split the input
             vector<int> point_coordinate = screen->cutPoint(user_choice);
             int first_number = point_coordinate.front();
@@ -54,7 +50,8 @@ void GameFlow::play() {
                                     *this->game->getBoard());
             this->screen->printEndl();
             this->screen->printBoard(*board);
-        } else { // if no move is possible
+        }
+ else { // if no move is possible
             this->screen->printString("No moves are possible for you");
             this->screen->printEndl();
         }
@@ -72,15 +69,22 @@ void GameFlow::setUpGame() {
     this->screen = new ConsoleScreen();
     int playerCheck = this->screen->printOpenMenu();
     Player *player1, *player2;
+    Client client();
     if (playerCheck == 2) {
         player1 = new HumanPlayer('X', screen);
         player2 = new AIPlayer('O', screen);
         this->computer = true;
-    } else {
+    } else if (playerCheck==1){
         player1 = new HumanPlayer('X', screen);
         player2 = new HumanPlayer('O', screen);
         this->computer = false;
     }
+    /*else if(playerCheck=3){
+        try {
+
+        }
+
+    }*/
     this->game = new GameLogic(size, player1, player2, screen);
 }
 

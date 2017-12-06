@@ -2,8 +2,7 @@
 #ifndef EX2_AIPLAYER_H
 #define EX2_AIPLAYER_H
 
-#include "../include/GameLogic.h"
-#include "../include/Player.h"
+#include "Player.h"
 
 class AIPlayer : public Player {
 public:
@@ -14,18 +13,7 @@ public:
      */
     AIPlayer(char type,ConsoleScreen *screen);
 
-    char getType() const;
-
-    int getScore() const;
-
     string chooseCell(GameLogic &game) ;
-
-    void setScore(int number);
-
-protected:
-    char type;
-    int score;
-    ConsoleScreen *player_screen_;
 
 };
 

@@ -1,23 +1,15 @@
+//
+// Created by lee on 06/12/17.
+//
 
-#include "../include/HumanPlayer.h"
+#include "../include/LocalPlayer.h"
 
-#include <iostream>
-
-using namespace std;
-
-
-HumanPlayer::HumanPlayer(char type,ConsoleScreen *screen): Player(type,screen){
-
+LocalPlayer::LocalPlayer(char type, ConsoleScreen *screen, Client &client) :
+        Player(type,screen) ,client(client) {
 }
 
-string HumanPlayer::fixPointToCom(string user_choice) const {
-    // split the point by ","
-    vector<int> s = player_screen_->cutPoint(user_choice);
-    return "(" + this->player_screen_->toStringInt(s.front() - 1) + ","
-           + this->player_screen_->toStringInt(s.back() - 1) + ")";
-}
-
-string HumanPlayer::chooseCell(GameLogic &gameLogic) {
+string LocalPlayer::chooseCell(GameLogic &gameLogic) {
+    string final;
     if (gameLogic.checksIfMovesArePossible(type,*gameLogic.getBoard())){
         vector<string> options = gameLogic.findPossibleCells(
                 *gameLogic.getBoard(), gameLogic.getPlayer('C')->getType());
@@ -34,9 +26,17 @@ string HumanPlayer::chooseCell(GameLogic &gameLogic) {
             user_cell = this->player_screen_->printPlayerDialog();
             choice_to_compare = fixPointToCom(user_cell);
         }
-        return choice_to_compare;
+        final= choice_to_compare;
+    } else {
+      final = "NO MOVE";
     }
-    return "NO MOVE";
+    this->client.send(const_cast<char*>(final.c_str()));
+    return final;
 }
 
-
+string LocalPlayer::fixPointToCom(string user_choice) const {
+    // split the point by ","
+    vector<int> s = player_screen_->cutPoint(user_choice);
+    return "(" + this->player_screen_->toStringInt(s.front() - 1) + ","
+           + this->player_screen_->toStringInt(s.back() - 1) + ")";
+}

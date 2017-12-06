@@ -2,9 +2,6 @@
 #ifndef EX2_CONSOLESCREEN_H
 #define EX2_CONSOLESCREEN_H
 
-//#include <vector>
-//#include "Board.h"
-
 #include <vector>
 #include "Board.h"
 

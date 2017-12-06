@@ -2,10 +2,7 @@
 #ifndef EX2_BOARD_H
 #define EX2_BOARD_H
 
-#include "../include/Cell.h"
-//#include "Screen.h"
-//#include "../include/Screen.h"
-
+#include "Cell.h"
 
 class Board {
 public:

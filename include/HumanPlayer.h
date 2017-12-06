@@ -2,11 +2,11 @@
 #ifndef EX2_HUMANPLAYER_H
 #define EX2_HUMANPLAYER_H
 
-#include "../include/GameLogic.h"
+#include "Player.h"
+
+/*#include "../include/GameLogic.h"
 #include "../include/Player.h"
-#include "../include/ConsoleScreen.h"
-
-
+#include "../include/ConsoleScreen.h"*/
 
 class HumanPlayer : public Player {
 public:
@@ -17,20 +17,10 @@ public:
      */
     HumanPlayer(char type,ConsoleScreen *screen);
 
-    char getType() const;
-
-    int getScore() const;
-
     string chooseCell(GameLogic &gameLogic) ;
 
-    void setScore(int number);
-
+private:
     string fixPointToCom(string user_choice) const;
-
-protected:
-    char type;
-    int score;
-    ConsoleScreen *player_screen_;
 
 };
 
