@@ -84,7 +84,7 @@ void GameFlow::setUpGame() {
             break;
         case 3 :
             try{
-                Client client("127.0.0.1",1234);
+                Client client("127.0.0.1",123456);
                 int num_of_player=client.connectToServer();
                 if(num_of_player==1){
                     player1 =new LocalPlayer('X',screen,client);

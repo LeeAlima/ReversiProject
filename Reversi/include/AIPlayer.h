@@ -4,6 +4,9 @@
 
 #include "Player.h"
 
+/**
+ * AIPlayer is the computer player class
+ */
 class AIPlayer : public Player {
 public:
     /**
@@ -13,6 +16,13 @@ public:
      */
     AIPlayer(char type,ConsoleScreen *screen);
 
+    /**
+     * In this method we run over all of the computer's options,
+     * and used the "minimax" algorithm in order to find the option
+     * that will cause the human player not to make his best choices.
+     * @param game - as gameLogic object
+     * @return string - the chosen cell.
+     */
     string chooseCell(GameLogic &game) ;
 
 };

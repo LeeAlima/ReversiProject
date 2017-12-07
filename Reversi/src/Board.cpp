@@ -1,24 +1,23 @@
 
 #include "../include/Board.h"
-
 #include <iostream>
 #include <sstream>
 
 using namespace std;
 
-Board::Board(int row,int col):
-        row(row), col(col) {
-    int mid_row = row/2 -1;
-    int mid_col = col/2 -1;
+Board::Board(int size):
+        size(size) {
+    int mid_row = size/2 -1;
+    int mid_col = size/2 -1;
     // creating the matrix
-    this->my_matrix_ = new Cell**[row];
+    this->my_matrix_ = new Cell**[size];
     // creating the rows
-    for (int i = 0;i<row;i++){
-        this->my_matrix_[i] = new Cell*[col];
+    for (int i = 0;i<size;i++){
+        this->my_matrix_[i] = new Cell*[size];
     }
     // creating the all matrix
-    for (int j = 0; j < row; j++) {
-        for (int z = 0; z < col; z++) {
+    for (int j = 0; j < size; j++) {
+        for (int z = 0; z < size; z++) {
             this->my_matrix_[j][z] = new Cell('E');
         }
     }
@@ -31,25 +30,17 @@ Board::Board(int row,int col):
 
 Board::~Board() {
     // freeing all of the cells
-    for (int j = 0; j < row; j++) {
-        for (int z = 0; z<col; z++){
+    for (int j = 0; j < size; j++) {
+        for (int z = 0; z<size; z++){
             delete my_matrix_[j][z];
         }
     }
     // freeing all of the rows
-    for (int i = 0; i<row; i++){
+    for (int i = 0; i<size; i++){
         delete [] my_matrix_[i];
     }
     // freeing the all matrix
     delete [] my_matrix_;
-}
-
-int Board ::getRow() const{
-    return this->row;
-}
-
-int Board::getCol() const {
-    return this->col;
 }
 
 void Board::copyBoardSourceAndTarget(Board &source_board, Board &target_board){
@@ -62,8 +53,8 @@ void Board::copyBoardSourceAndTarget(Board &source_board, Board &target_board){
 
 bool Board::checkAllCellsFull() const {
     // going over all the matrix cells
-    for (int i= 0;i<col ;i++ ){
-        for (int j = 0; j < col; j++) {
+    for (int i= 0;i<size ;i++ ){
+        for (int j = 0; j < size; j++) {
             if (my_matrix_[j][i]->getType() == 'E'){
                 return false;
             }
@@ -88,7 +79,6 @@ string Board::toStringInt(int number) const {
     return str;
 }
 
-
 int Board::getSize() {
-    return this->row;
+    return this->size;
 }

@@ -20,9 +20,8 @@ ConsoleScreen::~ConsoleScreen(){} ;
 
 
 void ConsoleScreen::printBoard(Board &board) const {
-    int col = board.getCol();
-    int row = board.getRow();
-    for (int z = 0; z < col + 1; z++) {
+    int size = board.getSize();
+    for (int z = 0; z < size + 1; z++) {
         if (z == 0) {
             cout << " ";
         } else {
@@ -32,14 +31,14 @@ void ConsoleScreen::printBoard(Board &board) const {
     //cout << col;
     cout << "|" << endl;
     cout << "--";
-    for (int i = 0; i < col; i++) {
+    for (int i = 0; i < size; i++) {
         cout << "----";
     }
     cout << endl;
     // two loops, this first one symbolizes the columns and the second
     // one symbolizes the lines.
-    for (int x = 0; x < col; x++) {
-        for (int y = 0; y < row; y++) {
+    for (int x = 0; x < size; x++) {
+        for (int y = 0; y < size; y++) {
             if (y == 0) {
                 cout << (x + 1);
             }
@@ -54,7 +53,7 @@ void ConsoleScreen::printBoard(Board &board) const {
         }
         cout << "|" << endl;
         cout << "--";
-        for (int i = 0; i < col; i++) {
+        for (int i = 0; i < size; i++) {
             cout << "----";
         }
         cout << endl;
@@ -114,7 +113,6 @@ void ConsoleScreen::printPlayerMove(char type,int num1,int num2) const{
             cout << "'O' chose ("<<num1+1<<","<<num2+1<<")"<<endl;
             break;
         case 'X':
-            cout<<"sdfsfsfssfsfsfsf"<<endl;
             cout << "'X' chose ("<<num1+1<<","<<num2+1<<")"<<endl;
             break;
         default:

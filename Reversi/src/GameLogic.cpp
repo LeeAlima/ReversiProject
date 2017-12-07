@@ -8,7 +8,7 @@ GameLogic::GameLogic(int size,Player *player1,Player *player2,ConsoleScreen *scr
     this->my_screen_ = screen;
     this->first_player_ = player1;
     this->second_player_ = player2;
-    this->my_board_ = new Board(size,size);
+    this->my_board_ = new Board(size);
     this->current_Player_ = 'X';
 }
 
@@ -57,16 +57,16 @@ vector<string> GameLogic::findPossibleCells(Board & board,char type) {
         other_type = 'X';
     }
     // going over the all matrix
-    for (int i=0;i< board.getRow();i++) {
-        for (int j = 0; j < board.getCol(); j++) {
+    for (int i=0;i< board.getSize();i++) {
+        for (int j = 0; j < board.getSize(); j++) {
             // if the cell is on the current player type
             if (board.returnCellType(i, j) == type) {
                 // looking for the other type near it
                 for (int a = -1; a < 2; a++) {
                     for (int b = -1; b < 2; b++) {
-                        if ((i + a >= 0) && (i+a < board.getRow())
+                        if ((i + a >= 0) && (i+a < board.getSize())
                             && (j + b >= 0)
-                            && (j+b < board.getCol())) {
+                            && (j+b < board.getSize())) {
                             // found other type cell
                             if (board.returnCellType(i + a, j + b)
                                 == other_type) {
@@ -91,12 +91,12 @@ string GameLogic::findEmptyCellGeneral(int r, int c, char t, int row_change,
                                        int col_change,Board &board) {
     int index_row = r;
     int index_col=c;
-    for (int i = 1; i<board.getCol();i++){
+    for (int i = 1; i<board.getSize();i++){
         changeNumber(index_row,row_change,r,i);
         changeNumber(index_col,col_change,c,i);
         // check if in limits
-        if (index_row >=0 && index_row < board.getCol()
-            && index_col >=0 && index_col < board.getCol()){
+        if (index_row >=0 && index_row < board.getSize()
+            && index_col >=0 && index_col < board.getSize()){
             // if an empty cell was found
             if (board.returnCellType(index_row,index_col) == 'E'){
                 return "(" + this->getBoard()->toStringInt(index_row) +
@@ -121,28 +121,28 @@ void GameLogic::makeAMove(int r, int c, char t, int row_change,
     if (t == 'X'){
         other_type = 'O';
     }
-    for (int i = 0; i< board.getCol();i++){
+    for (int i = 0; i< board.getSize();i++){
         // change the index variables, add or reduce i from r\c
         changeNumber(index_row,row_change,r,i);
         changeNumber(index_col,col_change,c,i);
-    if (index_row >=0 && index_row < board.getCol()
-        && index_col >=0 && index_col < board.getCol()) {
+    if (index_row >=0 && index_row < board.getSize()
+        && index_col >=0 && index_col < board.getSize()) {
             if (board.returnCellType(index_row,index_col)
                 == other_type){
                 int row_new = index_row;
                 int col_new = index_col;
                 row_new +=row_change;
                 col_new +=col_change;
-                if (row_new >=0  && row_new < board.getRow()
-                        && col_new >=0 && col_new < board.getCol()){
+                if (row_new >=0  && row_new < board.getSize()
+                        && col_new >=0 && col_new < board.getSize()){
                     // if an empty cell was found
                     if (board.returnCellType(row_new,col_new)
                         == 'E') {
                         return;
                     }
                 } // if the cell is out of the matrix
-                if (row_new < 0 || row_new >= board.getRow()
-                    || col_new < 0 || col_new >= board.getCol()){
+                if (row_new < 0 || row_new >= board.getSize()
+                    || col_new < 0 || col_new >= board.getSize()){
                     return;
                 } // if access is possible checks its type
                 if (board.returnCellType(row_new,col_new) == t){
@@ -178,8 +178,8 @@ Board* GameLogic::updateBoard(int x,int y , char type, Board& board) {
     board.setCellInBoard(x,y,other_type);
     for (int a = -1; a < 2; a++) {
         for (int b = -1; b < 2; b++) {
-            if ((x + a >= 0) && (x + a < board.getRow())
-                && (y + b >= 0) && (y + b < board.getCol())) {
+            if ((x + a >= 0) && (x + a < board.getSize())
+                && (y + b >= 0) && (y + b < board.getSize())) {
                 // make a move
                 if (board.returnCellType(x + a, y + b) == type) {
                     makeAMove(x+a,y+b,other_type,a,b,board);
@@ -230,8 +230,8 @@ int GameLogic::getScoresDifference(Board &b) {
 }
 
 void GameLogic::calculateScores(int &x_score, int &o_score, Board &board){
-    for (int i=0;i< board.getRow();i++) {
-        for (int j = 0; j < board.getCol(); j++) {
+    for (int i=0;i< board.getSize();i++) {
+        for (int j = 0; j < board.getSize(); j++) {
             if(board.returnCellType(i,j) == 'X'){
                 x_score++;
             }

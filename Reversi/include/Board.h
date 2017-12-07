@@ -10,26 +10,13 @@ public:
      * this is the constructor for the object.
      * @param row - as the row location.
      * @param col - as the col location.
-     * @param screen - as the game's screen to communicate with the users.
      */
-    Board(int row, int col);
+    Board(int size);
 
     /**
-     * as the deconstructor - to free all the objects that were allocated.
+     * as the destructor - to free all the objects that were allocated.
      */
     ~Board();
-    
-    /**
-     * this method return the board's rows number.
-     * @return int - the number of rows
-     */
-    int getRow() const;
-    
-    /**
-     * this method returns the number of cols.
-     * @return int - the number of columns.
-     */
-    int getCol() const;
     
     /**
      * this method runs over the board's cells and checks
@@ -61,7 +48,8 @@ public:
     int getSize();
 
     /**
-     * this method copy a board into another board
+     * this method copy a board into another board (by going over all of the
+     * matrix cells and copying them)
      * @param source_board - source board
      * @param target_board - target board
      */
@@ -75,8 +63,7 @@ public:
     string toStringInt(int number) const ;
 
 private:
-    int row;
-    int col;
+    int size;
     Cell *** my_matrix_;
 };
 

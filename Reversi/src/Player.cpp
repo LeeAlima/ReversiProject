@@ -1,7 +1,3 @@
-//
-// Created by lee on 06/12/17.
-//
-
 #include "../include/Player.h"
 
 Player::Player(char type,ConsoleScreen *screen):
@@ -22,5 +18,4 @@ void Player::setScore(int number) {
 }
 
 Player::~Player() {
-
 }

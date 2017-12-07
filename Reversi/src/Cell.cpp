@@ -1,6 +1,5 @@
 
 #include "../include/Cell.h"
-using namespace std;
 
 Cell::Cell(char initializeType) :type(initializeType){
 }
