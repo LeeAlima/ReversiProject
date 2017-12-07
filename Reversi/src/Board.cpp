@@ -6,8 +6,8 @@
 
 using namespace std;
 
-Board::Board(int row,int col,Screen& screen):
-        row(row), col(col), game_screen_(screen) {
+Board::Board(int row,int col):
+        row(row), col(col) {
     int mid_row = row/2 -1;
     int mid_col = col/2 -1;
     // creating the matrix
@@ -60,39 +60,6 @@ void Board::copyBoardSourceAndTarget(Board &source_board, Board &target_board){
     }
 };
 
-void Board::printBoard() const {
-    // printing the first line of the board
-    for (int z=0; z<col+1 ;z++){
-        if (z==0){
-            this->game_screen_.printString(" ");
-        }
-        else{
-            this->game_screen_.printString("| " + this->toStringInt(z) + " ");
-        }
-    }
-    this->printLine(this->col);
-    // two loops, this first one symbolizes the columns and the second
-    // one symbolizes the lines.
-    for (int x = 0; x<col; x++){
-        for (int y = 0; y<row;y++){
-            if (y==0){
-                this->game_screen_.printString(toStringInt(x+1));
-            }
-            this->game_screen_.printString("|");
-            // printing the cell's type if it's not empty
-            if (my_matrix_[x][y]->getType() == 'X' ||
-                my_matrix_[x][y]->getType() == 'O') {
-                this->game_screen_.printString(
-                        " " + toStringChar(my_matrix_[x][y]->getType()) + " ");
-            }
-            else { // if the cell is empty
-                this->game_screen_.printString("   ");
-            }
-        }
-        this->printLine(this->col);
-    }
-}
-
 bool Board::checkAllCellsFull() const {
     // going over all the matrix cells
     for (int i= 0;i<col ;i++ ){
@@ -121,23 +88,6 @@ string Board::toStringInt(int number) const {
     return str;
 }
 
-string Board::toStringChar(char c) const {
-    stringstream ss;
-    string target;
-    ss << c;
-    ss >> target;
-    return target;
-}
-
-void Board::printLine(int number) const {
-    game_screen_.printString("|");
-    game_screen_.printEndl();
-    game_screen_.printString("--");
-    for (int i = 0;i<number;i++){
-    this->game_screen_.printString("----");
-    }
-    this->game_screen_.printEndl();
-}
 
 int Board::getSize() {
     return this->row;

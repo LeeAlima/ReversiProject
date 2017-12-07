@@ -4,10 +4,9 @@
 
 #include <vector>
 
-#include "../include/Board.h"
-#include "../include/HumanPlayer.h"
-#include "../include/Player.h"
-#include "../include/Screen.h"
+#include "Board.h"
+#include "Player.h"
+#include "ConsoleScreen.h"
 
 class Player;
 class GameLogic {
@@ -19,7 +18,7 @@ public:
      * @param player2 - second player
      * @param screen - a screen to show the game to the user
      */
-    GameLogic(int size,Player* player1,Player* player2,Screen* screen);
+    GameLogic(int size,Player *player1,Player *player2,ConsoleScreen *screen);
 
     /**
      * this is the deconstructor of the game.
@@ -91,12 +90,6 @@ public:
     int getPlayer2Score() const;
 
     /**
-     * this method returns the game's screen object
-     * @return Screen* - as the game's screen.
-     */
-    Screen* getScreen();
-
-    /**
      * this method checks if the player can make the movement he chose.
      * @param user_input - as string of the point.
      * @param type - as the player's type.
@@ -125,12 +118,6 @@ public:
     int getScoresDifference(Board &b);
 
     /**
-     * this method returns the current players type
-     * @return char
-     */
-    char getCurrentPlayer();
-
-    /**
      * this method changes a number
      * @param number - the number to change
      * @param flag - 1 or -1
@@ -138,13 +125,6 @@ public:
      * @param add_number - the number I want to add default_number
      */
     void changeNumber(int &number,int flag,int default_number,int add_number);
-
-    /**
-     * this method split the user input to 2 strings;
-     * @param user_input - as the user input.
-     * @return vector of string.
-     */
-    vector<int> cutPoint(string user_input) const;
 
     /**
     * this method receive 2 numbers and change them
@@ -159,7 +139,7 @@ private:
     Player* first_player_;
     Player* second_player_;
     Board* my_board_;
-    Screen* my_screen_;
+    ConsoleScreen* my_screen_;
     char current_Player_;
 
     /**
