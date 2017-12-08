@@ -2,6 +2,7 @@
 #ifndef EX2_DSA_H
 #define EX2_DSA_H
 
+#include <fstream>
 #include "../include/GameFlow.h"
 #include "../include/AIPlayer.h"
 #include "../include/HumanPlayer.h"
@@ -89,10 +90,18 @@ void GameFlow::setUpGame() {
             this->x_player_ = true;
             this->o_player_ = true;
             break;
-        case 3 :
+        case 3 :{
             // connect by client
+            ifstream inFile;
+            inFile.open("config_client.txt");
+            string ip;
+            int port;
+            inFile >> ip;
+            inFile >> port;
+            cout<<ip<<endl;
+            cout<<port<<endl;
             try{
-                Client client("127.0.0.1",12345);
+                Client client(ip.c_str(),port);
                 int num_of_player=client.connectToServer();
                 if(num_of_player==1){
                     player1 =new LocalPlayer('X',screen,client);
@@ -105,16 +114,16 @@ void GameFlow::setUpGame() {
                     this->x_player_ = false;
                     this->o_player_ = true;
                 }
-            }catch (const char *msg)
-            {
+            }catch (const char *msg) {
                 this->screen->printString("Failed to connect to server. Reason: ");
                 this->screen->printString(msg);
                 this->screen->printEndl();
                 return;
             }
             break;
+        }
         default:
-            return;
+            break;
 
     } // create the game
     this->game = new GameLogic(size, player1, player2, screen);
