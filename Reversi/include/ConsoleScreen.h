@@ -13,7 +13,7 @@ public:
     ConsoleScreen();
 
     /**
-     * deconstructor for the object
+     * destructor for the object
      */
     ~ConsoleScreen();
 
@@ -28,16 +28,75 @@ public:
      */
     void printEndl() const;
 
+    /**
+     * this method prints a board
+     * @param board - reference to board
+     */
     void printBoard(Board &board) const;
+
+    /**
+     * this method prints the player his possible options
+     * @param moves - as the vector of options
+     * @param computer - true if computer is playing, false otherwise
+     * @param type - the player type
+     */
     void printPossibleMoves(vector<string> &moves, bool computer,char type) const;
 
+    /**
+     * In this method the player is asked for a point
+     * @return string - the user choice
+     */
     string printPlayerDialog() const;
+
+    /**
+     * this method writes the last move in the game
+     * @param type - 'X' for 'X' choice and 'O' for 'O' choice
+     * @param num1 - row
+     * @param num2 - col
+     */
     void printPlayerMove(char type,int num1,int num2) const;
+
+    /**
+     * this method prints the open menu and ask the user for a
+     * game type.
+     * @return - the user choice
+     */
     int printOpenMenu() const;
-    void printGameOver(char flag, int score1, int score2) const;
+
+    /**
+     * If game is over, print the number of points
+     * @param flag "=" for tie , otherwise there is a winner
+     * @param score_1 - player one score
+     * @param score_2 - player two score
+     */
+    void printGameOver(char flag, int score_1, int score_2) const;
+
+    /**
+     * This method converts a point from computer representation to humans'
+     * @param s - as the coordinate vector
+     * @return string - the point
+     */
     string fixPointToUser(vector<int> s) const;
+
+    /**
+     * this method converts int to string.
+     * @param number - int
+     * @return string
+     */
     string toStringInt(int number) const;
+
+    /**
+     * this method cup point by "," and return a vector of int
+     * with the point coordinate
+     * @param user_input - as the chosen cell
+     * @return vector of int
+     */
     vector<int> cutPoint(string user_input) const;
+
+    /**
+     * this method prints the turns
+     * @param type - as the current player type
+     */
     void printPlayerOrder(char type) const;
 };
 

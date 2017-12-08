@@ -1,10 +1,10 @@
 
 #include "../include/GameLogic.h"
 
-#include <cstring>
 #include <iostream>
 
-GameLogic::GameLogic(int size,Player *player1,Player *player2,ConsoleScreen *screen){
+GameLogic::GameLogic(int size,Player *player1,Player *player2,
+                     ConsoleScreen *screen){
     this->my_screen_ = screen;
     this->first_player_ = player1;
     this->second_player_ = player2;
@@ -144,7 +144,7 @@ void GameLogic::makeAMove(int r, int c, char t, int row_change,
                 if (row_new < 0 || row_new >= board.getSize()
                     || col_new < 0 || col_new >= board.getSize()){
                     return;
-                } // if access is possible checks its type
+                } // if access is possible ,check its type
                 if (board.returnCellType(row_new,col_new) == t){
                     for ( int j = 0;j<=i+1;j++){
                         int row_loop = r;
@@ -212,7 +212,7 @@ Board* GameLogic::getBoard() {
 
 void GameLogic::updateScore(Board &board) {
     // going over the all matrix and counting the number
-    // of appearences to each player
+    // of appearances to each player
     int player_X=0;
     int player_O=0;
     calculateScores(player_X,player_O,board);
@@ -222,14 +222,14 @@ void GameLogic::updateScore(Board &board) {
 
 int GameLogic::getScoresDifference(Board &b) {
     // going over the all matrix and counting the number
-    // of appearences to each player
+    // of appearances to each player
     int player_X=0;
     int player_O=0;
     calculateScores(player_X,player_O,b);
     return player_X-player_O;
 }
 
-void GameLogic::calculateScores(int &x_score, int &o_score, Board &board){
+void GameLogic::calculateScores(int &x_score, int &o_score, Board &board) {
     for (int i=0;i< board.getSize();i++) {
         for (int j = 0; j < board.getSize(); j++) {
             if(board.returnCellType(i,j) == 'X'){
@@ -253,7 +253,9 @@ int GameLogic::getPlayer1Score() const {
 vector<string> GameLogic::cutDuplicate(vector<string> vector_before) const {
     vector<string> vector_without_dup;
     vector<string>::iterator iterat;
-    for (iterat = vector_before.begin(); iterat != vector_before.end(); ++iterat) {
+    // go over all of the vector_before vector
+    for (iterat = vector_before.begin(); iterat != vector_before.end();
+         ++iterat) {
         bool flag = false;
         vector<string>::iterator it2;
         for (it2 = vector_without_dup.begin();
@@ -261,7 +263,7 @@ vector<string> GameLogic::cutDuplicate(vector<string> vector_before) const {
             string s1 = *iterat;
             string s2 = *it2;
             if ( (s1.compare(s2) == 0) ){
-                // if the point already appeard
+                // if the point already appeared
                 flag = true;
             }
         }
@@ -287,13 +289,13 @@ Player *GameLogic::getPlayer(char type) {
     }
     if (type == 'O'){
         return this->second_player_;
-    }
+    } // 'C' for computer type
     if (type == 'C'){
         if (current_Player_ == 'X'){
             return this->first_player_;
         }
         return this->second_player_;
-    }
+    } // 'D' for the other player (not computer) type
     if (type == 'D'){
         if (current_Player_ == 'X'){
             return this->second_player_;
@@ -301,4 +303,3 @@ Player *GameLogic::getPlayer(char type) {
         return this->first_player_;
     }
 }
-

@@ -3,11 +3,7 @@
 #define EX2_DSA_H
 
 #include "../include/GameFlow.h"
-
-#include <iostream>
-#include <unistd.h>
 #include "../include/AIPlayer.h"
-#include "../include/ConsoleScreen.h"
 #include "../include/HumanPlayer.h"
 #include "../include/Client.h"
 #include "../include/RemotePlayer.h"
@@ -22,30 +18,31 @@ GameFlow::~GameFlow() {
     delete game;
 }
 
-void GameFlow::play() {
-    // printing the board
+void GameFlow::run() {
     Board *board = this->game->getBoard();
     Player *player;
+    // printing the board
     screen->printBoard(*board);
-    string user_choice;
-    string choice_to_compare;
+    string user_choice,choice_to_compare;
     // as long as the game is not over
     while (!this->game->checksIfGameOver(*this->game->getBoard())) {
         board = this->game->getBoard();
         player = (game->getPlayer('C'));
+        // ask for point if it's needed
         if (!(computer) || player->getType() == 'X' ) {
             screen->printPlayerOrder(player->getType());
         }
-        // if the player can make a move
+        // scan a point
         user_choice = this->game->getPlayer('C')->chooseCell(*this->game);
+        // if the player can make a move
         if (user_choice.compare("NO MOVE")){
             // split the input
             vector<int> point_coordinate = screen->cutPoint(user_choice);
             int first_number = point_coordinate.front();
             int second_number = point_coordinate.back();
-
-            screen->printPlayerMove(player->getType(), first_number, second_number);
-
+            // print move
+            screen->printPlayerMove(player->getType(),
+                                    first_number, second_number);
             // updating the board and printing it
             this->game->updateBoard(first_number , second_number ,
                                     this->game->getPlayer('D')->getType(),
@@ -63,8 +60,8 @@ void GameFlow::play() {
 }
 
 void GameFlow::showScores() {
-    screen->printGameOver(this->game->returnsWhoWon(),
-                          this->game->getPlayer1Score(), game->getPlayer2Score());
+    screen->printGameOver(this->game->returnsWhoWon()
+            , this->game->getPlayer1Score(), game->getPlayer2Score());
 }
 
 void GameFlow::setUpGame() {
@@ -72,17 +69,20 @@ void GameFlow::setUpGame() {
     int playerCheck = this->screen->printOpenMenu();
     Player *player1, *player2;
     switch (playerCheck) {
+        // for a game with a human
         case 1:
             player1 = new HumanPlayer('X', screen);
             player2 = new HumanPlayer('O', screen);
             this->computer = false;
             break;
+            // for a game with the computer
         case 2 :
             player1 = new HumanPlayer('X', screen);
             player2 = new AIPlayer('O', screen);
             this->computer = true;
             break;
         case 3 :
+            // connect by client
             try{
                 Client client("127.0.0.1",123456);
                 int num_of_player=client.connectToServer();
@@ -92,19 +92,19 @@ void GameFlow::setUpGame() {
                 } else {
                     player1=new RemotePlayer('X',screen,client);
                     player2=new LocalPlayer('O',screen,client);
-
                 }
-
             }catch (const char *msg)
             {
-                cout << "Failed to connect to server. Reason: " << msg << endl;
+                this->screen->printString("Failed to connect to server. Reason: ");
+                this->screen->printString(msg);
+                this->screen->printEndl();
                 return;
             }
             break;
         default:
             return;
 
-    }
+    } // create the game
     this->game = new GameLogic(size, player1, player2, screen);
 }
 #endif //EX2_DSA_H

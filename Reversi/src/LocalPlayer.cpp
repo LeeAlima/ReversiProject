@@ -1,6 +1,3 @@
-//
-// Created by lee on 06/12/17.
-//
 
 #include <cstring>
 #include "../include/LocalPlayer.h"

@@ -21,7 +21,7 @@ public:
     GameLogic(int size,Player *player1,Player *player2,ConsoleScreen *screen);
 
     /**
-     * this is the deconstructor of the game.
+     * this is the destructor of the game.
      */
     ~GameLogic();
 
@@ -66,8 +66,8 @@ public:
     Board* updateBoard(int row, int col, char type, Board &board);
 
     /**
-     * this methos returns the board's game
-     * @return
+     * this method returns the board's game
+     * @return Board* - as the game's board object
      */
     Board* getBoard();
 

@@ -28,7 +28,6 @@ void ConsoleScreen::printBoard(Board &board) const {
             cout << "| " << z << " ";
         }
     }
-    //cout << col;
     cout << "|" << endl;
     cout << "--";
     for (int i = 0; i < size; i++) {
@@ -58,7 +57,6 @@ void ConsoleScreen::printBoard(Board &board) const {
         }
         cout << endl;
     }
-
 }
 
 void ConsoleScreen::printPlayerOrder(char type) const {
@@ -75,6 +73,7 @@ void ConsoleScreen::printPlayerOrder(char type) const {
 
 void ConsoleScreen::printPossibleMoves(vector<string> &moves,
                                        bool computer, char type) const {
+    // if the player can choose cell for himself print him his options
     if (!computer || type == 'X') {
         cout << "Your possible moves are: ";
         for (int i = 0; i < moves.size(); i++) {
@@ -92,10 +91,12 @@ void ConsoleScreen::printPossibleMoves(vector<string> &moves,
 }
 
 string ConsoleScreen::printPlayerDialog() const {
+    // ask the user for a point
     cout << "Please enter your move row,col:";
     string user_cell;
     size_t prev = 0;
     cin >> user_cell;
+    // check legality
     while (user_cell.size() > 3 || user_cell.find(",", prev) == -1) {
         cout << "Bad choice, please enter a"
                 " new point:" << endl;
@@ -107,7 +108,6 @@ string ConsoleScreen::printPlayerDialog() const {
 }
 
 void ConsoleScreen::printPlayerMove(char type,int num1,int num2) const{
-   cout<<"ggg"<<endl;
     switch (type) {
         case 'O':
             cout << "'O' chose ("<<num1+1<<","<<num2+1<<")"<<endl;
@@ -121,17 +121,15 @@ void ConsoleScreen::printPlayerMove(char type,int num1,int num2) const{
 }
 
 int ConsoleScreen::printOpenMenu() const {
-
     int option;
-
     cout << "Welcome to our game!!!!!!" << endl << endl << endl;
     cout << "Choose an opponent type:" << endl;
     cout << "1. a human local player" << endl;
     cout << "2. an AI player" << endl;
     cout << "3. a remote player" << endl;
-
     do {
         cin >> option;
+        // for bad option
         if (option != 1 && option != 2 && option != 3) {
             cout << "Error try again.." << endl;
             cin.clear();
@@ -141,16 +139,15 @@ int ConsoleScreen::printOpenMenu() const {
     return option;
 }
 
-void ConsoleScreen::printGameOver(char flag, int score1, int score2) const {
-
+void ConsoleScreen::printGameOver(char flag, int score_1, int score_2) const {
     if (flag == '=') {
-        cout << "It's a tie!, each player got " << score1 << " points." << endl;
+        cout << "It's a tie!, each player got "<< score_1 << " points."<< endl;
         return;
     }
     // if it's not a tie, print a message of the winner and the player's points
     cout << "Game Is Over, the winner is: " << flag << endl;
-    cout << "X: You got " << score1 << " points" << endl;
-    cout << "O: You got " << score2 << " points" << endl;
+    cout << "X: You got " << score_1 << " points" << endl;
+    cout << "O: You got " << score_2 << " points" << endl;
 }
 
 string ConsoleScreen::fixPointToUser(vector<int> s) const {
@@ -197,4 +194,3 @@ vector<int> ConsoleScreen::cutPoint(string user_input) const {
     point.push_back(second_number);
     return point;
 }
-
