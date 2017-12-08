@@ -97,7 +97,7 @@ public:
      * this method prints the turns
      * @param type - as the current player type
      */
-    void printPlayerOrder(char type) const;
+    void printPlayerOrder(bool b,char type) const;
 };
 
 #endif //EX2_CONSOLESCREEN_H

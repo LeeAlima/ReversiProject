@@ -30,7 +30,11 @@ void GameFlow::run() {
         player = (game->getPlayer('C'));
         // ask for point if it's needed
         if (!(computer) || player->getType() == 'X' ) {
-            screen->printPlayerOrder(player->getType());
+            bool b = x_player_;
+            if (player->getType() == 'O'){
+                b = o_player_;
+            }
+            screen->printPlayerOrder(b,player->getType());
         }
         // scan a point
         user_choice = this->game->getPlayer('C')->chooseCell(*this->game);
@@ -74,24 +78,32 @@ void GameFlow::setUpGame() {
             player1 = new HumanPlayer('X', screen);
             player2 = new HumanPlayer('O', screen);
             this->computer = false;
+            this->x_player_ = true;
+            this->o_player_ = true;
             break;
             // for a game with the computer
         case 2 :
             player1 = new HumanPlayer('X', screen);
             player2 = new AIPlayer('O', screen);
             this->computer = true;
+            this->x_player_ = true;
+            this->o_player_ = true;
             break;
         case 3 :
             // connect by client
             try{
-                Client client("127.0.0.1",123456);
+                Client client("127.0.0.1",12345);
                 int num_of_player=client.connectToServer();
                 if(num_of_player==1){
                     player1 =new LocalPlayer('X',screen,client);
                     player2= new RemotePlayer('O',screen,client);
+                    this->x_player_ = true;
+                    this->o_player_ = false;
                 } else {
                     player1=new RemotePlayer('X',screen,client);
                     player2=new LocalPlayer('O',screen,client);
+                    this->x_player_ = false;
+                    this->o_player_ = true;
                 }
             }catch (const char *msg)
             {

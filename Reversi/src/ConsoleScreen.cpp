@@ -59,16 +59,20 @@ void ConsoleScreen::printBoard(Board &board) const {
     }
 }
 
-void ConsoleScreen::printPlayerOrder(char type) const {
-    switch (type) {
-        case 'O':
-            cout << "O: ";
-            break;
-        case 'X':
-            cout << "X: ";
-            break;
+void ConsoleScreen::printPlayerOrder(bool b,char type) const {
+    if (b){
+        switch (type) {
+            case 'O':
+                cout << "O: ";
+                break;
+            case 'X':
+                cout << "X: ";
+                break;
+        }
+        cout << "It's your move." << endl;
+    } else {
+        cout << "Waiting for other player's move" << endl;
     }
-    cout << "It's your move." << endl;
 }
 
 void ConsoleScreen::printPossibleMoves(vector<string> &moves,

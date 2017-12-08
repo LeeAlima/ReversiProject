@@ -38,6 +38,8 @@ private:
     GameLogic* game;
     ConsoleScreen *screen;
     bool computer;
+    bool x_player_;
+    bool o_player_;
 
     /**
      * this method prints the scores to the user
