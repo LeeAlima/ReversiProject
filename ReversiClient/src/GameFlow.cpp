@@ -11,8 +11,6 @@
 #include "../include/LocalPlayer.h"
 
 GameFlow::GameFlow(int size):size(size){
-    // creating a new game
-    this->screen = new ConsoleScreen();
 }
 
 GameFlow::~GameFlow() {
@@ -56,8 +54,7 @@ void GameFlow::run() {
             this->screen->printBoard(*board);
         }
  else { // if no move is possible
-            this->screen->printString("No moves are possible for you");
-            this->screen->printEndl();
+            this->screen->printNoMoveOrder(player->getType());
         }
         this->game->changePlayer();
     }
@@ -91,15 +88,13 @@ void GameFlow::setUpGame() {
             this->o_player_ = true;
             break;
         case 3 :{
-            // connect by client
+            // connect by client and opening the file
             ifstream inFile;
             inFile.open("config_client.txt");
             string ip;
             int port;
             inFile >> ip;
             inFile >> port;
-            cout<<ip<<endl;
-            cout<<port<<endl;
             try{
                 Client client(ip.c_str(),port);
                 int num_of_player=client.connectToServer();
@@ -115,7 +110,8 @@ void GameFlow::setUpGame() {
                     this->o_player_ = true;
                 }
             }catch (const char *msg) {
-                this->screen->printString("Failed to connect to server. Reason: ");
+                this->screen->printString("Failed to connect to server."
+                                                  " Reason: ");
                 this->screen->printString(msg);
                 this->screen->printEndl();
                 return;

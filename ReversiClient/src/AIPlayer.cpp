@@ -53,8 +53,8 @@ string AIPlayer::chooseCell(GameLogic &game) {
                     X_x_coordinate = second_vec_cor[0];
                     X_y_coordinate = second_vec_cor[1];
                     // update the game
-                    board_after_human_move = game.updateBoard(X_x_coordinate, X_y_coordinate, 'O',
-                                                              *board_after_human_move);
+                    board_after_human_move = game.updateBoard(X_x_coordinate
+                            , X_y_coordinate, 'O',*board_after_human_move);
                     // save the max difference
                     if (game.getScoresDifference(*board_after_human_move) > max) {
                         max = game.getScoresDifference(*board_after_human_move);

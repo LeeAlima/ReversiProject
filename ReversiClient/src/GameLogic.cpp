@@ -201,8 +201,6 @@ bool GameLogic::checkPlayerMove(string user_input, char type,Board & board) {
                     return true;
                 }
             }
-    this->my_screen_->printString("Bad choice, please enter a new point:");
-    this->my_screen_->printEndl();
     return false;
     }
 

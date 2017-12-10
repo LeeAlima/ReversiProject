@@ -5,7 +5,7 @@
 
 #include "Player.h"
 #include "Client.h"
-
+#include "stdlib.h"
 /**
  * this is the remote player, he can't choose cell for himself,
  * but choose by the information from the server.

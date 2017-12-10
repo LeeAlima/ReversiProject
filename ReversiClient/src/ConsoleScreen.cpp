@@ -83,7 +83,7 @@ void ConsoleScreen::printPossibleMoves(vector<string> &moves,
         for (int i = 0; i < moves.size(); i++) {
             vector<int> string_change = cutPoint(moves[i]);
             cout << this->fixPointToUser(string_change);
-            if (moves[i] != (moves.end() - 1)[i]) {
+            if (i != moves.size()-1 ){
                 cout << ",";
             }
         }
@@ -101,7 +101,7 @@ string ConsoleScreen::printPlayerDialog() const {
     size_t prev = 0;
     cin >> user_cell;
     // check legality
-    while (user_cell.size() > 3 || user_cell.find(",", prev) == -1) {
+    while (user_cell.size() != 3 || user_cell.find(",", prev) == -1) {
         cout << "Bad choice, please enter a"
                 " new point:" << endl;
         cin.clear();
@@ -197,4 +197,10 @@ vector<int> ConsoleScreen::cutPoint(string user_input) const {
     point.push_back(first_number);
     point.push_back(second_number);
     return point;
+}
+
+void ConsoleScreen::printNoMoveOrder(char type) const {
+
+    cout<<"NO POSSIBLE MOVES FOR "<<type<<endl;
+
 }

@@ -98,6 +98,12 @@ public:
      * @param type - as the current player type
      */
     void printPlayerOrder(bool b,char type) const;
+
+    /**
+     * this method prints which player has no moves.
+     * @param type - player type
+     */
+    void printNoMoveOrder(char type) const;
 };
 
 #endif //EX2_CONSOLESCREEN_H
