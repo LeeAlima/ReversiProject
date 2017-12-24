@@ -7,10 +7,11 @@
 #include <iostream>
 #include <stdio.h>
 #include <list>
+#include <vector>
+#include "CommandManager.h"
 
 using namespace std;
 
-class CommandManger;
 
 class Server {
 public:
@@ -34,12 +35,18 @@ public:
      * stop connection
      */
 	void stop();
+	bool handleCommand(int clientSocket);
+
+	pair<string,vector<string>> extractCommand(string msg);
+
+    static void* executeHandleCommand(void *tArgs) ;
 
 private:
 	int _port;
 	int _socket;
 	list<Game> list_of_games;
-    CommandManger *command_manger;
+    CommandManager *command_manger;
+    vector<pthread_t> threads;
 
     /**
      * this method handle the client by trying to read from the socket

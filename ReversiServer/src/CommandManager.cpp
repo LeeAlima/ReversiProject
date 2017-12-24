@@ -9,19 +9,19 @@
 #include "../include/CloseCommand.h"
 #include "../include/JoinCommand.h"
 
-CommandsManager::CommandsManager() {
+CommandManager::CommandManager() {
     commandsMap["start"] = new StartCommand();
     commandsMap["list"] = new ListCommand();
     commandsMap["play"] = new PlayCommand();
     commandsMap["close"] = new CloseCommand();
     commandsMap["join"] = new JoinCommand();
 }
-void CommandsManager::executeCommand(string
+void CommandManager::executeCommand(string
                                      command, vector<string> args) {
     Command *commandObj = commandsMap[command];
     commandObj->execute(args);
 }
-CommandsManager::~CommandsManager() {
+CommandManager::~CommandManager() {
     map<string, Command *>::iterator it;
     for (it = commandsMap.begin(); it !=
                                    commandsMap.end(); it++) {

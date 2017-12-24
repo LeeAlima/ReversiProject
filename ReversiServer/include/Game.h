@@ -9,11 +9,17 @@
 #include <iostream>
 
 using namespace std;
-
+enum STATUS {
+    WAIT, PLAYING, ENDGAME
+};
 class Game {
 public:
     Game();
     ~Game();
+
+    STATUS getStatus() const;
+
+    void setStatus(STATUS status);
 
     const string &getName() const;
 
@@ -31,6 +37,7 @@ private:
     string name;
     int first_socket;
     int second_socket;
+    STATUS status;
 };
 
 

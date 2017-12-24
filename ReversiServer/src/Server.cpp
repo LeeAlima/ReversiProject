@@ -4,10 +4,16 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-#define MAX_CONNECTED_CLIENTS 2
+#define MAX_CONNECTED_CLIENTS 10
 using namespace std;
 
+struct ThreadArgs {
+    Server* obj;
+    int clientSocket;
+};
+
 Server::Server(int port) : _port(port), _socket(0){
+    command_manger=new CommandManager();
 }
 
 Server::~Server() {
@@ -33,39 +39,24 @@ void Server::start() {
 	listen(_socket, MAX_CONNECTED_CLIENTS);
 	struct sockaddr_in clientAddress;
 	socklen_t clientAddressLen;
-	int client1Socket,client2Socket;
-	while (true) {
-		cout << "Waiting for clients connections..." << endl;
-		client1Socket = accept(_socket, (struct sockaddr *) &clientAddress,
+	int clientSocket;
+	int i=0;
+    cout << "Waiting for clients connections..." << endl;
+    while (true) {
+		clientSocket = accept(_socket, (struct sockaddr *) &clientAddress,
 							   &clientAddressLen);
-		cout << "Client 1 connected" << endl;
-		if (client1Socket == -1) {
+		cout << "Client "<<i<<" connected" << endl;
+		if (clientSocket == -1) {
 			throw "Error on accept";
 		}
-		cout << "Waiting for client 2 connection..." << endl;
-		// wait for the second client to connect
-		client2Socket = accept(_socket, (struct sockaddr *) &clientAddress,
-							   &clientAddressLen);
-		cout << "Client 2 connected" << endl;
-		if (client2Socket == -1) {
-			throw "Error on accept";
+		pthread_t p;
+		threads.push_back(p);
+        int rc = pthread_create(&threads[i],NULL,executeHandleCommand,&clientSocket);
+		if (rc) {
+			cout << "Error: unable to create thread, " << rc << endl;
+			exit(-1);
 		}
-		int num_of_client = 1;
-		write(client1Socket, &num_of_client, sizeof(num_of_client));
-		num_of_client = 2;
-		write(client2Socket, &num_of_client, sizeof(num_of_client));
-		int i = 0;
-		bool end_of_game=true;
-		while (end_of_game) {
-			if (i % 2 == 0) {
-				end_of_game = handleClient(client1Socket, client2Socket);
-			} else {
-				end_of_game = handleClient(client2Socket, client1Socket);
-			}
-			i++;
-		}
-		close(client1Socket);
-		close(client2Socket);
+		i++;
 	}
 }
 
@@ -104,4 +95,57 @@ void Server::stop() {
 	// close connection
 	close(_socket);
 }
+
+bool Server::handleCommand(int clientSocket) {
+    char buffer_local[9];
+    string message = "";
+    pair<string, vector<string>> cmd;
+    while (true){
+        cout << "wait for command " << clientSocket << endl;
+        int n = read(clientSocket, buffer_local, 9);
+        if (n == -1) {
+            cout << "Error reading buffer_local" << endl;
+            return false;
+        }
+        if (n == 0) {
+            cout << "Client disconnected" << endl;
+            return false;
+        }
+        message.append(buffer_local);
+        cmd = extractCommand(message);
+        command_manger->executeCommand(cmd.first,cmd.second);
+        close(clientSocket);
+    }
+}
+
+pair<string, vector<string>> Server::extractCommand(string msg) {
+    vector<string> args;
+    string cmd="";
+    size_t prev = 0, pos = 0;
+    pos = msg.find(" ", prev);
+    if (pos == string::npos)
+        return make_pair(msg,args);
+    string token = msg.substr(prev, pos - prev);
+    if (!token.empty())
+        cmd.append(token);
+    prev = pos + 1;
+    do {
+        // split by
+        pos = msg.find(" ", prev);
+        if (pos == string::npos)
+            return make_pair(msg,args);
+        token = msg.substr(prev, pos - prev);
+        if (!token.empty())
+            args.push_back(token);
+        prev = pos + 1;
+    } while (pos < msg.length() && prev < msg.length());
+
+    return make_pair(cmd,args);
+}
+
+void *Server::executeHandleCommand(void *tArgs) {
+        struct ThreadArgs *args = (struct ThreadArgs *)tArgs;
+        args->obj->handleCommand(args->clientSocket);
+}
+
 

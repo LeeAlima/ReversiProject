@@ -4,6 +4,10 @@
 
 #include "../include/Game.h"
 
+
+Game::Game() :first_socket(-1),second_socket(-1){
+}
+
 const string &Game::getName() const {
     return name;
 }
@@ -27,3 +31,13 @@ int Game::getSecond_socket() const {
 void Game::setSecond_socket(int second_socket) {
     Game::second_socket = second_socket;
 }
+
+STATUS Game::getStatus() const {
+    return status;
+}
+
+void Game::setStatus(STATUS status) {
+    Game::status = status;
+}
+
+

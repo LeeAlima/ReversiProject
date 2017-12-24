@@ -7,10 +7,10 @@
 
 #include <map>
 #include "../include/Command.h"
-class CommandsManager {
+class CommandManager {
 public:
-    CommandsManager();
-    ~CommandsManager();
+    CommandManager();
+    ~CommandManager();
     void executeCommand(string command,
                         vector<string> args);
 private:
