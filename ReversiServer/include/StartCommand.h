@@ -5,11 +5,16 @@
 #ifndef REVERSISERVER_STARTCOMMAND_H
 #define REVERSISERVER_STARTCOMMAND_H
 #include "../include/Command.h"
+#include "RunServer.h"
 
 class StartCommand: public Command {
 public:
-    virtual void execute(vector<string> args) {
-        return;
-    }
+    StartCommand(RunServer &_run);
+
+    virtual ~StartCommand();
+
+    virtual void execute(vector<string> args) ;
+private:
+    RunServer &_run;
 };
 #endif //REVERSISERVER_STARTCOMMAND_H

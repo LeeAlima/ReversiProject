@@ -8,13 +8,14 @@
 #include "../include/PlayCommand.h"
 #include "../include/CloseCommand.h"
 #include "../include/JoinCommand.h"
+#include "../include/RunServer.h"
 
-CommandManager::CommandManager() {
-    commandsMap["start"] = new StartCommand();
-    commandsMap["list"] = new ListCommand();
-    commandsMap["play"] = new PlayCommand();
-    commandsMap["close"] = new CloseCommand();
-    commandsMap["join"] = new JoinCommand();
+CommandManager::CommandManager(RunServer &run_server) {
+    commandsMap["start"] = new StartCommand(run_server);
+    commandsMap["list"] = new ListCommand(run_server);
+    /*commandsMap["play"] = new PlayCommand(run_server);*/
+    commandsMap["close"] = new CloseCommand(run_server);
+    commandsMap["join"] = new JoinCommand(run_server);
 }
 void CommandManager::executeCommand(string
                                      command, vector<string> args) {

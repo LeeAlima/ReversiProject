@@ -6,11 +6,16 @@
 #define REVERSISERVER_JOINCOMMAND_H
 
 #include "../include/Command.h"
+#include "RunServer.h"
 
 class JoinCommand: public Command {
 public:
-    virtual void execute(vector<string> args) {
-        return;
-    }
+    JoinCommand(RunServer &_run);
+
+    virtual ~JoinCommand();
+
+    virtual void execute(vector<string> args) ;
+private:
+    RunServer &_run;
 };
 #endif //REVERSISERVER_JOINCOMMAND_H

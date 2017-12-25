@@ -24,7 +24,6 @@ public:
     void listOfGames(vector<string> args);
     void joinToGame(vector<string> args);
     void closeGame(vector<string> args);
-    void playGame(vector<string> args);
 
 private:
     list<Game> list_of_games;

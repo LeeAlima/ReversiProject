@@ -9,19 +9,23 @@
 #include <list>
 #include <vector>
 #include "CommandManager.h"
+#include "ClientHandler.h"
 
 using namespace std;
 
 
 class Server {
 public:
+
     /**
      * this is the constructor of Server
      * @param port - the number of port
      */
     Server(int port);
 
-    /**
+	Server(int _port, const ClientHandler &_client_handler);
+
+	/**
      * this is the destructor of Server
      */
 	virtual ~Server();
@@ -35,18 +39,13 @@ public:
      * stop connection
      */
 	void stop();
-	bool handleCommand(int clientSocket);
-
-	pair<string,vector<string>> extractCommand(string msg);
-
-    static void* executeHandleCommand(void *tArgs) ;
-
+	static void* connectClient(void* obj);
 private:
 	int _port;
 	int _socket;
-	list<Game> list_of_games;
-    CommandManager *command_manger;
-    vector<pthread_t> threads;
+    ClientHandler *_client_handler;
+    vector<pthread_t*> threads;
+	int clientSocket;
 
     /**
      * this method handle the client by trying to read from the socket
@@ -57,6 +56,8 @@ private:
      * if the game can continue
      */
 	bool handleClient(int sender, int receiver);
+
+	void addThread(int i);
 };
 
 #endif /* SRC_SERVER_H_ */

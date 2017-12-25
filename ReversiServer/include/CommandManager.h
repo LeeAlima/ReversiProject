@@ -7,9 +7,11 @@
 
 #include <map>
 #include "../include/Command.h"
+#include "RunServer.h"
+
 class CommandManager {
 public:
-    CommandManager();
+    CommandManager(RunServer &run_server);
     ~CommandManager();
     void executeCommand(string command,
                         vector<string> args);

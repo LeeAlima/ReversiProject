@@ -5,11 +5,16 @@
 #ifndef REVERSISERVER_CLOSECOMMAND_H
 #define REVERSISERVER_CLOSECOMMAND_H
 #include "../include/Command.h"
+#include "RunServer.h"
 
 class CloseCommand: public Command {
 public:
-    virtual void execute(vector<string> args) {
-        return;
-    }
+    CloseCommand(RunServer &_run);
+
+    virtual ~CloseCommand();
+
+    virtual void execute(vector<string> args);
+private:
+    RunServer &_run;
 };
 #endif //REVERSISERVER_CLOSECOMMAND_H

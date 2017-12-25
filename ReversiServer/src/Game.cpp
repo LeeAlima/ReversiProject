@@ -7,7 +7,9 @@
 
 Game::Game() :first_socket(-1),second_socket(-1){
 }
+Game::~Game() {
 
+}
 const string &Game::getName() const {
     return name;
 }
@@ -39,5 +41,7 @@ STATUS Game::getStatus() const {
 void Game::setStatus(STATUS status) {
     Game::status = status;
 }
+
+
 
 
