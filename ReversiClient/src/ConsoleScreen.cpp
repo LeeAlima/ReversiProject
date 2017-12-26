@@ -5,6 +5,7 @@
 #include <sstream>
 #include <unistd.h>
 
+
 ConsoleScreen::ConsoleScreen(){
 };
 
@@ -200,7 +201,59 @@ vector<int> ConsoleScreen::cutPoint(string user_input) const {
 }
 
 void ConsoleScreen::printNoMoveOrder(char type) const {
-
     cout<<"NO POSSIBLE MOVES FOR "<<type<<endl;
+}
+
+
+int ConsoleScreen::printSubMenu() {
+    int option;
+    cout << "Please choose an option" << endl;
+    cout << "1. To start a game" << endl;
+    cout << "2. To print the list of games" << endl;
+    cout << "3. To join a game" << endl;
+    cout << "4. To close a game" << endl;
+    do {
+        cin >> option;
+        // for bad option
+        if (option != 1 && option != 2 && option != 3 && option != 4) {
+            cout << "Error try again.." << endl;
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+    } while (option != 1 && option != 2 && option != 3 && option != 4);
+    return option;
+}
+
+string ConsoleScreen::handleSubMenu() {
+    int option = printSubMenu();
+    string game_name;
+    string final_choose ="";
+    switch (option) {
+        case 1:
+            cout << "Enter the name of the game you want to start:" << endl;
+            final_choose.append("start <");
+            break;
+        case 2:
+            return "list_games";
+        case 3:
+            cout << "Enter the name of the game you want to join:" << endl;
+            final_choose.append("join <");
+            break;
+        case 4:
+            cout << "Enter the name of the game you want to close:" << endl;
+            final_choose.append("close <");
+            break;
+        default:
+            break;
+    }
+    game_name = userChoiceOfGame();
+    final_choose.append(game_name+">");
+    return final_choose;
+}
+
+string ConsoleScreen::userChoiceOfGame() {
+    string game_name;
+    cin >> game_name;
+    return game_name;
 
 }

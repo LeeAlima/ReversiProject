@@ -104,6 +104,13 @@ public:
      * @param type - player type
      */
     void printNoMoveOrder(char type) const;
+
+    int printSubMenu();
+
+    string handleSubMenu();
+
+    string userChoiceOfGame();
+
 };
 
 #endif //EX2_CONSOLESCREEN_H

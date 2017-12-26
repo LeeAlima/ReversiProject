@@ -3,12 +3,23 @@
 #define EX2_DSA_H
 
 #include <fstream>
+#include <cstring>
+#include <unistd.h>
 #include "../include/GameFlow.h"
 #include "../include/AIPlayer.h"
 #include "../include/HumanPlayer.h"
 #include "../include/Client.h"
 #include "../include/RemotePlayer.h"
 #include "../include/LocalPlayer.h"
+
+# define OkStart 1
+# define NotOkStart 2
+# define OkJoin 3
+# define NotSuchAGameJoin 4
+# define GameIsPlaying 5
+# define OkClose 6
+# define NotOkClose 7
+# define NotOkList 8
 
 GameFlow::GameFlow(int size):size(size){
 }
@@ -66,62 +77,148 @@ void GameFlow::showScores() {
             , this->game->getPlayer1Score(), game->getPlayer2Score());
 }
 
+
 void GameFlow::setUpGame() {
     this->screen = new ConsoleScreen();
     int playerCheck = this->screen->printOpenMenu();
-    Player *player1, *player2;
     switch (playerCheck) {
         // for a game with a human
         case 1:
-            player1 = new HumanPlayer('X', screen);
-            player2 = new HumanPlayer('O', screen);
-            this->computer = false;
-            this->x_player_ = true;
-            this->o_player_ = true;
+            createGameHuman();
             break;
             // for a game with the computer
         case 2 :
-            player1 = new HumanPlayer('X', screen);
-            player2 = new AIPlayer('O', screen);
-            this->computer = true;
-            this->x_player_ = true;
-            this->o_player_ = true;
+            createAIGame();
             break;
-        case 3 :{
+        case 3 : {
             // connect by client and opening the file
-            ifstream inFile;
-            inFile.open("config_client.txt");
-            string ip;
-            int port;
-            inFile >> ip;
-            inFile >> port;
-            try{
-                Client client(ip.c_str(),port);
-                int num_of_player=client.connectToServer();
-                if(num_of_player==1){
-                    player1 =new LocalPlayer('X',screen,client);
-                    player2= new RemotePlayer('O',screen,client);
-                    this->x_player_ = true;
-                    this->o_player_ = false;
-                } else {
-                    player1=new RemotePlayer('X',screen,client);
-                    player2=new LocalPlayer('O',screen,client);
-                    this->x_player_ = false;
-                    this->o_player_ = true;
-                }
-            }catch (const char *msg) {
+            Client client = createClientFromFile();
+            try {
+                handleThirdCase(client);
+            } catch (const char *msg) {
                 this->screen->printString("Failed to connect to server."
                                                   " Reason: ");
                 this->screen->printString(msg);
                 this->screen->printEndl();
                 return;
             }
-            break;
         }
-        default:
-            break;
+    }
+}
 
-    } // create the game
+Client GameFlow::createClientFromFile() {
+    ifstream inFile;
+    inFile.open("config_client.txt");
+    string ip;
+    int port;
+    inFile >> ip;
+    inFile >> port;
+    Client client(ip.c_str(),port);
+    return client;
+}
+
+void GameFlow::handleThirdCase(Client client) {
+    bool not_ok = true;
+    client.connectToServer();
+    while (not_ok) {
+        string user_sub_option = screen->handleSubMenu();
+        client.send((char *) user_sub_option.c_str());
+        string msgFromServer = client.receive();
+        if (msgFromServer.size() != 1) {
+            screen->printString(msgFromServer);
+            continue;
+        } else {
+            int option = atoi(msgFromServer.c_str());
+            switch (option) {
+                case OkStart:
+                    startGameCommand(client);
+                    return;
+                case NotOkStart:
+                    screen->printString("this name has been already token");
+                    screen->printEndl();
+                    continue;
+                case OkJoin:
+                    joinGameCommand(client);
+                    return;
+                case NotSuchAGameJoin:
+                    screen->printString("there is not such a game");
+                    screen->printEndl();
+                    continue;
+                case GameIsPlaying:
+                    screen->printString("this game is being played by 2 players");
+                    screen->printEndl();
+                    continue;
+                case OkClose:
+                    return;
+                case NotOkClose:
+                    screen->printString("there is not such a game");
+                    screen->printEndl();
+                    continue;
+                case NotOkList:
+                    screen->printString("The list is empty");
+                    screen->printEndl();
+                    continue;
+
+            }
+        }
+    }
+}
+
+void GameFlow::startGameCommand(Client client) {
+    screen->printString("Waiting for another player to join");
+    screen->printEndl();
+    // לעטוף בטריי קאטצ מהקייס עצמו
+    int number = getOrder(client);
+    string wait = "Your number is:" + screen->toStringInt(number);
+    screen->printString(wait);
+    screen->printEndl();
+    Player *player1 =new LocalPlayer('X',screen,client);
+    Player *player2= new RemotePlayer('O',screen,client);
+    this->x_player_ = true;
+    this->o_player_ = false;
     this->game = new GameLogic(size, player1, player2, screen);
 }
+
+void GameFlow::joinGameCommand(Client client) {
+    int number = getOrder(client);
+    string wait = "Your number is:" + screen->toStringInt(number);
+    screen->printString(wait);
+    screen->printEndl();
+    Player *player1=new RemotePlayer('X',screen,client);
+    Player *player2=new LocalPlayer('O',screen,client);
+    this->x_player_ = false;
+    this->o_player_ = true;
+    this->game = new GameLogic(size, player1, player2, screen);
+
+}
+
+void GameFlow::createGameHuman() {
+    Player *player1 = new HumanPlayer('X', screen);
+    Player *player2 = new HumanPlayer('O', screen);
+    this->computer = false;
+    this->x_player_ = true;
+    this->o_player_ = true;
+    this->game = new GameLogic(size, player1, player2, screen);
+}
+
+void GameFlow::createAIGame() {
+    Player *player1 = new HumanPlayer('X', screen);
+    Player *player2 = new AIPlayer('O', screen);
+    this->computer = true;
+    this->x_player_ = true;
+    this->o_player_ = true;
+    this->game = new GameLogic(size, player1, player2, screen);
+}
+
+int GameFlow::getOrder(Client client) {
+    int num_of_player;
+    int client_socket_ = client.getClientSocket();
+    int n = read(client_socket_, &num_of_player, sizeof(num_of_player));
+    if (n == -1) {
+        throw "Error of reading from socket";
+    }
+    return num_of_player;
+
+}
+
 #endif //EX2_DSA_H

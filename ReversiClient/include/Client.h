@@ -33,6 +33,8 @@ public:
      */
     char* receive() const;
 
+    int getClientSocket() const;
+
 private:
     const char *server_IP_;
     int server_port_;

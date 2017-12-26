@@ -39,13 +39,6 @@ int Client::connectToServer() {
         throw "Error connecting to server";
     }
     cout << "Connected to server" << endl;
-    int num_of_player;
-    int n = read(client_socket_, &num_of_player, sizeof(num_of_player));
-    if (n == -1) {
-        throw "Error of reading from socket";
-    }
-    cout << "Your number is:" << num_of_player << endl;
-    return num_of_player;
 }
 
 void Client::send(char *user_choice) const {
@@ -64,4 +57,8 @@ char *Client::receive() const {
         throw "Error of reading from socket";
     }
     return user_choice;
+}
+
+int Client:: getClientSocket() const{
+    return this->client_socket_;
 }

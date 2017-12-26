@@ -4,6 +4,7 @@
 
 #include "GameLogic.h"
 #include "ConsoleScreen.h"
+#include "Client.h"
 
 /**
  * this class runs the all game.
@@ -32,6 +33,20 @@ public:
     * and by the user choice initialize the members.
     */
     void setUpGame();
+
+    Client createClientFromFile();
+
+    void handleThirdCase(Client client);
+
+    void startGameCommand(Client client);
+
+    void joinGameCommand(Client client);
+
+    void createGameHuman();
+
+    void createAIGame();
+
+    int getOrder(Client client);
 
 private:
     int size;
