@@ -23,8 +23,6 @@ public:
      */
     Server(int port);
 
-	Server(int _port, const ClientHandler &_client_handler);
-
 	/**
      * this is the destructor of Server
      */
@@ -34,6 +32,10 @@ public:
      * start connection
      */
 	void start();
+
+    int getClientSocket() const;
+
+    void setClientSocket(int clientSocket);
 
     /**
      * stop connection

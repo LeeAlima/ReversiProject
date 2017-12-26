@@ -26,8 +26,17 @@ public:
     void closeGame(vector<string> args);
 
 private:
-    list<Game> list_of_games;
+    vector<Game *> list_of_games;
     int clientSocket;
+
+    string notOkStart;
+    string okStart;
+    string okJoin;
+    string notSuchGameJoin;
+    string gameIsPlaying;
+    string okClose;
+    string notOkClose;
+    string notOkList;
 };
 
 

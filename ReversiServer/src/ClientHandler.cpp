@@ -13,7 +13,6 @@ struct ThreadArgs {
 ClientHandler::ClientHandler(int client_Socket) {
     RunServer run_server(client_Socket);
     comMan = new CommandManager(run_server);
-    handle(client_Socket);
 }
 
 bool ClientHandler::handleCommand(int clientSocket) {
@@ -33,7 +32,7 @@ bool ClientHandler::handleCommand(int clientSocket) {
     message.append(buffer_local);
     cmd = extractCommand(message);
     comMan->executeCommand(cmd.first, cmd.second);
-    close(clientSocket);
+    //close(clientSocket);
 }
 
 pair<string, vector<string>> ClientHandler::extractCommand(string msg) {
@@ -59,23 +58,6 @@ pair<string, vector<string>> ClientHandler::extractCommand(string msg) {
     } while (pos < msg.length() && prev < msg.length());
 
     return make_pair(cmd, args);
-}
-
-void *ClientHandler::executeHandleCommand(void *tArgs) {
-    struct ThreadArgs *args = (struct ThreadArgs *) tArgs;
-    args->obj->handleCommand(args->clientSocket);
-}
-
-void ClientHandler::handle(int client_Socket) {
-    struct ThreadArgs *args;
-    args->clientSocket = client_Socket;
-    pthread_t *newThread = new pthread_t();
-    int rc = pthread_create(newThread, NULL, executeHandleCommand, &args);
-    if (rc) {
-        cout << "Error: unable to create thread, " << rc << endl;
-        exit(-1);
-    }
-
 }
 
 

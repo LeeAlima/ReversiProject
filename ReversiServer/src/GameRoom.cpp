@@ -21,6 +21,7 @@ bool GameRoom::handleMove(int sender, int receiver) {
     }
     cout << "Got move: " << buffer_local << endl;
     if (strcmp(buffer_local, "END") == 0) {
+        game->setStatus(ENDGAME);
         return false;
     }
     // write data
@@ -39,6 +40,10 @@ bool GameRoom::handleMove(int sender, int receiver) {
 
 void* GameRoom::runGame(void* obj) {
     GameRoom *ptr = (GameRoom *) obj;
+    int num_of_client=1;
+    write(ptr->game->getFirst_socket(), &num_of_client, sizeof(num_of_client));
+    num_of_client = 2;
+    write(ptr->game->getSecond_socket(), &num_of_client, sizeof(num_of_client));
     bool ok = true;
     int i=0;
     while (ok) {

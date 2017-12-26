@@ -24,6 +24,7 @@ int Game::getFirst_socket() const {
 
 void Game::setFirst_socket(int first_socket) {
     Game::first_socket = first_socket;
+
 }
 
 int Game::getSecond_socket() const {

@@ -100,7 +100,16 @@ void Server::addThread(int i) {
 
 void *Server::connectClient(void *obj) {
     Server *ptr = (Server *)obj;
-    ptr->_client_handler = new ClientHandler(ptr->clientSocket);
+    ptr->_client_handler = new ClientHandler(ptr->getClientSocket());
+    ptr->_client_handler->handleCommand(ptr->getClientSocket());
+}
+
+int Server::getClientSocket() const {
+    return clientSocket;
+}
+
+void Server::setClientSocket(int clientSocket) {
+    Server::clientSocket = clientSocket;
 }
 
 
