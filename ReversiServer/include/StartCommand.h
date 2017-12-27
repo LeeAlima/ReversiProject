@@ -9,12 +9,12 @@
 
 class StartCommand: public Command {
 public:
-    StartCommand(RunServer &_run);
+    StartCommand(RunServer *_run);
 
     virtual ~StartCommand();
 
     virtual void execute(vector<string> args) ;
 private:
-    RunServer &_run;
+    RunServer *_run;
 };
 #endif //REVERSISERVER_STARTCOMMAND_H

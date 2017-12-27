@@ -11,7 +11,7 @@
 
 class CommandManager {
 public:
-    CommandManager(RunServer &run_server);
+    CommandManager(RunServer *run_server);
     ~CommandManager();
     void executeCommand(string command,
                         vector<string> args);

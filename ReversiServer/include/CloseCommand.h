@@ -9,12 +9,12 @@
 
 class CloseCommand: public Command {
 public:
-    CloseCommand(RunServer &_run);
+    CloseCommand(RunServer *_run);
 
     virtual ~CloseCommand();
 
     virtual void execute(vector<string> args);
 private:
-    RunServer &_run;
+    RunServer *_run;
 };
 #endif //REVERSISERVER_CLOSECOMMAND_H

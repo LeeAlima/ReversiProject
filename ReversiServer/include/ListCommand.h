@@ -10,7 +10,7 @@
 
 class ListCommand: public Command {
 public:
-    ListCommand(RunServer &_run);
+    ListCommand(RunServer *_run);
 
     virtual ~ListCommand() ;
 
@@ -18,7 +18,7 @@ public:
     virtual void execute(vector<string> args);
 
 private:
-    RunServer &_run;
+    RunServer *_run;
 };
 
 #endif //REVERSISERVER_LISTCOMMAND_H

@@ -16,9 +16,12 @@ using namespace std;
 
 class RunServer {
 public:
-    RunServer(int clientSocket);
+    RunServer(int clientSocket,vector<Game*> *list);
 
     virtual ~RunServer();
+
+    void setClientSocket(int clientSocket);
+
     void sendMessageToClient(string msg);
     void startNewGame(vector<string> args);
     void listOfGames(vector<string> args);
@@ -26,7 +29,7 @@ public:
     void closeGame(vector<string> args);
 
 private:
-    vector<Game *> list_of_games;
+    vector<Game *> *list_of_games;
     int clientSocket;
 
     string notOkStart;

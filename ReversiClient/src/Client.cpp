@@ -1,4 +1,3 @@
-
 #include "../include/Client.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -41,24 +40,37 @@ int Client::connectToServer() {
     cout << "Connected to server" << endl;
 }
 
-void Client::send(char *user_choice) const {
-    // write the user choice
-    int n = write(client_socket_, user_choice, sizeof(user_choice));
+void Client::sendMove(const char *user_choice) const {
+    string copy;
+    copy.append(user_choice);
+    copy.append("\0");
+    int n = send(client_socket_, copy.c_str(), copy.size()+1,0);
     if (n == -1) {
         throw "Error of writing to socket";
     }
 }
 
 char *Client::receive() const {
-    char *user_choice = new char[9];
+    char *user_choice = new char[100];
     // read from socket
-    int n = read(client_socket_, user_choice, 9);
+    int n = read(client_socket_, user_choice, sizeof(user_choice));
     if (n == -1) {
         throw "Error of reading from socket";
     }
     return user_choice;
 }
-
+string Client::reciveMessage()const {
+    char buffer[100]={0};
+    string res="";
+    int n;
+    n=recv(client_socket_,buffer,99,0);
+    if(n>0){
+        res.append(buffer);
+    } else{
+        return "null";
+    }
+    return res;
+}
 int Client:: getClientSocket() const{
     return this->client_socket_;
 }

@@ -10,7 +10,7 @@
 #include "../include/JoinCommand.h"
 #include "../include/RunServer.h"
 
-CommandManager::CommandManager(RunServer &run_server) {
+CommandManager::CommandManager(RunServer *run_server) {
     commandsMap["start"] = new StartCommand(run_server);
     commandsMap["list"] = new ListCommand(run_server);
     /*commandsMap["play"] = new PlayCommand(run_server);*/

@@ -13,16 +13,20 @@ using namespace std;
 
 class ClientHandler {
 public:
+
     ClientHandler(int client_Socket);
 
-    bool handleCommand(int clientSocket);
-    pair<string, vector<string>> extractCommand(string msg);
-    static void* executeHandleCommand(void *tArgs) ;
+    void setClient_Socket(int client_Socket);
 
-    void handle(int client_Socket);
+    static void* handleCommand(void* obj);
+    pair<string, vector<string>> extractCommand(string msg);
+
 
 private:
+    int client_Socket;
+    RunServer *runServer;
     CommandManager *comMan;
+    vector<Game *> *list_of_games;
 };
 
 

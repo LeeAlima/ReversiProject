@@ -10,12 +10,12 @@
 
 class JoinCommand: public Command {
 public:
-    JoinCommand(RunServer &_run);
+    JoinCommand(RunServer *_run);
 
     virtual ~JoinCommand();
 
     virtual void execute(vector<string> args) ;
 private:
-    RunServer &_run;
+    RunServer *_run;
 };
 #endif //REVERSISERVER_JOINCOMMAND_H

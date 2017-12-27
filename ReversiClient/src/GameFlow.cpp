@@ -91,8 +91,18 @@ void GameFlow::setUpGame() {
             createAIGame();
             break;
         case 3 : {
+            ifstream inFile;
+            inFile.open("config_client.txt");
+            string ip;
+            int port;
+            inFile >> ip;
+            inFile >> port;
+            Client client(ip.c_str(),port);
+            // לתקן!!!!!
             // connect by client and opening the file
-            Client client = createClientFromFile();
+            /*pair<const char*,int> dataToClient= createClientFromFile();
+            Client client(dataToClient.first,dataToClient.second);*/
+            //Client client = createClien;
             try {
                 handleThirdCase(client);
             } catch (const char *msg) {
@@ -106,24 +116,30 @@ void GameFlow::setUpGame() {
     }
 }
 
-Client GameFlow::createClientFromFile() {
+pair<const char *, int> GameFlow::createClientFromFile() {
     ifstream inFile;
     inFile.open("config_client.txt");
     string ip;
     int port;
     inFile >> ip;
     inFile >> port;
-    Client client(ip.c_str(),port);
-    return client;
+    return make_pair(ip.c_str(),port);
+    //Client client(ip.c_str(),port);
+    //return client;
 }
 
 void GameFlow::handleThirdCase(Client client) {
     bool not_ok = true;
-    client.connectToServer();
     while (not_ok) {
+        client.connectToServer();
         string user_sub_option = screen->handleSubMenu();
-        client.send((char *) user_sub_option.c_str());
-        string msgFromServer = client.receive();
+        user_sub_option.append("\0");
+        //char *copy = new char[user_sub_option.size()];
+        //strcpy(copy,user_sub_option.c_str());
+        client.sendMove(user_sub_option.c_str());
+        //string msgFromServer = client.receive();
+
+        string msgFromServer = client.reciveMessage();
         if (msgFromServer.size() != 1) {
             screen->printString(msgFromServer);
             continue;

@@ -5,12 +5,12 @@
 #include "../include/CloseCommand.h"
 #include "../include/RunServer.h"
 
-CloseCommand::CloseCommand(RunServer &_run) : _run(_run) {}
+CloseCommand::CloseCommand(RunServer *_run) : _run(_run) {}
 
 CloseCommand::~CloseCommand() {
 
 }
 
 void CloseCommand::execute(vector<string> args) {
-    _run.closeGame(args);
+    _run->closeGame(args);
 }

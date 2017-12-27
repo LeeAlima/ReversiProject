@@ -9,8 +9,8 @@
 using namespace std;
 
 
-
-Server::Server(int port) : _port(port), _socket(0) {
+Server::Server(int _port) : _port(_port), _socket(0) {
+    c = new ClientHandler(0);
 }
 
 Server::~Server() {
@@ -43,66 +43,34 @@ void Server::start() {
     while (true) {
         clientSocket = accept(_socket, (struct sockaddr *) &clientAddress,
                               &clientAddressLen);
-        cout << "Client connected" << endl;
         if (clientSocket == -1) {
             throw "Error on accept";
         }
-        addThread(i);
+        cout << "Client connected" << endl;
+        addThread(clientSocket);
         i++;
     }
 }
 
-
-bool Server::handleClient(int sender, int receiver) {
-    char buffer_local[9];
-    cout << "wait for receiving move " << sender << endl;
-    int n = read(sender, buffer_local, 9);
-    if (n == -1) {
-        cout << "Error reading buffer_local" << endl;
-        return false;
-    }
-    if (n == 0) {
-        cout << "Client disconnected" << endl;
-        return false;
-    }
-    cout << "Got move: " << buffer_local << endl;
-    if (strcmp(buffer_local, "END") == 0) {
-        return false;
-    }
-    // write data
-    n = write(receiver, buffer_local, 9);
-    if (n == -1) {
-        cout << "Error writing buffer_local" << endl;
-        return false;
-    }
-    if (n == 0) {
-        cout << "Client disconnected" << endl;
-        return false;
-    }
-    cout << "Sent Move:" << buffer_local << endl;
-    return true;
-}
 
 void Server::stop() {
     // close connection
     close(_socket);
 }
 
-void Server::addThread(int i) {
+void Server::addThread(int clientSocket) {
     pthread_t *newThread = new pthread_t();
-    threads.push_back(newThread);
-    int rc = pthread_create(threads[i], NULL, connectClient, (void*)this);
+    c->setClient_Socket(clientSocket);
+    int rc = pthread_create(newThread, NULL, c->handleCommand, (void*)c);
     if (rc) {
         cout << "Error: unable to create thread, " << rc << endl;
+        delete newThread;
         exit(-1);
     }
+    threads.push_back(newThread);
+    //pthread_exit(newThread);
 }
 
-void *Server::connectClient(void *obj) {
-    Server *ptr = (Server *)obj;
-    ptr->_client_handler = new ClientHandler(ptr->getClientSocket());
-    ptr->_client_handler->handleCommand(ptr->getClientSocket());
-}
 
 int Server::getClientSocket() const {
     return clientSocket;
@@ -111,6 +79,9 @@ int Server::getClientSocket() const {
 void Server::setClientSocket(int clientSocket) {
     Server::clientSocket = clientSocket;
 }
+
+
+
 
 
 

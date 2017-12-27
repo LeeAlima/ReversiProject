@@ -231,23 +231,23 @@ string ConsoleScreen::handleSubMenu() {
     switch (option) {
         case 1:
             cout << "Enter the name of the game you want to start:" << endl;
-            final_choose.append("start <");
+            final_choose.append("start ");
             break;
         case 2:
-            return "list_games";
+            return "list";
         case 3:
             cout << "Enter the name of the game you want to join:" << endl;
-            final_choose.append("join <");
+            final_choose.append("join ");
             break;
         case 4:
             cout << "Enter the name of the game you want to close:" << endl;
-            final_choose.append("close <");
+            final_choose.append("close ");
             break;
         default:
             break;
     }
     game_name = userChoiceOfGame();
-    final_choose.append(game_name+">");
+    final_choose.append(game_name);
     return final_choose;
 }
 

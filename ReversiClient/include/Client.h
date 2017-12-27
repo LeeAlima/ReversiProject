@@ -25,7 +25,7 @@ public:
      * this method writes user choice to the socket
      * @param user_choice - the input
      */
-    void send(char *user_choice) const;
+    void sendMove(const char *user_choice) const;
 
     /**
      * this method receive a point from the socket
@@ -35,9 +35,15 @@ public:
 
     int getClientSocket() const;
 
+    string reciveMessage() const;
+
+    //void sendMessage(string s) const ;
+
+
 private:
     const char *server_IP_;
     int server_port_;
     int client_socket_;
+
 };
 #endif //REVERSI_CLIENT_H

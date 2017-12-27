@@ -34,7 +34,7 @@ public:
     */
     void setUpGame();
 
-    Client createClientFromFile();
+    pair<const char*,int> createClientFromFile();
 
     void handleThirdCase(Client client);
 
