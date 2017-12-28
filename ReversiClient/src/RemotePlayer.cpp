@@ -10,9 +10,11 @@ string RemotePlayer::chooseCell(GameLogic &gameLogic) {
     char *move= client.receive();
     string string_form = (string)move;
     delete move;
+    // if there are no possible moves
     if (!string_form.compare("NO MOVE")){
         return string_form;
     }
+    // if the another player disconnected
     if(!gameLogic.checkPlayerMove(string_form,type,*gameLogic.getBoard()))
     {
         player_screen_->printString("Player disconnected");

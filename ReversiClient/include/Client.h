@@ -16,30 +16,40 @@ public:
     Client(const char *serverIP, int serverPort);
 
     /**
-     * this method connect to the server and return the number of player
-     * @return int - as the number of player (1/2)
+     * this method connect to the server and return the number of the player
+     * @return int - as the number of the player (1/2)
      */
     int connectToServer();
 
     /**
-     * this method writes user choice to the socket
-     * @param user_choice - the input
+     * this method sends message to the server
+     * @param msg - the message the user wants to deliver the server
      */
-    void sendMessage(const char *user_choice) const;
+    void sendMessage(const char *msg) const;
 
     /**
-     * this method receive a point from the socket
+     * this method receive a point from the socket and returns it
      * @return char* - the point
      */
     char* receive() const;
 
+    /**
+     * this method returns the client socket
+     * @return int - client socket
+     */
     int getClientSocket() const;
 
+    /**
+     * this method receives message from the server
+     * @return string - the message
+     */
     string reciveMessage() const;
 
+    /**
+     * this method sends the server a point(move)
+     * @param user_choice - the move the user chose
+     */
     void sendMove(char *user_choice) const;
-    //void sendMessage(string s) const ;
-
 
 private:
     const char *server_IP_;

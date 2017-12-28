@@ -6,8 +6,9 @@
 #include <unistd.h>
 
 
-ConsoleScreen::ConsoleScreen(){
-};
+ConsoleScreen::ConsoleScreen(){ };
+
+ConsoleScreen::~ConsoleScreen(){} ;
 
 void ConsoleScreen::printEndl() const {
     cout << endl;
@@ -16,9 +17,6 @@ void ConsoleScreen::printEndl() const {
 void ConsoleScreen::printString(string s) const {
     cout << s;
 }
-
-ConsoleScreen::~ConsoleScreen(){} ;
-
 
 void ConsoleScreen::printBoard(Board &board) const {
     int size = board.getSize();
@@ -207,6 +205,7 @@ void ConsoleScreen::printNoMoveOrder(char type) const {
 
 int ConsoleScreen::printSubMenu() {
     int option;
+    // ask the user for an option
     cout << endl <<"Please choose an option" << endl;
     cout << "1. To start a game" << endl;
     cout << "2. To print the list of games" << endl;
@@ -221,27 +220,33 @@ int ConsoleScreen::printSubMenu() {
             cin.ignore(100, '\n');
         }
     } while (option != 1 && option != 2 && option != 3 && option != 4);
+    // return the user choice
     return option;
 }
 
 pair<string,string> ConsoleScreen::handleSubMenu() {
+    // call printSubMenu and returns the user choice
     int option = printSubMenu();
     string game_name;
     string final_choose ="";
     pair <string,string> p;
     switch (option) {
+        // if the user asked to start a game
         case 1:
             cout << "Enter the name of the game you want to start:" << endl;
             final_choose.append("start ");
             break;
+            // if the user asked to print string
         case 2:
             p.first = "list";
             p.second = "null";
             return p;
+            // if the user wants to join a game
         case 3:
             cout << "Enter the name of the game you want to join:" << endl;
             final_choose.append("join ");
             break;
+            // if the user wants to close a game
         case 4:
             cout << "Enter the name of the game you want to close:" << endl;
             final_choose.append("close ");
@@ -249,9 +254,12 @@ pair<string,string> ConsoleScreen::handleSubMenu() {
         default:
             break;
     }
+    // ask the user for args ( only name for the game)
     game_name = userChoiceOfGame();
     final_choose.append(game_name);
+    // put the task (start,close,join) and the game name
     p.first = final_choose;
+    // put the game name
     p.second = game_name;
     return p;
 }
@@ -260,5 +268,4 @@ string ConsoleScreen::userChoiceOfGame() {
     string game_name;
     cin >> game_name;
     return game_name;
-
 }

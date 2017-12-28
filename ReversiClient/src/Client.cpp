@@ -37,42 +37,48 @@ int Client::connectToServer() {
     *) &serverAddress, sizeof(serverAddress)) == -1) {
         throw "Error connecting to server";
     }
-    //cout << "Connected to server" << endl;
-}
-
-void Client::sendMessage(const char *user_choice) const {
-    string copy;
-    copy.append(user_choice);
-    copy.append("\0");
-    int n = send(client_socket_, copy.c_str(), copy.size()+1,0);
-    if (n == -1) {
-        throw "Error of writing to socket";
-    }
 }
 
 char *Client::receive() const {
     char *user_choice = new char[9];
-    // read from socket
+    // read from socket the movement
     int n = read(client_socket_, user_choice, 9);
+    // error in reading
     if (n == -1) {
         throw "Error of reading from socket";
     }
     return user_choice;
 }
+
+int Client:: getClientSocket() const{
+    return this->client_socket_;
+}
+
+void Client::sendMessage(const char *msg) const {
+    string copy;
+    copy.append(msg);
+    // add null at the end of the string (as should by string format)
+    copy.append("\0");
+    int n = send(client_socket_, copy.c_str(), copy.size()+1,0);
+    // error in sending
+    if (n == -1) {
+        throw "Error of writing to socket";
+    }
+}
+
+
 string Client::reciveMessage()const {
+    // initialize buffer to scan the input from the server
     char buffer[100]={0};
     string res="";
-    int n;
-    n=recv(client_socket_,buffer,99,0);
+    int n = recv(client_socket_,buffer,99,0);
+    // if receiving data happened than save it
     if(n>0){
         res.append(buffer);
-    } else{
+    } else {
         return "null";
     }
     return res;
-}
-int Client:: getClientSocket() const{
-    return this->client_socket_;
 }
 
 void Client::sendMove(char *user_choice) const {

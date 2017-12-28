@@ -1,4 +1,3 @@
-
 #ifndef EX2_CONSOLESCREEN_H
 #define EX2_CONSOLESCREEN_H
 
@@ -105,10 +104,25 @@ public:
      */
     void printNoMoveOrder(char type) const;
 
+    /**
+     * this method prints the user a sub menu (for the choice of
+     * playing with a remote player)
+     * @return int - the user choice
+     */
     int printSubMenu();
 
+    /**
+     * this method calls printSubMenu and by the return value returns
+     * a pairs : the first in the pair is the mission with it's args
+     * and the second is the name of the game(args)
+     * @return pair
+     */
     pair<string,string> handleSubMenu();
 
+    /**
+     * this method receives data from the user and returns is.
+     * @return string - the user game choice
+     */
     string userChoiceOfGame();
 
 };

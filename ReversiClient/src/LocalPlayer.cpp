@@ -8,6 +8,8 @@ LocalPlayer::LocalPlayer(char type, ConsoleScreen *screen, Client &client) :
 
 string LocalPlayer::chooseCell(GameLogic &gameLogic) {
     string final;
+    // if there are possible moves than print them to the user and
+    // scan the user choice for a new move
     if (gameLogic.checksIfMovesArePossible(type,*gameLogic.getBoard())){
         vector<string> options = gameLogic.findPossibleCells(
                 *gameLogic.getBoard(), gameLogic.getPlayer('C')->getType());
@@ -25,13 +27,13 @@ string LocalPlayer::chooseCell(GameLogic &gameLogic) {
             choice_to_compare = fixPointToCom(user_cell);
         }
         final= choice_to_compare;
-    } else {
+    } else { // if there are no possible moves
       final = "NO MOVE";
     }
+    // send move to the server
     char *copy = new char[final.size() + 1];
     strcpy(copy,final.c_str());
     this->client.sendMove(copy);
-    //this->client.sendMessage(copy);
     delete copy;
     return final;
 }

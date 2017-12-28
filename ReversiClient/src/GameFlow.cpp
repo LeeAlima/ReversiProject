@@ -1,4 +1,3 @@
-
 #ifndef EX2_DSA_H
 #define EX2_DSA_H
 
@@ -88,7 +87,7 @@ void GameFlow::setUpGame() {
         case 2 :
             createAIGame();
             break;
-        case 3 : {
+        case 3 : try {
             ifstream inFile;
             inFile.open("config_client.txt");
             string ip;
@@ -97,15 +96,15 @@ void GameFlow::setUpGame() {
             inFile >> port;
             Client client(ip.c_str(), port);
             // לתקן!!!!!
-                handleThirdCase(client);
-            } catch (const char *msg) {
-                this->screen->printString("Failed to connect to server."
-                                                  " Reason: ");
-                this->screen->printString(msg);
-                this->screen->printEndl();
-                return;
-            }
-        }
+            handleThirdCase(client);
+
+        } catch (const char *msg) {
+        this->screen->printString("Failed to connect to server."
+                                          " Reason: ");
+        this->screen->printString(msg);
+        this->screen->printEndl();
+        return;
+    }
     }
 }
 

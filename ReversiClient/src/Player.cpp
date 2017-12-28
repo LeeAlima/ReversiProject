@@ -15,7 +15,6 @@ int Player::getScore() const {
     return this->score;
 }
 
-
 void Player::setScore(int number) {
     this->score = number;
 }
