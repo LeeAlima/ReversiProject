@@ -207,7 +207,7 @@ void ConsoleScreen::printNoMoveOrder(char type) const {
 
 int ConsoleScreen::printSubMenu() {
     int option;
-    cout << "Please choose an option" << endl;
+    cout << endl <<"Please choose an option" << endl;
     cout << "1. To start a game" << endl;
     cout << "2. To print the list of games" << endl;
     cout << "3. To join a game" << endl;

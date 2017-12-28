@@ -37,7 +37,7 @@ int Client::connectToServer() {
     *) &serverAddress, sizeof(serverAddress)) == -1) {
         throw "Error connecting to server";
     }
-    cout << "Connected to server" << endl;
+    //cout << "Connected to server" << endl;
 }
 
 void Client::sendMessage(const char *user_choice) const {

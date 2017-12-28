@@ -48,18 +48,23 @@ void RunServer::startNewGame(vector<string> args) {
 }
 
 void RunServer::listOfGames(vector<string> args) {
-    string msg = "";
+    string list = "";
     vector<Game*> *list_of_games = serverContainer->getVecOfGames();
-    msg.append("The available games:\n");
+    //msg.append("The available games:\n");
     for (vector<Game *>::iterator it = list_of_games->begin(); it != list_of_games->end(); ++it) {
         if ((*it)->getStatus() == WAIT) {
-            msg.append((*it)->getName());
-            msg.append("\n");
+            list.append((*it)->getName());
+            list.append("\n");
         }
     }
-    if (msg == "") {
-        msg.append(notOkList);
+    if (list == "") {
+        list.append(notOkList);
+        sendMessageToClient(list);
+        return;
     }
+    string msg ="";
+    msg.append("The available games:\n");
+    msg.append(list);
     sendMessageToClient(msg);
 }
 

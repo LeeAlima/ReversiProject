@@ -97,11 +97,6 @@ void GameFlow::setUpGame() {
             inFile >> port;
             Client client(ip.c_str(), port);
             // לתקן!!!!!
-            // connect by client and opening the file
-            /*pair<const char*,int> dataToClient= createClientFromFile();
-            Client client(dataToClient.first,dataToClient.second);*/
-            //Client client = createClien;
-            try {
                 handleThirdCase(client);
             } catch (const char *msg) {
                 this->screen->printString("Failed to connect to server."
@@ -134,11 +129,7 @@ void GameFlow::handleThirdCase(Client client) {
         string user_sub_option = result.first;
         string gameName = result.second;
         user_sub_option.append("\0");
-        //char *copy = new char[user_sub_option.size()];
-        //strcpy(copy,user_sub_option.c_str());
         client.sendMessage(user_sub_option.c_str());
-        //string msgFromServer = client.receive();
-
         string msgFromServer = client.reciveMessage();
         if (msgFromServer.size() != 1) {
             screen->printString(msgFromServer);
@@ -220,6 +211,7 @@ void GameFlow::createGameHuman() {
     this->x_player_ = true;
     this->o_player_ = true;
     this->game = new GameLogic(size, player1, player2, screen);
+    run();
 }
 
 void GameFlow::createAIGame() {
@@ -229,6 +221,7 @@ void GameFlow::createAIGame() {
     this->x_player_ = true;
     this->o_player_ = true;
     this->game = new GameLogic(size, player1, player2, screen);
+    run();
 }
 
 int GameFlow::getOrder(Client client) {
