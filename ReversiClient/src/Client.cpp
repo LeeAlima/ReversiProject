@@ -40,7 +40,7 @@ int Client::connectToServer() {
     cout << "Connected to server" << endl;
 }
 
-void Client::sendMove(const char *user_choice) const {
+void Client::sendMessage(const char *user_choice) const {
     string copy;
     copy.append(user_choice);
     copy.append("\0");
@@ -51,9 +51,9 @@ void Client::sendMove(const char *user_choice) const {
 }
 
 char *Client::receive() const {
-    char *user_choice = new char[100];
+    char *user_choice = new char[9];
     // read from socket
-    int n = read(client_socket_, user_choice, sizeof(user_choice));
+    int n = read(client_socket_, user_choice, 9);
     if (n == -1) {
         throw "Error of reading from socket";
     }
@@ -73,4 +73,12 @@ string Client::reciveMessage()const {
 }
 int Client:: getClientSocket() const{
     return this->client_socket_;
+}
+
+void Client::sendMove(char *user_choice) const {
+    // write the user choice
+    int n = write(client_socket_, user_choice, sizeof(user_choice));
+    if (n == -1) {
+        throw "Error of writing to socket";
+    }
 }

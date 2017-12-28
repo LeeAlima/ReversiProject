@@ -9,27 +9,28 @@
 #include <vector>
 #include <list>
 #include "Game.h"
+#include "ServerContainer.h"
 
 using namespace std;
 
-
-
 class RunServer {
 public:
-    RunServer(int clientSocket,vector<Game*> *list);
+    RunServer(int clientSocket, ServerContainer *serverContainer);
 
     virtual ~RunServer();
 
-    void setClientSocket(int clientSocket);
-
     void sendMessageToClient(string msg);
+
     void startNewGame(vector<string> args);
+
     void listOfGames(vector<string> args);
+
     void joinToGame(vector<string> args);
+
     void closeGame(vector<string> args);
 
 private:
-    vector<Game *> *list_of_games;
+    ServerContainer *serverContainer;
     int clientSocket;
 
     string notOkStart;

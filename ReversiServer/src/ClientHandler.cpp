@@ -7,9 +7,8 @@
 #include "../include/ClientHandler.h"
 
 
-ClientHandler::ClientHandler(int client_Socket) : client_Socket(client_Socket) {
-    list_of_games= new vector<Game*>;
-    runServer= new RunServer(client_Socket,list_of_games);
+ClientHandler::ClientHandler(int client_Socket,ServerContainer *serverContainer) : client_Socket(client_Socket), serverContainer(serverContainer) {
+    runServer= new RunServer(client_Socket,serverContainer);
     comMan = new CommandManager(runServer);
 }
 
@@ -60,11 +59,6 @@ pair<string, vector<string>> ClientHandler::extractCommand(string msg) {
         prev = pos + 1;
     }while (pos < msg.length() && prev < msg.length());
     return make_pair(cmd,args);
-}
-
-void ClientHandler::setClient_Socket(int client_Socket) {
-    ClientHandler::client_Socket = client_Socket;
-    runServer->setClientSocket(client_Socket);
 }
 
 

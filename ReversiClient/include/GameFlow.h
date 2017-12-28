@@ -38,9 +38,9 @@ public:
 
     void handleThirdCase(Client client);
 
-    void startGameCommand(Client client);
+    void startGameCommand(Client client,string name);
 
-    void joinGameCommand(Client client);
+    void joinGameCommand(Client client, string name);
 
     void createGameHuman();
 

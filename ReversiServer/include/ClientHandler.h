@@ -8,16 +8,14 @@
 #include <iostream>
 #include "vector"
 #include "CommandManager.h"
+#include "ServerContainer.h"
 
 using namespace std;
 
 class ClientHandler {
 public:
 
-    ClientHandler(int client_Socket);
-
-    void setClient_Socket(int client_Socket);
-
+    ClientHandler(int client_Socket,ServerContainer *serverContainer);
     static void* handleCommand(void* obj);
     pair<string, vector<string>> extractCommand(string msg);
 
@@ -26,7 +24,7 @@ private:
     int client_Socket;
     RunServer *runServer;
     CommandManager *comMan;
-    vector<Game *> *list_of_games;
+    ServerContainer *serverContainer;
 };
 
 

@@ -15,7 +15,7 @@ int main() {
     }catch (const char *msg) {
         cout << "Cannot start server. Config Problem Reason: " << msg << endl;
     }
-	ClientHandler c(0);
+	//ClientHandler c(0);
 	Server server(port);
 	// try to connect
 	try {

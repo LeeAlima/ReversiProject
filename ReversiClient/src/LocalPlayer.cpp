@@ -31,6 +31,7 @@ string LocalPlayer::chooseCell(GameLogic &gameLogic) {
     char *copy = new char[final.size() + 1];
     strcpy(copy,final.c_str());
     this->client.sendMove(copy);
+    //this->client.sendMessage(copy);
     delete copy;
     return final;
 }

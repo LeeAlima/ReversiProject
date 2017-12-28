@@ -7,7 +7,7 @@
 #include "../include/RunServer.h"
 #include "../include/GameRoom.h"
 
-RunServer::RunServer(int clientSocket,vector<Game*> *list) : clientSocket(clientSocket),list_of_games(list) {
+RunServer::RunServer(int clientSocket, ServerContainer *serverContainer) : clientSocket(clientSocket) ,serverContainer(serverContainer) {
     notOkStart = string("2");
     okStart = string("1");
     okJoin = string("3");
@@ -19,12 +19,14 @@ RunServer::RunServer(int clientSocket,vector<Game*> *list) : clientSocket(client
 }
 
 RunServer::~RunServer() {
+    vector<Game*> *list_of_games = serverContainer->getVecOfGames();
     for (vector<Game *>::iterator it = list_of_games->begin(); it != list_of_games->end(); ++it) {
         delete *it;
     }
 }
 
 void RunServer::startNewGame(vector<string> args) {
+    vector<Game*> *list_of_games = serverContainer->getVecOfGames();
     string msg = "";
     for (vector<Game *>::iterator it = list_of_games->begin(); it != list_of_games->end(); ++it) {
 
@@ -40,14 +42,14 @@ void RunServer::startNewGame(vector<string> args) {
     newGame->setName(args[0]);
     newGame->setFirst_socket(clientSocket);
     newGame->setStatus(WAIT);
-    list_of_games->push_back(newGame);
+    serverContainer->addGame(newGame);
     msg.append(okStart);
     sendMessageToClient(msg);
 }
 
 void RunServer::listOfGames(vector<string> args) {
     string msg = "";
-
+    vector<Game*> *list_of_games = serverContainer->getVecOfGames();
     msg.append("The available games:\n");
     for (vector<Game *>::iterator it = list_of_games->begin(); it != list_of_games->end(); ++it) {
         if ((*it)->getStatus() == WAIT) {
@@ -64,15 +66,18 @@ void RunServer::listOfGames(vector<string> args) {
 void RunServer::joinToGame(vector<string> args) {
     Game *cur_game = NULL;
     string msg = "";
+    vector<Game*> *list_of_games = serverContainer->getVecOfGames();
+
     for (vector<Game *>::iterator it = list_of_games->begin(); it != list_of_games->end(); ++it) {
         if (!strcmp((*it)->getName().c_str(), args[0].c_str()) && (*it)->getStatus() == WAIT) {
+            (*it)->setSecond_socket(clientSocket);
             cur_game = *it;
             msg.append(okJoin);
             sendMessageToClient(msg);
-            GameRoom gr(cur_game);
+            GameRoom *gr = new GameRoom(cur_game, serverContainer);
             cur_game->setStatus(PLAYING);
             pthread_t *newThread = new pthread_t();
-            int rc = pthread_create(newThread, NULL, gr.runGame, (void *) &gr);
+            int rc = pthread_create(newThread, NULL, gr->runGame, (void *) gr);
             if (rc) {
                 cout << "Error: unable to create thread, " << rc << endl;
                 pthread_exit(&newThread);
@@ -90,35 +95,21 @@ void RunServer::joinToGame(vector<string> args) {
 }
 
 void RunServer::closeGame(vector<string> args) {
+    bool del = serverContainer->removeGame(args[0]);
     string msg = "";
-    for (vector<Game *>::iterator it = list_of_games->begin(); it != list_of_games->end(); ++it) {
-        if (!strcmp((*it)->getName().c_str(), args[0].c_str())) {
-            msg.append(okClose);
-            sendMessageToClient(msg);
-            list_of_games->push_back(*it);
-            return;
-        }
+    if (del){
+        msg.append(okClose);
+    } else {
+        msg.append(notOkClose);
     }
-    msg.append(notOkClose);
     sendMessageToClient(msg);
 }
 
 
 void RunServer::sendMessageToClient(string msg) {
-   /* char *copy = new char[msg.size() + 1];
-    strcpy(copy,msg.c_str());
-    int n = write(clientSocket, copy, msg.size()+1);
-    if (n == -1) {
-        cout << "Error writing buffer_local" << endl;
-        return;
-    }*/
-    int n= send(clientSocket,msg.c_str(),msg.length(),0);
+    int n = send(clientSocket, msg.c_str(), msg.length(), 0);
     if (n == -1) {
         cout << "Error writing buffer_local" << endl;
         return;
     }
-}
-
-void RunServer::setClientSocket(int clientSocket) {
-    RunServer::clientSocket = clientSocket;
 }

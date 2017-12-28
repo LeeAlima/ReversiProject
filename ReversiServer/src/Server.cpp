@@ -10,7 +10,7 @@ using namespace std;
 
 
 Server::Server(int _port) : _port(_port), _socket(0) {
-    c = new ClientHandler(0);
+    server_container_ = new ServerContainer();
 }
 
 Server::~Server() {
@@ -60,7 +60,7 @@ void Server::stop() {
 
 void Server::addThread(int clientSocket) {
     pthread_t *newThread = new pthread_t();
-    c->setClient_Socket(clientSocket);
+    ClientHandler *c = new ClientHandler(clientSocket,server_container_);
     int rc = pthread_create(newThread, NULL, c->handleCommand, (void*)c);
     if (rc) {
         cout << "Error: unable to create thread, " << rc << endl;

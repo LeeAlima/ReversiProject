@@ -4,8 +4,9 @@
 
 #include <unistd.h>
 #include "../include/GameRoom.h"
+#include "../include/RunServer.h"
 
-GameRoom::GameRoom(Game *game) : game(game) {}
+GameRoom::GameRoom(Game *game, ServerContainer *serverContainer) : game(game), serverContainer(serverContainer) {}
 
 bool GameRoom::handleMove(int sender, int receiver) {
     char buffer_local[9];
@@ -21,7 +22,9 @@ bool GameRoom::handleMove(int sender, int receiver) {
     }
     cout << "Got move: " << buffer_local << endl;
     if (strcmp(buffer_local, "END") == 0) {
+        cout<<"end of game "<< game->getName() << endl;
         game->setStatus(ENDGAME);
+        serverContainer->removeGame(game->getName());
         return false;
     }
     // write data

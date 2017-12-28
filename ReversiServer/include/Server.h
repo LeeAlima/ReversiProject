@@ -10,6 +10,7 @@
 #include <vector>
 #include "CommandManager.h"
 #include "ClientHandler.h"
+#include "ServerContainer.h"
 
 using namespace std;
 
@@ -43,9 +44,8 @@ private:
 	int _socket;
     vector<pthread_t*> threads;
 	int clientSocket;
-    ClientHandler *c;
-
 	void addThread(int clientSocket);
+	ServerContainer *server_container_;
 };
 
 #endif /* SRC_SERVER_H_ */

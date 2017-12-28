@@ -107,7 +107,7 @@ public:
 
     int printSubMenu();
 
-    string handleSubMenu();
+    pair<string,string> handleSubMenu();
 
     string userChoiceOfGame();
 

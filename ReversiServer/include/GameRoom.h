@@ -7,12 +7,14 @@
 
 
 #include "Game.h"
+#include "ServerContainer.h"
 #include <pthread.h>
+#include <vector>
 
 class GameRoom {
 
 public:
-    GameRoom(Game *game);
+    GameRoom(Game *game, ServerContainer *serverContainer);
 
     /**
     * this method handle the client by trying to read from the socket
@@ -30,6 +32,7 @@ public:
 
 private:
     Game *game;
+    ServerContainer *serverContainer;
 };
 
 

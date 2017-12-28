@@ -25,7 +25,7 @@ public:
      * this method writes user choice to the socket
      * @param user_choice - the input
      */
-    void sendMove(const char *user_choice) const;
+    void sendMessage(const char *user_choice) const;
 
     /**
      * this method receive a point from the socket
@@ -37,6 +37,7 @@ public:
 
     string reciveMessage() const;
 
+    void sendMove(char *user_choice) const;
     //void sendMessage(string s) const ;
 
 
