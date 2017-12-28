@@ -56,24 +56,25 @@ int Client:: getClientSocket() const{
 
 void Client::sendMessage(const char *msg) const {
     string copy;
+    // add the message to copy
     copy.append(msg);
     // add null at the end of the string (as should by string format)
     copy.append("\0");
     int n = send(client_socket_, copy.c_str(), copy.size()+1,0);
-    // error in sending
+    // for an error in sending
     if (n == -1) {
         throw "Error of writing to socket";
     }
 }
 
-
 string Client::reciveMessage()const {
     // initialize buffer to scan the input from the server
-    char buffer[100]={0};
+    char buffer[maxSize]={0};
     string res="";
-    int n = recv(client_socket_,buffer,99,0);
+    // receive message from the server
+    int n = recv(client_socket_,buffer,maxSize-1,0);
     // if receiving data happened than save it
-    if(n>0){
+    if(n > 0){
         res.append(buffer);
     } else {
         return "null";

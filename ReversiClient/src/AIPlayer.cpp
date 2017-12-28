@@ -8,12 +8,12 @@ AIPlayer::AIPlayer(char type, ConsoleScreen *screen): Player(type,screen){
 string AIPlayer::chooseCell(GameLogic &game) {
     // checking computer's options.
     if (game.checksIfMovesArePossible('O', *game.getBoard())) {
-        // saving the computer's oprions
+        // saving the computer's options
         vector<string> vec_of_options = game.findPossibleCells
                 (*game.getBoard(), 'O');
         player_screen_->printPossibleMoves(vec_of_options, true, type);
         vector<string> vec_sec;
-        // initialize min and max vars
+        // initialize min and max variables
         int max;
         int min = game.getBoard()->getSize() ^2;
         string result_max, result_min;

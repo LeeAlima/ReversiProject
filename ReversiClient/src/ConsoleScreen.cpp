@@ -8,7 +8,7 @@
 
 ConsoleScreen::ConsoleScreen(){ };
 
-ConsoleScreen::~ConsoleScreen(){} ;
+ConsoleScreen::~ConsoleScreen(){ } ;
 
 void ConsoleScreen::printEndl() const {
     cout << endl;
@@ -125,11 +125,13 @@ void ConsoleScreen::printPlayerMove(char type,int num1,int num2) const{
 
 int ConsoleScreen::printOpenMenu() const {
     int option;
+    // print the options to the user
     cout << "Welcome to our game!!!!!!" << endl << endl << endl;
     cout << "Choose an opponent type:" << endl;
     cout << "1. a human local player" << endl;
     cout << "2. an AI player" << endl;
     cout << "3. a remote player" << endl;
+    // cin the user choice
     do {
         cin >> option;
         // for bad option
@@ -154,10 +156,10 @@ void ConsoleScreen::printGameOver(char flag, int score_1, int score_2) const {
 }
 
 string ConsoleScreen::fixPointToUser(vector<int> s) const {
+    // add one to each of the coordinate and return a string of the new point
     int first_number = s.front() + 1;
     int second_number = s.back() + 1;
-    return "(" + toStringInt(first_number) + "," + toStringInt(second_number)
-           + ")";
+    return "(" + toStringInt(first_number) + "," + toStringInt(second_number) + ")";
 }
 
 string ConsoleScreen::toStringInt(int number) const {

@@ -5,8 +5,7 @@
 
 using namespace std;
 
-Board::Board(int size):
-        size(size) {
+Board::Board(int size): size(size) {
     int mid_row = size/2 -1;
     int mid_col = size/2 -1;
     // creating the matrix
@@ -44,12 +43,14 @@ Board::~Board() {
 }
 
 void Board::copyBoardSourceAndTarget(Board &source_board, Board &target_board){
+    // go over the source board and copy the cell type from the source
+    // to the target
     for (int i= 0;i<target_board.getSize() ;i++ ){
         for (int j = 0; j < target_board.getSize(); j++) {
             target_board.setCellInBoard(i,j,source_board.returnCellType(i,j));
         }
     }
-};
+}
 
 bool Board::checkAllCellsFull() const {
     // going over all the matrix cells

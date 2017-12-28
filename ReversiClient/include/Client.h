@@ -6,6 +6,8 @@
 #include <iostream>
 using namespace std;
 
+#define maxSize 100
+
 class Client {
 public:
     /**
@@ -16,19 +18,19 @@ public:
     Client(const char *serverIP, int serverPort);
 
     /**
-     * this method connect to the server and return the number of the player
-     * @return int - as the number of the player (1/2)
+     * this method connects to the server and returns the number of the player
+     * @return int - as the number of the player
      */
     int connectToServer();
 
     /**
      * this method sends message to the server
-     * @param msg - the message the user wants to deliver the server
+     * @param msg - the message the user wants to send the server
      */
     void sendMessage(const char *msg) const;
 
     /**
-     * this method receive a point from the socket and returns it
+     * this method receives a point from the server and returns it
      * @return char* - the point
      */
     char* receive() const;

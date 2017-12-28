@@ -2,12 +2,10 @@
 #define EX2_DSA_H
 
 #include <fstream>
-#include <cstring>
 #include <unistd.h>
 #include "../include/GameFlow.h"
 #include "../include/AIPlayer.h"
 #include "../include/HumanPlayer.h"
-#include "../include/Client.h"
 #include "../include/RemotePlayer.h"
 #include "../include/LocalPlayer.h"
 
@@ -71,14 +69,14 @@ void GameFlow::run() {
 }
 
 void GameFlow::showScores() {
-    screen->printGameOver(this->game->returnsWhoWon(), this->game->getPlayer1Score(), game->getPlayer2Score());
+    screen->printGameOver(this->game->returnsWhoWon()
+            , this->game->getPlayer1Score(), game->getPlayer2Score());
 }
-
 
 void GameFlow::setUpGame() {
     this->screen = new ConsoleScreen();
-    int playerCheck = this->screen->printOpenMenu();
-    switch (playerCheck) {
+    int player_check = this->screen->printOpenMenu();
+    switch (player_check) {
         // for a game with a human
         case 1:
             createGameHuman();
@@ -87,7 +85,9 @@ void GameFlow::setUpGame() {
         case 2 :
             createAIGame();
             break;
-        case 3 : try {
+            // for a game with a remote player
+        case 3 :
+            try {
             ifstream inFile;
             inFile.open("config_client.txt");
             string ip;
@@ -95,16 +95,19 @@ void GameFlow::setUpGame() {
             inFile >> ip;
             inFile >> port;
             Client client(ip.c_str(), port);
-            // לתקן!!!!!
+            // call handleThirdCase to run this case
             handleThirdCase(client);
-
+                break;
         } catch (const char *msg) {
+                // if there was an error than print a message
         this->screen->printString("Failed to connect to server."
                                           " Reason: ");
         this->screen->printString(msg);
         this->screen->printEndl();
         return;
     }
+        default:
+            break;
     }
 }
 
@@ -116,50 +119,69 @@ pair<const char *, int> GameFlow::createClientFromFile() {
     inFile >> ip;
     inFile >> port;
     return make_pair(ip.c_str(), port);
-    //Client client(ip.c_str(),port);
-    //return client;
 }
 
 void GameFlow::handleThirdCase(Client client) {
-    bool not_ok = true;
-    while (not_ok) {
+    while (true) {
+        // connect to the server
         client.connectToServer();
+        // call handle sub menu to ask the user for a mission
         pair<string, string> result = screen->handleSubMenu();
+        // save the user option(start/join/list)
         string user_sub_option = result.first;
-        string gameName = result.second;
+        // save the name of the game (for start/join)
+        string game_name = result.second;
+        // add null to make it string
         user_sub_option.append("\0");
+        // send the server the option
         client.sendMessage(user_sub_option.c_str());
-        string msgFromServer = client.reciveMessage();
-        if (msgFromServer.size() != 1) {
-            screen->printString(msgFromServer);
+        // receive signal from the client (a number as represented in the
+        // switch case.
+        string msg_from_server = client.reciveMessage();
+        // if the user asked to print list and it's not empty
+        if (msg_from_server.size() != 1) {
+            screen->printString(msg_from_server);
             continue;
         } else {
-            int option = atoi(msgFromServer.c_str());
+            // save the signal from the server as an int
+            int option = atoi(msg_from_server.c_str());
             switch (option) {
+                // if a game can be created
                 case OkStart:
-                    startGameCommand(client, gameName);
-                    return;
+                    startGameCommand(client, game_name);
+                    continue;
+                    // if a game can't be created because the name
+                    // has been already taken
                 case NotOkStart:
                     screen->printString("this name has been already token");
                     screen->printEndl();
                     continue;
+                    // if the user can join the game
                 case OkJoin:
-                    joinGameCommand(client, gameName);
-                    return;
+                    joinGameCommand(client, game_name);
+                    continue;
+                    // if the user can't join the game because ther is not
+                    // a game with such a name
                 case NotSuchAGameJoin:
                     screen->printString("there is not such a game");
                     screen->printEndl();
                     continue;
+                    // if the user asked for a game that is being played
                 case GameIsPlaying:
                     screen->printString("this game is being played by 2 players");
                     screen->printEndl();
                     continue;
+                    // if the user asked to close a game and it's possible
                 case OkClose:
                     return;
+                    // if the user asked to close a game and there isn't
+                    // a game with this name
                 case NotOkClose:
                     screen->printString("there is not such a game");
                     screen->printEndl();
                     continue;
+                    // if the user asked to print the list of the games but
+                    // it's empty
                 case NotOkList:
                     screen->printString("The list is empty");
                     screen->printEndl();
@@ -172,17 +194,22 @@ void GameFlow::handleThirdCase(Client client) {
 
 void GameFlow::startGameCommand(Client client, string name) {
     string message = "";
+    // print a message to the user to make him know he should wait
     screen->printString("Waiting for another player to join");
     screen->printEndl();
-    // לעטוף בטריי קאטצ מהקייס עצמו
+    // get the player order (1/2) and print it
+    // the read inside getOrder make the player to wain
+    // for another player to join his game
     int number = getOrder(client);
     string wait = "Your number is:" + screen->toStringInt(number);
     screen->printString(wait);
     screen->printEndl();
+    // create local and remote players
     Player *player1 = new LocalPlayer('X', screen, client);
     Player *player2 = new RemotePlayer('O', screen, client);
     this->x_player_ = true;
     this->o_player_ = false;
+    // create a game and run it
     this->game = new GameLogic(size, player1, player2, screen);
     run();
     client.sendMove("END");
@@ -190,48 +217,56 @@ void GameFlow::startGameCommand(Client client, string name) {
 
 void GameFlow::joinGameCommand(Client client, string name) {
     string message = "";
+    // get the player order (1/2) and print it
     int number = getOrder(client);
     string wait = "Your number is:" + screen->toStringInt(number);
     screen->printString(wait);
     screen->printEndl();
+    // create remote and local players
     Player *player1 = new RemotePlayer('X', screen, client);
     Player *player2 = new LocalPlayer('O', screen, client);
     this->x_player_ = false;
     this->o_player_ = true;
+    // create a game and run it
     this->game = new GameLogic(size, player1, player2, screen);
     run();
     client.sendMove("END");
 }
 
 void GameFlow::createGameHuman() {
+    // set the two players as HumanPlayer's
     Player *player1 = new HumanPlayer('X', screen);
     Player *player2 = new HumanPlayer('O', screen);
     this->computer = false;
     this->x_player_ = true;
     this->o_player_ = true;
+    // create a game and run it
     this->game = new GameLogic(size, player1, player2, screen);
     run();
 }
 
 void GameFlow::createAIGame() {
+    // set the first player as HumanPlayer and the second as AIPlayer
     Player *player1 = new HumanPlayer('X', screen);
     Player *player2 = new AIPlayer('O', screen);
     this->computer = true;
     this->x_player_ = true;
     this->o_player_ = true;
+    // create the game and run it
     this->game = new GameLogic(size, player1, player2, screen);
     run();
 }
 
 int GameFlow::getOrder(Client client) {
     int num_of_player;
-    int client_socket_ = client.getClientSocket();
-    int n = read(client_socket_, &num_of_player, sizeof(num_of_player));
+    int client_socket = client.getClientSocket();
+    // read the number of player from the socket
+    int n = read(client_socket, &num_of_player, sizeof(num_of_player));
     if (n == -1) {
         throw "Error of reading from socket";
     }
+    // return the number
     return num_of_player;
-
 }
 
 #endif //EX2_DSA_H
