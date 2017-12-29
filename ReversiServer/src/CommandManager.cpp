@@ -1,31 +1,26 @@
-//
-// Created by lee on 21/12/17.
-//
 
 #include "../include/CommandManager.h"
-#include "../include/StartCommand.h"
-#include "../include/ListCommand.h"
-#include "../include/PlayCommand.h"
-#include "../include/CloseCommand.h"
-#include "../include/JoinCommand.h"
-#include "../include/RunServer.h"
 
-CommandManager::CommandManager(RunServer *run_server) {
-    commandsMap["start"] = new StartCommand(run_server);
-    commandsMap["list"] = new ListCommand(run_server);
-    /*commandsMap["play"] = new PlayCommand(run_server);*/
-    commandsMap["close"] = new CloseCommand(run_server);
-    commandsMap["join"] = new JoinCommand(run_server);
+CommandManager::CommandManager(RunServer *run_server){
+    // for each key (start,list,join an close) sets (by creating) the
+    // matches object as the value in the map
+    commands_map["start"] = new StartCommand(run_server);
+    commands_map["list"] = new ListCommand(run_server);
+    commands_map["close"] = new CloseCommand(run_server);
+    commands_map["join"] = new JoinCommand(run_server);
 }
-void CommandManager::executeCommand(string
-                                     command, vector<string> args) {
-    Command *commandObj = commandsMap[command];
-    commandObj->execute(args);
-}
+
 CommandManager::~CommandManager() {
+    // delete all of the values in the map
     map<string, Command *>::iterator it;
-    for (it = commandsMap.begin(); it !=
-                                   commandsMap.end(); it++) {
+    for (it = commands_map.begin(); it != commands_map.end(); it++) {
         delete it->second;
     }
+}
+
+void CommandManager::executeCommand(string command, vector<string> args) {
+    // save in commandObj the right object (by using the map)
+    Command *command_obj = commands_map[command];
+    // call execute
+    command_obj->execute(args);
 }

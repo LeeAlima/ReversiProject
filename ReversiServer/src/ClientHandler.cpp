@@ -1,25 +1,30 @@
-//
-// Created by omer on 25/12/17.
-//
 
 #include <unistd.h>
 #include <sys/socket.h>
 #include "../include/ClientHandler.h"
 
 
-ClientHandler::ClientHandler(int client_Socket,ServerContainer *serverContainer) : client_Socket(client_Socket), serverContainer(serverContainer) {
-    runServer= new RunServer(client_Socket,serverContainer);
-    comMan = new CommandManager(runServer);
+ClientHandler::ClientHandler(int client_Socket,ServerContainer *serverContainer)
+        : client_Socket_(client_Socket), server_container_(serverContainer) {
+    run_server_ = new RunServer(client_Socket,serverContainer);
+    command_mannager_ = new CommandManager(run_server_);
+}
+
+ClientHandler::~ClientHandler() {
+    delete run_server_;
+    delete command_mannager_;
 }
 
 void* ClientHandler::handleCommand(void* obj) {
+    // cast obj
     ClientHandler *ptr = (ClientHandler *)obj;
-    char buffer_local[20];
+    // create a buffer at max size to save the message from the client in it
+    char buffer_local[MaxSize];
     string message = "";
     pair<string, vector<string>> cmd;
-    cout << "wait for command " << ptr->client_Socket << endl;
-    //int n = read(ptr->client_Socket, buffer_local, 20);
-    int n = recv(ptr->client_Socket,buffer_local,19,0);
+    cout << "wait for command " << ptr->client_Socket_ << endl;
+    // call recv and read the client message and save it at buffer local
+    int n = recv(ptr->client_Socket_,buffer_local,MaxSize-1,0);
     if (n == -1) {
         cout << "Error reading buffer_local" << endl;
         return (void*)false;
@@ -28,39 +33,39 @@ void* ClientHandler::handleCommand(void* obj) {
         cout << "Client disconnected" << endl;
         return (void*)false;
     }
+    // append buffer_local to message
     message.append(buffer_local);
+    // call extractCommant
     cmd = ptr->extractCommand(message);
-    ptr->comMan->executeCommand(cmd.first, cmd.second);
-    //close(clientSocket);
+    // execute command
+    ptr->command_mannager_->executeCommand(cmd.first, cmd.second);
 }
 
 pair<string, vector<string>> ClientHandler::extractCommand(string msg) {
     vector<string> args;
+    // split the message by a space
     string cmd = "";
     size_t prev = 0, pos = 0;
     pos = msg.find(" ", prev);
     if (pos == string::npos)
+        // make pair and return it
         return make_pair(msg, args);
+    // save token
     string token = msg.substr(prev, pos - prev);
-    if (!token.empty())
+    if (!token.empty()) // append the token to message
         cmd.append(token);
     prev = pos + 1;
-    do {
-        // split by
+    do { // continue splitting
         pos = msg.find(" ", prev);
-
         if (pos == string::npos) {
             pos = msg.length();
         }
         string token = msg.substr(prev, pos - prev);
-        if (!token.empty()) {
+        if (!token.empty()) { // push token to the vector
             args.push_back(token);
         }
         prev = pos + 1;
     }while (pos < msg.length() && prev < msg.length());
+    // return the pair
     return make_pair(cmd,args);
 }
-
-
-
-

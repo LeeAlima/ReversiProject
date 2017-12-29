@@ -1,15 +1,12 @@
-//
-// Created by omer on 25/12/17.
-//
-
 #ifndef REVERSISERVER_GAMEROOM_H
 #define REVERSISERVER_GAMEROOM_H
-
 
 #include "Game.h"
 #include "ServerContainer.h"
 #include <pthread.h>
 #include <vector>
+
+#define maxMove 9
 
 class GameRoom {
 
@@ -18,7 +15,7 @@ public:
 
     /**
     * this method handle the client by trying to read from the socket
-    * and end game if needed
+    * and ended the game if needed
     * @param sender - number of sender
     * @param receiver - number of receiver
     * @return false if there was a problem of disconnection) and true
@@ -26,14 +23,20 @@ public:
     */
     bool handleMove(int sender, int receiver);
 
+    /**
+     * this method add a thread.
+     */
     void addThread();
 
+    /**
+     * this method run the game
+     * @param obj - void * that will be case into a gameRoom object
+     * @return void *
+     */
     static void* runGame(void* obj);
 
 private:
     Game *game;
-    ServerContainer *serverContainer;
+    ServerContainer *server_container_;
 };
-
-
 #endif //REVERSISERVER_GAMEROOM_H

@@ -186,7 +186,6 @@ void GameFlow::handleThirdCase(Client client) {
                     screen->printString("The list is empty");
                     screen->printEndl();
                     continue;
-
             }
         }
     }

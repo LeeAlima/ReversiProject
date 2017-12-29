@@ -1,15 +1,10 @@
-//
-// Created by lee on 21/12/17.
-//
-
 #include "../include/Game.h"
 
+// initialize the sockets member to -1
+Game::Game() :first_socket_(-1),second_socket_(-1){ }
 
-Game::Game() :first_socket(-1),second_socket(-1){
-}
-Game::~Game() {
+Game::~Game() { }
 
-}
 const string &Game::getName() const {
     return name;
 }
@@ -19,20 +14,19 @@ void Game::setName(const string &name) {
 }
 
 int Game::getFirst_socket() const {
-    return first_socket;
+    return first_socket_;
 }
 
 void Game::setFirst_socket(int first_socket) {
-    Game::first_socket = first_socket;
-
+    Game::first_socket_ = first_socket;
 }
 
 int Game::getSecond_socket() const {
-    return second_socket;
+    return second_socket_;
 }
 
 void Game::setSecond_socket(int second_socket) {
-    Game::second_socket = second_socket;
+    Game::second_socket_ = second_socket;
 }
 
 STATUS Game::getStatus() const {
@@ -42,7 +36,3 @@ STATUS Game::getStatus() const {
 void Game::setStatus(STATUS status) {
     Game::status = status;
 }
-
-
-
-

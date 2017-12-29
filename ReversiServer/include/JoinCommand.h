@@ -1,6 +1,3 @@
-//
-// Created by lee on 21/12/17.
-//
 
 #ifndef REVERSISERVER_JOINCOMMAND_H
 #define REVERSISERVER_JOINCOMMAND_H
@@ -10,12 +7,24 @@
 
 class JoinCommand: public Command {
 public:
+    /**
+     * the constructor of JoinCommand
+     * @param _run - RunServer obj
+     */
     JoinCommand(RunServer *_run);
 
+    /**
+     * destructor
+     */
     virtual ~JoinCommand();
 
-    virtual void execute(vector<string> args) ;
+    /**
+    * In this method I called joinToGame in RunServer
+    * @param args - the arguments from the client
+    */
+    virtual void execute(vector<string> args);
+
 private:
-    RunServer *_run;
+    RunServer *run;
 };
 #endif //REVERSISERVER_JOINCOMMAND_H

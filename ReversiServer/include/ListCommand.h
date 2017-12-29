@@ -1,6 +1,3 @@
-//
-// Created by lee on 21/12/17.
-//
 
 #ifndef REVERSISERVER_LISTCOMMAND_H
 #define REVERSISERVER_LISTCOMMAND_H
@@ -10,15 +7,25 @@
 
 class ListCommand: public Command {
 public:
+    /**
+     * constructor of ListCommand
+     * @param _run - RunServer obj
+     */
     ListCommand(RunServer *_run);
 
+    /**
+     * destructor
+     */
     virtual ~ListCommand() ;
 
-public:
+    /**
+   * In this method I called listOfGames in RunServer
+   * @param args - the arguments from the client
+   */
     virtual void execute(vector<string> args);
 
 private:
-    RunServer *_run;
+    RunServer *run;
 };
 
 #endif //REVERSISERVER_LISTCOMMAND_H

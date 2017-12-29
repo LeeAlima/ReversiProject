@@ -1,17 +1,15 @@
-//
-// Created by omer on 25/12/17.
-//
 
 #include <unistd.h>
 #include "../include/GameRoom.h"
-#include "../include/RunServer.h"
 
-GameRoom::GameRoom(Game *game, ServerContainer *serverContainer) : game(game), serverContainer(serverContainer) {}
+GameRoom::GameRoom(Game *game, ServerContainer *serverContainer)
+        : game(game), server_container_(serverContainer) {}
 
 bool GameRoom::handleMove(int sender, int receiver) {
-    char buffer_local[9];
+    char buffer_local[maxMove];
     cout << "wait for receiving move " << sender << endl;
-    int n = read(sender, buffer_local, 9);
+    // read the move
+    int n = read(sender, buffer_local, maxMove);
     if (n == -1) {
         cout << "Error reading buffer_local" << endl;
         return false;
@@ -20,15 +18,18 @@ bool GameRoom::handleMove(int sender, int receiver) {
         cout << "Client disconnected" << endl;
         return false;
     }
+    // print the move
     cout << "Got move: " << buffer_local << endl;
+    // if the move is "END" (end of the game)
     if (strcmp(buffer_local, "END") == 0) {
+        // than print a message, change game status and remove the game
         cout<<"end of game "<< game->getName() << endl;
         game->setStatus(ENDGAME);
-        serverContainer->removeGame(game->getName());
+        server_container_->removeGame(game->getName());
         return false;
     }
-    // write data
-    n = write(receiver, buffer_local, 9);
+    // if it's not the end of the game than write it
+    n = write(receiver, buffer_local, maxMove);
     if (n == -1) {
         cout << "Error writing buffer_local" << endl;
         return false;
@@ -37,37 +38,44 @@ bool GameRoom::handleMove(int sender, int receiver) {
         cout << "Client disconnected" << endl;
         return false;
     }
+    // print a message
     cout << "Sent Move:" << buffer_local << endl;
     return true;
 }
 
 void* GameRoom::runGame(void* obj) {
+    // cast obj to GameRoom
     GameRoom *ptr = (GameRoom *) obj;
     int num_of_client=1;
+    // write the client his number(1)
     write(ptr->game->getFirst_socket(), &num_of_client, sizeof(num_of_client));
     num_of_client = 2;
+    // write the client his number(2)
     write(ptr->game->getSecond_socket(), &num_of_client, sizeof(num_of_client));
     bool ok = true;
     int i=0;
     while (ok) {
+        // handle the moves and switch turns
         if (i % 2 == 0) {
-            ok = ptr->handleMove(ptr->game->getFirst_socket(), ptr->game->getSecond_socket());
+            ok = ptr->handleMove(ptr->game->getFirst_socket(),
+                                 ptr->game->getSecond_socket());
         } else {
-            ok = ptr->handleMove(ptr->game->getSecond_socket(), ptr->game->getFirst_socket());
+            ok = ptr->handleMove(ptr->game->getSecond_socket(),
+                                 ptr->game->getFirst_socket());
         }
         i++;
     }
-
 }
 
 void GameRoom::addThread() {
+    // create a new thread
     pthread_t *newThread = new pthread_t();
+    // run the game at a thead
     int rc = pthread_create(newThread, NULL, runGame, (void*)this);
     if (rc) {
         cout << "Error: unable to create thread, " << rc << endl;
         pthread_exit(&newThread);
     }
+    // exit thread
     pthread_exit(&newThread);
-
 }
-

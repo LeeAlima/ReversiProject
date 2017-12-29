@@ -54,7 +54,7 @@ private:
     pair<const char*,int> createClientFromFile();
 
     /**
-     * this method handle the user choice for a game with a remote player
+     * this method handle the user choice for a
      * @param client
      */
     void handleThirdCase(Client client);

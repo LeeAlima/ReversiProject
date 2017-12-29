@@ -1,6 +1,3 @@
-//
-// Created by lee on 21/12/17.
-//
 
 #ifndef REVERSISERVER_CLOSECOMMAND_H
 #define REVERSISERVER_CLOSECOMMAND_H
@@ -9,12 +6,24 @@
 
 class CloseCommand: public Command {
 public:
-    CloseCommand(RunServer *_run);
+    /**
+     * If the client send the server close XXX than this class execute
+     * is called.
+     * @param run - as a RunServer object
+     */
+    CloseCommand(RunServer *run);
 
+    /*
+     * destructor
+     */
     virtual ~CloseCommand();
 
+    /**
+     * In this method I called closeGame in RunServer
+     * @param args - the arguments from the client
+     */
     virtual void execute(vector<string> args);
 private:
-    RunServer *_run;
+    RunServer *run;
 };
 #endif //REVERSISERVER_CLOSECOMMAND_H
