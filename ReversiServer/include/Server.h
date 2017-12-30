@@ -35,17 +35,29 @@ public:
 
     void setClientSocket(int clientSocket);
 
+	static void* exitThread(void* obj);
+
     /**
      * stop connection
      */
 	void stop();
 private:
 	int _port;
+public:
+	bool isExit_from_server() const;
+
+	void setExit_from_server(bool exit_from_server);
+
+private:
 	int _socket;
-    vector<pthread_t*> threads;
 	int clientSocket;
-	void addThread(int clientSocket);
+	int clientConnected[10];
+    vector<pthread_t*> threads;
 	ServerContainer *server_container_;
+	bool exit_from_server;
+	void addThread(int clientSocket);
+	pthread_mutex_t serverExitMutex;
+	pthread_mutex_t coutMutex;
 };
 
 #endif /* SRC_SERVER_H_ */

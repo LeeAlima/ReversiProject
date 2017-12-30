@@ -23,10 +23,6 @@ public:
     */
     bool handleMove(int sender, int receiver);
 
-    /**
-     * this method add a thread.
-     */
-    void addThread();
 
     /**
      * this method run the game

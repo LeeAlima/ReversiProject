@@ -46,7 +46,7 @@ public:
      * @return string - the message
      */
     string reciveMessage() const;
-
+    static void * exitThread(void *obj) ;
     /**
      * this method sends the server a point(move)
      * @param user_choice - the move the user chose

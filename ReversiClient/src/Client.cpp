@@ -5,6 +5,7 @@
 #include <netdb.h>
 #include <string.h>
 #include <unistd.h>
+#include <pthread.h>
 
 Client::Client(const char *serverIP, int serverPort) :
         server_IP_(serverIP), server_port_(serverPort),
@@ -50,7 +51,7 @@ char *Client::receive() const {
     return user_choice;
 }
 
-int Client:: getClientSocket() const{
+int Client::getClientSocket() const {
     return this->client_socket_;
 }
 
@@ -60,21 +61,21 @@ void Client::sendMessage(const char *msg) const {
     copy.append(msg);
     // add null at the end of the string (as should by string format)
     copy.append("\0");
-    int n = send(client_socket_, copy.c_str(), copy.size()+1,0);
+    int n = send(client_socket_, copy.c_str(), copy.size() + 1, 0);
     // for an error in sending
     if (n == -1) {
         throw "Error of writing to socket";
     }
 }
 
-string Client::reciveMessage()const {
+string Client::reciveMessage() const {
     // initialize buffer to scan the input from the server
-    char buffer[maxSize]={0};
-    string res="";
+    char buffer[maxSize] = {0};
+    string res = "";
     // receive message from the server
-    int n = recv(client_socket_,buffer,maxSize-1,0);
+    int n = recv(client_socket_, buffer, maxSize - 1, 0);
     // if receiving data happened than save it
-    if(n > 0){
+    if (n > 0) {
         res.append(buffer);
     } else {
         return "null";
@@ -89,3 +90,4 @@ void Client::sendMove(char *user_choice) const {
         throw "Error of writing to socket";
     }
 }
+

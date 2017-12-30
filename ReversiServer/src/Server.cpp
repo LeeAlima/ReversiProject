@@ -11,12 +11,16 @@ using namespace std;
 
 Server::Server(int _port) : _port(_port), _socket(0) {
     server_container_ = new ServerContainer();
+    exit_from_server= false;
+    pthread_mutex_init(&coutMutex, NULL);
+    pthread_mutex_init(&serverExitMutex, NULL);
 }
 
 Server::~Server() {
     for (vector<pthread_t *>::iterator it = threads.begin(); it != threads.end(); ++it) {
         delete (*it);
     }
+    delete server_container_;
 }
 
 void Server::start() {
@@ -36,20 +40,34 @@ void Server::start() {
         throw "Error on binding";
     }
     listen(_socket, MAX_CONNECTED_CLIENTS);
+    pthread_t pExit;
+    int exitThreadResult = pthread_create(&pExit, NULL, exitThread, (void *) this);
+    if (exitThreadResult) {
+        cout << "Exit thread creation failed, exiting" << endl;
+        return;
+    } else {
+        cout << "Enter 'exit' to close the server" << endl;
+    }
     cout << "Waiting for clients connections..." << endl;
     int i = 0;
     struct sockaddr_in clientAddress;
     socklen_t clientAddressLen;
-    while (true) {
+    while (!isExit_from_server()) {
         clientSocket = accept(_socket, (struct sockaddr *) &clientAddress,
                               &clientAddressLen);
         if (clientSocket == -1) {
             throw "Error on accept";
         }
+        if (isExit_from_server()) {
+            close(clientSocket);
+            break;
+        }
         cout << "Client connected" << endl;
+        clientConnected[i]=clientSocket;
         addThread(clientSocket);
         i++;
     }
+
 }
 
 
@@ -78,6 +96,28 @@ int Server::getClientSocket() const {
 
 void Server::setClientSocket(int clientSocket) {
     Server::clientSocket = clientSocket;
+}
+
+void *Server::exitThread(void *obj) {
+    Server *server = (Server *) obj;
+    string input;
+    cin >> input;
+    while (input != "exit") {
+        cin >> input;
+    }
+    server->setExit_from_server(true);
+    pthread_mutex_lock(&server->coutMutex);
+    cout << "All done. All communications are closed!" << endl;
+    pthread_mutex_unlock(&server->coutMutex);
+    exit(-1);
+}
+
+bool Server::isExit_from_server() const {
+    return exit_from_server;
+}
+
+void Server::setExit_from_server(bool exit_from_server) {
+    Server::exit_from_server = exit_from_server;
 }
 
 

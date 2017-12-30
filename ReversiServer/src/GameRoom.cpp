@@ -66,16 +66,3 @@ void* GameRoom::runGame(void* obj) {
         i++;
     }
 }
-
-void GameRoom::addThread() {
-    // create a new thread
-    pthread_t *newThread = new pthread_t();
-    // run the game at a thead
-    int rc = pthread_create(newThread, NULL, runGame, (void*)this);
-    if (rc) {
-        cout << "Error: unable to create thread, " << rc << endl;
-        pthread_exit(&newThread);
-    }
-    // exit thread
-    pthread_exit(&newThread);
-}
