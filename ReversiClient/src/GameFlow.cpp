@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <unistd.h>
+#include <cstring>
 #include "../include/GameFlow.h"
 #include "../include/AIPlayer.h"
 #include "../include/HumanPlayer.h"
@@ -88,13 +89,15 @@ void GameFlow::setUpGame() {
             // for a game with a remote player
         case 3 :
             try {
-            ifstream inFile;
+                pair<const char *, int> p=createClientFromFile();
+                Client client(p.first,p.second);
+            /*ifstream inFile;
             inFile.open("config_client.txt");
             string ip;
             int port;
             inFile >> ip;
             inFile >> port;
-            Client client(ip.c_str(), port);
+            Client client(ip.c_str(), port);*/
             // call handleThirdCase to run this case
             handleThirdCase(client);
                 break;
@@ -116,7 +119,8 @@ pair<const char *, int> GameFlow::createClientFromFile() {
     inFile.open("config_client.txt");
     string ip;
     int port;
-    inFile >> ip;
+    getline(inFile,ip);
+    //inFile >> ip;
     inFile >> port;
     return make_pair(ip.c_str(), port);
 }
@@ -139,9 +143,9 @@ void GameFlow::handleThirdCase(Client client) {
         // switch case.
         string msg_from_server = client.reciveMessage();
         // if the user asked to print list and it's not empty
-        if (msg_from_server.size() != 1) {
-            screen->printString(msg_from_server);
-            continue;
+        if ( !strcmp(msg_from_server.c_str(),"-1")) {
+            this->screen->printString("The server is closed. We are sorry, goodbye...:)");
+            exit(-1);
         } else {
             // save the signal from the server as an int
             int option = atoi(msg_from_server.c_str());
@@ -185,6 +189,9 @@ void GameFlow::handleThirdCase(Client client) {
                 case NotOkList:
                     screen->printString("The list is empty");
                     screen->printEndl();
+                    continue;
+                default:
+                    screen->printString(msg_from_server);
                     continue;
             }
         }
@@ -263,6 +270,11 @@ int GameFlow::getOrder(Client client) {
     int n = read(client_socket, &num_of_player, sizeof(num_of_player));
     if (n == -1) {
         throw "Error of reading from socket";
+    }
+    if ( num_of_player != 1 && num_of_player != 2){
+        this->screen->printString("There is a problem with the server! The program will shut down");
+        this->screen->printEndl();
+        exit(-1);
     }
     // return the number
     return num_of_player;

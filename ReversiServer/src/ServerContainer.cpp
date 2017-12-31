@@ -25,9 +25,27 @@ bool ServerContainer::removeGame(string name) {
     }
     return false;
 }
+void ServerContainer::addClientSocket(int client_socket) {
+    this->client_sockets.push_back(client_socket);
+}
+
+bool ServerContainer::removeClientSocket(int client_socket) {
+    for (vector<int>::iterator it = client_sockets.begin(); it != client_sockets.end(); ++it) {
+        if (*it==client_socket) {
+            client_sockets.erase(it);
+            return true;
+        }
+    }
+    return false;
+}
+
 
 vector<Game *> *ServerContainer::getVecOfGames() {
     return list_of_games;
+}
+
+vector<int> ServerContainer::getClient_sockets() const {
+    return client_sockets;
 }
 
 

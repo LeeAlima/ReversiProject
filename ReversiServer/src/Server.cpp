@@ -4,6 +4,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <cstdlib>
 
 #define MAX_CONNECTED_CLIENTS 10
 using namespace std;
@@ -63,7 +64,7 @@ void Server::start() {
             break;
         }
         cout << "Client connected" << endl;
-        clientConnected[i]=clientSocket;
+        server_container_->addClientSocket(clientSocket);
         addThread(clientSocket);
         i++;
     }
@@ -74,6 +75,7 @@ void Server::start() {
 void Server::stop() {
     // close connection
     close(_socket);
+    exit(0);
 }
 
 void Server::addThread(int clientSocket) {
@@ -83,7 +85,6 @@ void Server::addThread(int clientSocket) {
     if (rc) {
         cout << "Error: unable to create thread, " << rc << endl;
         delete newThread;
-        exit(-1);
     }
     threads.push_back(newThread);
     //pthread_exit(newThread);
@@ -105,11 +106,22 @@ void *Server::exitThread(void *obj) {
     while (input != "exit") {
         cin >> input;
     }
+    vector<int> sockets= server->server_container_->getClient_sockets();
     server->setExit_from_server(true);
+    string msg="-1";
+    for(int i=0;i<sockets.size();i++){
+        if(sockets[i] !=NULL){
+        int n = send(sockets[i], msg.c_str(), msg.length(), 0);
+        if (n == -1) { // error
+            cout << "Error writing buffer_local" << endl;
+            return NULL;
+        }
+        }
+    }
     pthread_mutex_lock(&server->coutMutex);
     cout << "All done. All communications are closed!" << endl;
     pthread_mutex_unlock(&server->coutMutex);
-    exit(-1);
+    server->stop();
 }
 
 bool Server::isExit_from_server() const {

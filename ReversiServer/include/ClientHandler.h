@@ -17,7 +17,7 @@ public:
      * @param client_Socket - the number of the client socket
      * @param serverContainer - a pointer to the server container
      */
-    ClientHandler(int client_Socket,ServerContainer *serverContainer);
+    ClientHandler(int client_Socket, ServerContainer *serverContainer);
 
     /**
      * destructor
@@ -31,7 +31,7 @@ public:
      * in the method
      * @return void * - false for an error
      */
-    static void* handleCommand(void* obj);
+    static void *handleCommand(void *obj);
 
 private:
     int client_Socket_;
@@ -45,7 +45,7 @@ private:
      * @param msg - the message from client
      * @return pair with the data splitted
      */
-    pair<string, vector<string>> extractCommand(string msg);
+    pair<string, vector<string> > extractCommand(string msg);
 };
 
 #endif //REVERSISERVER_CLIENTHANDLER_H

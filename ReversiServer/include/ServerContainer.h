@@ -15,10 +15,18 @@ public:
     ~ServerContainer();
     void addGame(Game *game);
     bool removeGame(string name);
+    bool removeClientSocket(int client_socket);
+
+    vector<int> getClient_sockets() const;
+
+    void addClientSocket(int client_socket);
     vector<Game*> *getVecOfGames();
 
 private:
     vector<Game*> *list_of_games;
+    vector<int> client_sockets;
+
+
 };
 
 

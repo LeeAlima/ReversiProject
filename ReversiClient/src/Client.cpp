@@ -48,6 +48,7 @@ char *Client::receive() const {
     if (n == -1) {
         throw "Error of reading from socket";
     }
+
     return user_choice;
 }
 
@@ -80,6 +81,7 @@ string Client::reciveMessage() const {
     } else {
         return "null";
     }
+
     return res;
 }
 
