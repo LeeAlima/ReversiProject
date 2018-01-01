@@ -14,7 +14,7 @@ using namespace std;
  * @param obj - Server object in cast from void*
  * @return null for error in sending the message
  */
-static void *exitThread(void *obj);
+static void *mainThread(void *obj);
 
 
 Server::Server(int _port) : port(_port), server_socket_(0) {
@@ -40,7 +40,7 @@ void Server::start() {
         throw "Error on binding";
     }
     listen(server_socket_, MAX_CONNECTED_CLIENTS);
-    int exit_thread_result = pthread_create(&p_exit, NULL, exitThread, (void *) server_socket_);
+    int exit_thread_result = pthread_create(&p_exit, NULL, mainThread, (void *) server_socket_);
     if (exit_thread_result) {
         cout << "Exit thread creation failed, exiting" << endl;
         return;
@@ -72,7 +72,7 @@ void Server::stop() {
     exit(0);
 }
 
-void *exitThread(void *server_socket_) {
+void *mainThread(void *server_socket_) {
     long serverSocket = (long) server_socket_;
     cout << "Waiting for clients connections..." << endl;
     struct sockaddr_in client_address;
