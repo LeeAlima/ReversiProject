@@ -3,8 +3,9 @@
 #include <sys/socket.h>
 #include "../include/RunServer.h"
 
-RunServer::RunServer(int clientSocket, ServerContainer *server_container) :
-        client_socket_(clientSocket), server_container_(server_container) {
+RunServer::RunServer(int clientSocket) :
+        client_socket_(clientSocket){
+    server_container_=ServerContainer::getInstance();
     ok_start_ = string("1");
     not_ok_start_ = string("2");
     ok_join_ = string("3");
@@ -90,7 +91,7 @@ void RunServer::joinToGame(vector<string> args) {
             msg.append(ok_join_);
             sendMessageToClient(msg);
             // create a new GameRoom
-            GameRoom *gr = new GameRoom(cur_game, server_container_);
+            GameRoom *gr = new GameRoom(cur_game);
             cur_game->setStatus(PLAYING);
             pthread_t *newThread = new pthread_t();
             // run the game in a thread

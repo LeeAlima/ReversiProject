@@ -16,27 +16,30 @@
  */
 class CommandManager {
 public:
-    /**
-     * constructor for RunServer
-     * @param run_server - as RunServer object (contain the method of
-     * opening, closing , printing and joining a game)
-     */
-    CommandManager(RunServer *run_server);
 
-    /**
-     * destructor
-     */
-    ~CommandManager();
-
+    static CommandManager* getInstance();
     /**
      * This method call the execute method of the right command
      * using the map member
      * @param command - the command that should be execute
      * @param args - the args for the command
      */
-    void executeCommand(string command, vector<string> args);
+    void executeCommand(string command, vector<string> args,int clientSocket);
 
 private:
+    /**
+   * constructor for RunServer
+   * @param run_server - as RunServer object (contain the method of
+   * opening, closing , printing and joining a game)
+   */
+    CommandManager();
+
+    /**
+     * destructor
+     */
+    ~CommandManager();
+    static CommandManager* instance;
+    static pthread_mutex_t lock;
     /*
      * a map that matches a string to a command object
      */

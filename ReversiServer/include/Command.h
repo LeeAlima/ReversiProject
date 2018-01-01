@@ -5,6 +5,9 @@
 
 #include <vector>
 #include <string>
+#include <unistd.h>
+#include <sys/socket.h>
+#include "iostream"
 
 using namespace std;
 
@@ -19,8 +22,16 @@ public:
      * this is a pure virtual method
      * @param args - vector of string
      */
-    virtual void execute(vector<string> args) = 0;
+    virtual void execute(vector<string> args,int clientSocket) = 0;
 
+
+    void sendMessageToClient(string msg,int client_socket_) {
+        int n = send(client_socket_, msg.c_str(), msg.length(), 0);
+        if (n == -1) { // error
+            cout << "Error writing buffer_local" << endl;
+            return;
+        }
+    }
     /**
      * destructor for command
      */

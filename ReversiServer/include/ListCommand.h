@@ -11,7 +11,7 @@ public:
      * constructor of ListCommand
      * @param run - RunServer obj
      */
-    ListCommand(RunServer *run);
+    ListCommand();
 
     /**
      * destructor
@@ -22,10 +22,10 @@ public:
    * In this method I called listOfGames in RunServer
    * @param args - the arguments from the client
    */
-    virtual void execute(vector<string> args);
+    virtual void execute(vector<string> args,int clientSocket);
 
 private:
-    RunServer *run;
+    string not_ok_list_;
 };
 
 #endif //REVERSISERVER_LISTCOMMAND_H

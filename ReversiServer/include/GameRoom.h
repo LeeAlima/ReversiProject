@@ -11,7 +11,7 @@
 class GameRoom {
 
 public:
-    GameRoom(Game *game, ServerContainer *serverContainer);
+    GameRoom(Game *game);
 
     /**
     * this method handle the client by trying to read from the socket
@@ -33,7 +33,6 @@ public:
 
 private:
     Game *game;
-    ServerContainer *server_container_;
 };
 
 #endif //REVERSISERVER_GAMEROOM_H

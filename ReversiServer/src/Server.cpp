@@ -7,20 +7,21 @@
 #define MAX_CONNECTED_CLIENTS 10
 using namespace std;
 
+/**
+ * this method handle the exit command in server, it sends all of
+ * the user the data about closing the server and print a message in the
+ * server itself.
+ * @param obj - Server object in cast from void*
+ * @return null for error in sending the message
+ */
+static void *exitThread(void *obj);
+
+
 
 Server::Server(int _port) : port(_port), server_socket_(0) {
-    server_container_ = new ServerContainer();
-    exit_from_server = false;
-    pthread_mutex_init(&cout_mutex_, NULL);
-    pthread_mutex_init(&server_exit_mutex_, NULL);
 }
 
 Server::~Server() {
-    for (vector<pthread_t *>::iterator it = threads.begin();
-         it != threads.end(); ++it) {
-        delete (*it);
-    }
-    delete server_container_;
 }
 
 void Server::start() {
@@ -40,96 +41,56 @@ void Server::start() {
         throw "Error on binding";
     }
     listen(server_socket_, MAX_CONNECTED_CLIENTS);
-    pthread_t p_exit;
-    int exit_thread_result = pthread_create(&p_exit, NULL, exitThread, (void *) this);
+    int exit_thread_result = pthread_create(&p_exit, NULL, exitThread, (void *) server_socket_);
     if (exit_thread_result) {
         cout << "Exit thread creation failed, exiting" << endl;
         return;
-    } else {
-        cout << "Enter 'exit' to close the server" << endl;
-    }
-    cout << "Waiting for clients connections..." << endl;
-    struct sockaddr_in client_address;
-    socklen_t client_address_len;
-    // as long as the server should be activated
-    while (!isExitFromServer()) {
-        // accept client requests to connect the server
-        client_socket_ = accept(server_socket_, (struct sockaddr *) &client_address,
-                              &client_address_len);
-        if (client_socket_ == -1) {
-            throw "Error on accept";
-        }
-        if (isExitFromServer()) {
-            close(client_socket_);
-            break;
-        }
-        cout << "Client connected" << endl;
-        // add the client socket to the list of clients socket in ServerContainer
-        server_container_->addClientSocket(client_socket_);
-        // add thread to this client
-        addThread(client_socket_);
     }
 }
 
 
 void Server::stop() {
     // close connection and exit program
-    close(server_socket_);
-    exit(0);
-}
-
-void Server::addThread(int clientSocket) {
-    // create a new thread
-    pthread_t *newThread = new pthread_t();
-    // create a client handler object with the client socket and the server container
-    ClientHandler *client_handler = new ClientHandler(clientSocket, server_container_);
-    // handle commands
-    int rc = pthread_create(newThread, NULL, client_handler->handleCommand,
-                            (void *) client_handler);
-    if (rc) {
-        cout << "Error: unable to create thread, " << rc << endl;
-        delete newThread;
-    }
-    // add the thread to the list of threads
-    threads.push_back(newThread);
-}
-
-void *Server::exitThread(void *obj) {
-    Server *server = (Server *) obj;
-    // cin input
-    string input;
-    cin >> input;
-    // scan input until user ask for exit
-    while (input != "exit") {
-        cin >> input;
-    }
-    // save all of the clients sockets
-    vector<int> sockets = server->server_container_->getClient_sockets();
-    // change the boolean member of exit server to true
-    server->setExitFromServer(true);
+    vector<int> sockets = ServerContainer::getInstance()->getClient_sockets();
     string msg = "-1";
-    // go over the sockets number and send them a signal
-    // that the server is going to shut down
     for (int i = 0; i < sockets.size(); i++) {
         if (sockets[i] != NULL) {
             int n = send(sockets[i], msg.c_str(), msg.length(), 0);
             if (n == -1) { // error
                 cout << "Error writing buffer_local" << endl;
-                return NULL;
+                exit(0);
             }
         }
     }
-    pthread_mutex_lock(&server->cout_mutex_);
+    pthread_mutex_lock(&cout_mutex_);
     cout << "All done. All communications are closed!" << endl;
-    pthread_mutex_unlock(&server->cout_mutex_);
-    // stop server
-    server->stop();
+    pthread_mutex_unlock(&cout_mutex_);
+    close(server_socket_);
+    exit(0);
 }
 
-bool Server::isExitFromServer() const {
-    return exit_from_server;
-}
-
-void Server::setExitFromServer(bool exit_from_server) {
-    Server::exit_from_server = exit_from_server;
+void *exitThread(void *server_socket_) {
+    long serverSocket = (long)server_socket_;
+    cout << "Waiting for clients connections..." << endl;
+    struct sockaddr_in client_address;
+    socklen_t client_address_len= sizeof(client_address);
+    // as long as the server should be activated
+    while (true) {
+        // accept client requests to connect the server
+        int client_socket_ = accept(serverSocket, (struct sockaddr *) &client_address,
+                                    &client_address_len);
+        if (client_socket_ == -1) {
+            throw "Error on accept";
+        }
+        cout << "Client connected" << endl;
+        // add the client socket to the list of clients socket in ServerContainer
+        ServerContainer::getInstance()->addClientSocket(client_socket_);
+        // add thread to this client
+        pthread_t threadId;
+        int rc = pthread_create(&threadId, NULL, ClientHandler::handleCommand,
+                                (void *) client_socket_);
+        if (rc) {
+            cout << "Error: unable to create thread, " << rc << endl;
+        }
+    }
 }

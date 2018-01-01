@@ -17,7 +17,7 @@ public:
      * @param client_Socket - the number of the client socket
      * @param serverContainer - a pointer to the server container
      */
-    ClientHandler(int client_Socket, ServerContainer *serverContainer);
+    ClientHandler();
 
     /**
      * destructor
@@ -33,19 +33,21 @@ public:
      */
     static void *handleCommand(void *obj);
 
+    /**
+ * this method is called from handleCommand and by the data received
+ * from the client - the method splits it by space and return a pair
+ * @param msg - the message from client
+ * @return pair with the data splitted
+ */
+    static pair<string, vector<string> > extractCommand(string msg);
+
 private:
     int client_Socket_;
     RunServer *run_server_;
     CommandManager *command_mannager_;
     ServerContainer *server_container_;
 
-    /**
-     * this method is called from handleCommand and by the data received
-     * from the client - the method splits it by space and return a pair
-     * @param msg - the message from client
-     * @return pair with the data splitted
-     */
-    pair<string, vector<string> > extractCommand(string msg);
+
 };
 
 #endif //REVERSISERVER_CLIENTHANDLER_H

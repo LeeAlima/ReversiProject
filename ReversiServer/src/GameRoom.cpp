@@ -2,8 +2,8 @@
 #include <unistd.h>
 #include "../include/GameRoom.h"
 
-GameRoom::GameRoom(Game *game, ServerContainer *serverContainer)
-        : game(game), server_container_(serverContainer) {}
+GameRoom::GameRoom(Game *game)
+        : game(game) {}
 
 bool GameRoom::handleMove(int sender, int receiver) {
     char buffer_local[maxMove];
@@ -25,7 +25,7 @@ bool GameRoom::handleMove(int sender, int receiver) {
         // than print a message, change game status and remove the game
         cout << "end of game " << game->getName() << endl;
         game->setStatus(ENDGAME);
-        server_container_->removeGame(game->getName());
+        ServerContainer::getInstance()->removeGame(game->getName());
         return false;
     }
     // if it's not the end of the game than write it

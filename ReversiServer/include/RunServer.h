@@ -22,7 +22,7 @@ public:
      * @param clientSocket - int as the client socket number
      * @param server_container - as a pointer to the server container
      */
-    RunServer(int clientSocket, ServerContainer *server_container);
+    RunServer(int clientSocket);
 
     /*
      * destructor

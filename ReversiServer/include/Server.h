@@ -33,42 +33,17 @@ public:
      */
     void start();
 
-    /**
-     * this method handle the exit command in server, it sends all of
-     * the user the data about closing the server and print a message in the
-     * server itself.
-     * @param obj - Server object in cast from void*
-     * @return null for error in sending the message
-     */
-    static void *exitThread(void *obj);
 
     /**
      * this method stops the connection and exit the server.
      */
     void stop();
 
-    /**
-     * this method informs if there is a need in closing the socket.
-     * @return true if there is a need and false otherwise.
-     */
-    bool isExitFromServer() const;
-
-    /**
-     * this method set the exit_from_server boolean
-     * @param exit_from_server - bool
-     */
-    void setExitFromServer(bool exit_from_server);
-
 
 private:
     int port;
     int server_socket_;
-    int client_socket_;
-    int clientConnected[10];
-    vector<pthread_t *> threads;
-    ServerContainer *server_container_;
-    bool exit_from_server;
-    pthread_mutex_t server_exit_mutex_;
+    pthread_t p_exit;
     pthread_mutex_t cout_mutex_;
 
     /**

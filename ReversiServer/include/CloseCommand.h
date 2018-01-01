@@ -12,7 +12,7 @@ public:
      * is called.
      * @param run - as a RunServer object
      */
-    CloseCommand(RunServer *run);
+    CloseCommand();
 
     /*
      * destructor
@@ -23,10 +23,11 @@ public:
      * In this method I called closeGame in RunServer
      * @param args - the arguments from the client
      */
-    virtual void execute(vector<string> args);
+    virtual void execute(vector<string> args,int clientSocket);
 
 private:
-    RunServer *run;
+    string ok_close_;
+    string not_ok_close_;
 };
 
 #endif //REVERSISERVER_CLOSECOMMAND_H

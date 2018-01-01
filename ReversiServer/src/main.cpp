@@ -20,6 +20,11 @@ int main() {
 	// try to connect
 	try {
 		server.start();
+		cout << "Enter exit to stop server\n" << endl;
+		string str;
+		cin >> str;
+		if (str == "exit")
+			server.stop();
 	} catch (const char *msg) {
 		cout << "Cannot start server. Reason: " << msg << endl;
 	}
