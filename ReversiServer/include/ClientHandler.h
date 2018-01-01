@@ -28,26 +28,23 @@ public:
      * static method that handle the client's commands ( is being called
      * in threads to handle many clients at the same time)
      * @param obj - as void * but will cast to ClientHandler object
-     * in the method to be able to user this class methods and members.
+     * in the method to be able to use this class methods and members.
      * @return void * - false for an error
      */
     static void *handleCommand(void *obj);
 
     /**
- * this method is called from handleCommand and by the data received
- * from the client - the method splits it by space and return a pair
- * @param msg - the message from client
- * @return pair with the data splitted
- */
+    * this method is static and is being called from handleCommand and
+    * by the data received from the client - the method splits it by
+    * space and return a pair
+    * @param msg - the message from client
+    * @return pair with the data splitted
+    */
     static pair<string, vector<string> > extractCommand(string msg);
 
 private:
     int client_Socket_;
-    RunServer *run_server_;
-    CommandManager *command_mannager_;
     ServerContainer *server_container_;
-
-
 };
 
 #endif //REVERSISERVER_CLIENTHANDLER_H

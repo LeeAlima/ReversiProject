@@ -1,13 +1,10 @@
-//
-// Created by omer on 28/12/17.
-//
 
 #include "../include/ServerContainer.h"
 
-ServerContainer* ServerContainer::instance = nullptr;
+ServerContainer *ServerContainer::instance = nullptr;
 pthread_mutex_t ServerContainer::lock;
 
-ServerContainer* ServerContainer::getInstance() {
+ServerContainer *ServerContainer::getInstance() {
     if (instance == 0) {
         pthread_mutex_lock(&lock);
         if (instance == 0) {
@@ -58,7 +55,6 @@ void ServerContainer::addClientSocket(int client_socket) {
 bool ServerContainer::removeClientSocket(int client_socket) {
     // going over the vector of integers and look for a number
     // as the same as the client socket
-
     for (vector<int>::iterator it = client_sockets_.begin();
          it != client_sockets_.end(); ++it) {
         if (*it == client_socket) {

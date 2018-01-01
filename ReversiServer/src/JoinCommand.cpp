@@ -1,5 +1,8 @@
 
 #include "../include/JoinCommand.h"
+#include "../include/Game.h"
+#include "../include/ServerContainer.h"
+#include "../include/GameRoom.h"
 
 JoinCommand::JoinCommand(){
     ok_join_ = string("3");
@@ -48,7 +51,4 @@ void JoinCommand::execute(vector<string> args, int client_socket_) {
     msg.append(not_such_game_join_);
     sendMessageToClient(msg,client_socket_);
     return;
-
-    /*// call joinToGame method in RunServer
-    run->joinToGame(args);*/
 }

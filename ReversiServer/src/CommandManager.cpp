@@ -1,9 +1,7 @@
 
 #include "../include/CommandManager.h"
 
-
-
-CommandManager* CommandManager::instance = 0;
+CommandManager *CommandManager::instance = 0;
 pthread_mutex_t CommandManager::lock;
 
 CommandManager::CommandManager() {
@@ -23,20 +21,25 @@ CommandManager::~CommandManager() {
     }
 }
 
-void CommandManager::executeCommand(string command, vector<string> args,int clientSocket) {
+void CommandManager::executeCommand(string command, vector<string> args,
+                                    int clientSocket) {
     // save in commandObj the right object (by using the map)
     Command *command_obj = commands_map[command];
     // call execute
-    command_obj->execute(args,clientSocket);
+    command_obj->execute(args, clientSocket);
 }
 
 CommandManager *CommandManager::getInstance() {
+    // check if it's the first time to get into this method
     if (instance == 0) {
+        // lock
         pthread_mutex_lock(&lock);
+        // check if this is the first time to get into this method
         if (instance == 0) {
             instance = new CommandManager();
         }
         pthread_mutex_unlock(&lock);
     }
+    // return the instance
     return instance;
 }

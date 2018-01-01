@@ -1,5 +1,7 @@
 
 #include "../include/StartCommand.h"
+#include "../include/Game.h"
+#include "../include/ServerContainer.h"
 
 StartCommand::StartCommand(){
     ok_start_ = string("1");
@@ -33,6 +35,4 @@ void StartCommand::execute(vector<string> args,int client_socket_) {
     // send ok_start_
     msg.append(ok_start_);
     sendMessageToClient(msg,client_socket_);
-   /* // call startNewGame in RunServer
-    run->startNewGame(args);*/
 }

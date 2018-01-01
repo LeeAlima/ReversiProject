@@ -3,7 +3,6 @@
 #define REVERSISERVER_LISTCOMMAND_H
 
 #include "Command.h"
-#include "RunServer.h"
 
 class ListCommand : public Command {
 public:
@@ -19,10 +18,14 @@ public:
     virtual ~ListCommand();
 
     /**
-   * In this method I called listOfGames in RunServer
-   * @param args - the arguments from the client
-   */
-    virtual void execute(vector<string> args,int clientSocket);
+     * this method goes over the list of games (receiving it from the
+     * class container) and creates a message of it.
+     * Than, the method sends the message to the user.
+     * If the list is empty than sends notOkList.
+     * @param args - the arguments from the client
+     * @param clientSocket - number of client socket
+    */
+    virtual void execute(vector<string> args, int clientSocket);
 
 private:
     string not_ok_list_;

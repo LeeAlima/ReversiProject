@@ -3,7 +3,6 @@
 #define REVERSISERVER_JOINCOMMAND_H
 
 #include "../include/Command.h"
-#include "RunServer.h"
 
 class JoinCommand : public Command {
 public:
@@ -19,13 +18,18 @@ public:
     virtual ~JoinCommand();
 
     /**
-    * In this method I called joinToGame in RunServer
+    * this method goes over the list of games (receiving it from the
+    * class container) and checks if there is an available game with
+    * the same name the user chose.
+    * If he can join the game than sends okJoin, If there are
+    * already 2 player playing the game than sends gameIsPlaying,
+    * and if there is not a game with this name than sends notSuchGameJoin.
     * @param args - the arguments from the client
+    * @param clientSocket - number of client socket
     */
     virtual void execute(vector<string> args,int clientSocket);
 
 private:
-    RunServer *run;
     string ok_join_;
     string not_such_game_join_;
     string game_is_playing_;

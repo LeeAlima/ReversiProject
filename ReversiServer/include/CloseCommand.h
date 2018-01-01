@@ -3,7 +3,7 @@
 #define REVERSISERVER_CLOSECOMMAND_H
 
 #include "../include/Command.h"
-#include "RunServer.h"
+#include "../include/ServerContainer.h"
 
 class CloseCommand : public Command {
 public:
@@ -20,8 +20,10 @@ public:
     virtual ~CloseCommand();
 
     /**
-     * In this method I called closeGame in RunServer
+     * This method tries to remove a game in the server container.
+     * If it succeeded than it sends okClose , else notOkClose to the client.
      * @param args - the arguments from the client
+     * @param clientSocket - number of client socket
      */
     virtual void execute(vector<string> args,int clientSocket);
 

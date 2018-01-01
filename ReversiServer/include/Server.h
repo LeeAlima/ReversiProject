@@ -35,7 +35,9 @@ public:
 
 
     /**
-     * this method stops the connection and exit the server.
+     *  this method handle the exit command in server, it sends all of
+     * the user the data about closing the server and print a message in the
+     * server itself.
      */
     void stop();
 
@@ -45,14 +47,6 @@ private:
     int server_socket_;
     pthread_t p_exit;
     pthread_mutex_t cout_mutex_;
-
-    /**
-     * This method creates a new ClientHandler with the clientSocket number
-     * and handle its commands in a thread.
-     * It also adds the thread to the list of threads.
-     * @param clientSocket - the number of client socket.
-     */
-    void addThread(int clientSocket);
 };
 
 #endif /* SRC_SERVER_H_ */

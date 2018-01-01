@@ -62,7 +62,6 @@ private:
 
     static ServerContainer* instance;
     static pthread_mutex_t lock;
-
     vector<Game *> *vec_of_games_;
     vector<int> client_sockets_;
 

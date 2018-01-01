@@ -2,8 +2,7 @@
 #include <unistd.h>
 #include "../include/GameRoom.h"
 
-GameRoom::GameRoom(Game *game)
-        : game(game) {}
+GameRoom::GameRoom(Game *game) : game(game) {}
 
 bool GameRoom::handleMove(int sender, int receiver) {
     char buffer_local[maxMove];

@@ -8,14 +8,13 @@
 using namespace std;
 
 /**
- * this method handle the exit command in server, it sends all of
- * the user the data about closing the server and print a message in the
- * server itself.
+ * This method creates a new ClientHandler with the clientSocket number
+ * and handle its commands in a thread.
+ * It also adds the thread to the list of threads.
  * @param obj - Server object in cast from void*
  * @return null for error in sending the message
  */
 static void *exitThread(void *obj);
-
 
 
 Server::Server(int _port) : port(_port), server_socket_(0) {
@@ -51,8 +50,11 @@ void Server::start() {
 
 void Server::stop() {
     // close connection and exit program
+    // save all of the client sockets to be able to make them
+    // know the server is going to shut down.
     vector<int> sockets = ServerContainer::getInstance()->getClient_sockets();
     string msg = "-1";
+    // inform all client
     for (int i = 0; i < sockets.size(); i++) {
         if (sockets[i] != NULL) {
             int n = send(sockets[i], msg.c_str(), msg.length(), 0);
@@ -65,15 +67,16 @@ void Server::stop() {
     pthread_mutex_lock(&cout_mutex_);
     cout << "All done. All communications are closed!" << endl;
     pthread_mutex_unlock(&cout_mutex_);
+    // close server and exit
     close(server_socket_);
     exit(0);
 }
 
 void *exitThread(void *server_socket_) {
-    long serverSocket = (long)server_socket_;
+    long serverSocket = (long) server_socket_;
     cout << "Waiting for clients connections..." << endl;
     struct sockaddr_in client_address;
-    socklen_t client_address_len= sizeof(client_address);
+    socklen_t client_address_len = sizeof(client_address);
     // as long as the server should be activated
     while (true) {
         // accept client requests to connect the server

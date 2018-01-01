@@ -4,7 +4,6 @@
 
 #include <map>
 #include "../include/Command.h"
-#include "RunServer.h"
 #include "../include/StartCommand.h"
 #include "../include/ListCommand.h"
 #include "../include/CloseCommand.h"
@@ -17,6 +16,10 @@
 class CommandManager {
 public:
 
+    /**
+     * this is a static method to get the class instance
+     * @return - the class instance
+     */
     static CommandManager* getInstance();
     /**
      * This method call the execute method of the right command

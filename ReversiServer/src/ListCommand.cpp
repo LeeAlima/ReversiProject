@@ -1,5 +1,7 @@
 
 #include "../include/ListCommand.h"
+#include "../include/Game.h"
+#include "../include/ServerContainer.h"
 
 ListCommand::ListCommand() {
     not_ok_list_ = string("8");
@@ -29,7 +31,4 @@ void ListCommand::execute(vector<string> args,int client_socket_) {
     msg.append("The available games:\n");
     msg.append(list);
     sendMessageToClient(msg,client_socket_);
-
-    /* // call listOfGames in RunServer
-    run->listOfGames(args);*/
 }

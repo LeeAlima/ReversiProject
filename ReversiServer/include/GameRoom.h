@@ -25,7 +25,7 @@ public:
 
 
     /**
-     * this method run the game
+     * this method runs the game
      * @param obj - void * that will be case into a gameRoom object
      * @return void *
      */
