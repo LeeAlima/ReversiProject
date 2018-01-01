@@ -4,9 +4,9 @@
 #include "../include/RunServer.h"
 
 RunServer::RunServer(int clientSocket, ServerContainer *server_container) :
-        client_socket_(clientSocket) ,server_container_(server_container) {
-    not_ok_start_ = string("2");
+        client_socket_(clientSocket), server_container_(server_container) {
     ok_start_ = string("1");
+    not_ok_start_ = string("2");
     ok_join_ = string("3");
     not_such_game_join_ = string("4");
     game_is_playing_ = string("5");
@@ -16,7 +16,7 @@ RunServer::RunServer(int clientSocket, ServerContainer *server_container) :
 }
 
 RunServer::~RunServer() {
-    vector<Game*> *list_of_games = server_container_->getVecOfGames();
+    vector<Game *> *list_of_games = server_container_->getVecOfGames();
     for (vector<Game *>::iterator it = list_of_games->begin();
          it != list_of_games->end(); ++it) {
         delete *it;
@@ -24,13 +24,14 @@ RunServer::~RunServer() {
 }
 
 void RunServer::startNewGame(vector<string> args) {
-    vector<Game*> *list_of_games = server_container_->getVecOfGames();
+    vector<Game *> *list_of_games = server_container_->getVecOfGames();
+    string game_name = args[0];
     string msg = "";
     // go over the list og games
     for (vector<Game *>::iterator it = list_of_games->begin();
          it != list_of_games->end(); ++it) {
         // if there is already a game with this name than sends not_ok_start_
-        if (!strcmp((*it)->getName().c_str(), args[0].c_str())) {
+        if (!strcmp((*it)->getName().c_str(), game_name.c_str())) {
             msg.append(not_ok_start_);
             sendMessageToClient(msg);
             return;
@@ -38,7 +39,7 @@ void RunServer::startNewGame(vector<string> args) {
     }
     // create a new game and sets its name, status and first client socket.
     Game *newGame = new Game();
-    newGame->setName(args[0]);
+    newGame->setName(game_name);
     newGame->setFirst_socket(client_socket_);
     newGame->setStatus(WAIT);
     // add game to the server_container_
@@ -50,7 +51,7 @@ void RunServer::startNewGame(vector<string> args) {
 
 void RunServer::listOfGames(vector<string> args) {
     string list = "";
-    vector<Game*> *list_of_games = server_container_->getVecOfGames();
+    vector<Game *> *list_of_games = server_container_->getVecOfGames();
     // go over the list of games
     for (vector<Game *>::iterator it = list_of_games->begin();
          it != list_of_games->end(); ++it) {
@@ -66,7 +67,7 @@ void RunServer::listOfGames(vector<string> args) {
         return;
     }
     // send the the list to the user
-    string msg ="";
+    string msg = "";
     msg.append("The available games:\n");
     msg.append(list);
     sendMessageToClient(msg);
@@ -74,13 +75,14 @@ void RunServer::listOfGames(vector<string> args) {
 
 void RunServer::joinToGame(vector<string> args) {
     Game *cur_game = NULL;
+    string game_name = args[0];
     string msg = "";
-    vector<Game*> *list_of_games = server_container_->getVecOfGames();
+    vector<Game *> *list_of_games = server_container_->getVecOfGames();
     // go over the list of games
     for (vector<Game *>::iterator it = list_of_games->begin();
          it != list_of_games->end(); ++it) {
         // if there is a waiting game with this name
-        if (!strcmp((*it)->getName().c_str(), args[0].c_str())
+        if (!strcmp((*it)->getName().c_str(), game_name.c_str())
             && (*it)->getStatus() == WAIT) {
             // set second socket and send ok_join_
             (*it)->setSecond_socket(client_socket_);
@@ -99,8 +101,8 @@ void RunServer::joinToGame(vector<string> args) {
             }
             return;
             // if there is a game with this name but it's being playing
-        } else if (!strcmp((*it)->getName().c_str(), args[0].c_str()) &&
-                (*it)->getStatus() == PLAYING) {
+        } else if (!strcmp((*it)->getName().c_str(), game_name.c_str()) &&
+                   (*it)->getStatus() == PLAYING) {
             // send game_is_playing_
             msg.append(game_is_playing_);
             sendMessageToClient(msg);
@@ -113,10 +115,11 @@ void RunServer::joinToGame(vector<string> args) {
 }
 
 void RunServer::closeGame(vector<string> args) {
+    string game_name = args[0];
     // try to remove game from the list
-    bool del = server_container_->removeGame(args[0]);
+    bool del = server_container_->removeGame(game_name);
     string msg = "";
-    if (del){ // if removing accured, send ok_close_
+    if (del) { // if removing accured, send ok_close_
         msg.append(ok_close_);
     } else { // if removing wasn't possible, send not_ok_close_
         msg.append(not_ok_close_);

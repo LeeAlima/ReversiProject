@@ -1,10 +1,11 @@
 
 #include "../include/ListCommand.h"
 
-ListCommand::ListCommand(RunServer *_run) : run(_run) {}
+ListCommand::ListCommand(RunServer *run) : run(run) {}
 
-ListCommand::~ListCommand() { }
+ListCommand::~ListCommand() {}
 
-void ListCommand::execute(vector <string> args) {
+void ListCommand::execute(vector<string> args) {
+    // call listOfGames in RunServer
     run->listOfGames(args);
 }

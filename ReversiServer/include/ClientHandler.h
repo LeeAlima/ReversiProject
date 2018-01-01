@@ -28,7 +28,7 @@ public:
      * static method that handle the client's commands ( is being called
      * in threads to handle many clients at the same time)
      * @param obj - as void * but will cast to ClientHandler object
-     * in the method
+     * in the method to be able to user this class methods and members.
      * @return void * - false for an error
      */
     static void *handleCommand(void *obj);

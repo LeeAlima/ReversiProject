@@ -6,9 +6,9 @@
 #include <unistd.h>
 
 
-ConsoleScreen::ConsoleScreen(){ };
+ConsoleScreen::ConsoleScreen() {};
 
-ConsoleScreen::~ConsoleScreen(){ } ;
+ConsoleScreen::~ConsoleScreen() {};
 
 void ConsoleScreen::printEndl() const {
     cout << endl;
@@ -58,8 +58,8 @@ void ConsoleScreen::printBoard(Board &board) const {
     }
 }
 
-void ConsoleScreen::printPlayerOrder(bool b,char type) const {
-    if (b){
+void ConsoleScreen::printPlayerOrder(bool b, char type) const {
+    if (b) {
         switch (type) {
             case 'O':
                 cout << "O: ";
@@ -82,7 +82,7 @@ void ConsoleScreen::printPossibleMoves(vector<string> &moves,
         for (int i = 0; i < moves.size(); i++) {
             vector<int> string_change = cutPoint(moves[i]);
             cout << this->fixPointToUser(string_change);
-            if (i != moves.size()-1 ){
+            if (i != moves.size() - 1) {
                 cout << ",";
             }
         }
@@ -110,13 +110,13 @@ string ConsoleScreen::printPlayerDialog() const {
     return user_cell;
 }
 
-void ConsoleScreen::printPlayerMove(char type,int num1,int num2) const{
+void ConsoleScreen::printPlayerMove(char type, int num1, int num2) const {
     switch (type) {
         case 'O':
-            cout << "'O' chose ("<<num1+1<<","<<num2+1<<")"<<endl;
+            cout << "'O' chose (" << num1 + 1 << "," << num2 + 1 << ")" << endl;
             break;
         case 'X':
-            cout << "'X' chose ("<<num1+1<<","<<num2+1<<")"<<endl;
+            cout << "'X' chose (" << num1 + 1 << "," << num2 + 1 << ")" << endl;
             break;
         default:
             break;
@@ -146,7 +146,7 @@ int ConsoleScreen::printOpenMenu() const {
 
 void ConsoleScreen::printGameOver(char flag, int score_1, int score_2) const {
     if (flag == '=') {
-        cout << "It's a tie!, each player got "<< score_1 << " points."<< endl;
+        cout << "It's a tie!, each player got " << score_1 << " points." << endl;
         return;
     }
     // if it's not a tie, print a message of the winner and the player's points
@@ -159,7 +159,8 @@ string ConsoleScreen::fixPointToUser(vector<int> s) const {
     // add one to each of the coordinate and return a string of the new point
     int first_number = s.front() + 1;
     int second_number = s.back() + 1;
-    return "(" + toStringInt(first_number) + "," + toStringInt(second_number) + ")";
+    return "(" + toStringInt(first_number) + "," +
+            toStringInt(second_number) + ")";
 }
 
 string ConsoleScreen::toStringInt(int number) const {
@@ -201,37 +202,36 @@ vector<int> ConsoleScreen::cutPoint(string user_input) const {
 }
 
 void ConsoleScreen::printNoMoveOrder(char type) const {
-    cout<<"NO POSSIBLE MOVES FOR "<<type<<endl;
+    cout << "NO POSSIBLE MOVES FOR " << type << endl;
 }
 
 
 int ConsoleScreen::printSubMenu() {
     int option;
     // ask the user for an option
-    cout << endl <<"Please choose an option" << endl;
+    cout << endl << "Please choose an option" << endl;
     cout << "1. To start a game" << endl;
     cout << "2. To print the list of games" << endl;
     cout << "3. To join a game" << endl;
-    cout << "4. To close a game" << endl;
     do {
         cin >> option;
         // for bad option
-        if (option != 1 && option != 2 && option != 3 && option != 4) {
+        if (option != 1 && option != 2 && option != 3) {
             cout << "Error try again.." << endl;
             cin.clear();
             cin.ignore(100, '\n');
         }
-    } while (option != 1 && option != 2 && option != 3 && option != 4);
+    } while (option != 1 && option != 2 && option != 3);
     // return the user choice
     return option;
 }
 
-pair<string,string> ConsoleScreen::handleSubMenu() {
+pair<string, string> ConsoleScreen::handleSubMenu() {
     // call printSubMenu and returns the user choice
     int option = printSubMenu();
     string game_name;
-    string final_choose ="";
-    pair <string,string> p;
+    string final_choose = "";
+    pair<string, string> p;
     switch (option) {
         // if the user asked to start a game
         case 1:
@@ -248,11 +248,6 @@ pair<string,string> ConsoleScreen::handleSubMenu() {
             cout << "Enter the name of the game you want to join:" << endl;
             final_choose.append("join ");
             break;
-            // if the user wants to close a game
-        case 4:
-            cout << "Enter the name of the game you want to close:" << endl;
-            final_choose.append("close ");
-            break;
         default:
             break;
     }
@@ -268,6 +263,10 @@ pair<string,string> ConsoleScreen::handleSubMenu() {
 
 string ConsoleScreen::userChoiceOfGame() {
     string game_name;
-    cin >> game_name;
+    // scan the "\n"
+    getline(cin, game_name);
+    // scan the user input
+    getline(cin, game_name);
+    // return the game name
     return game_name;
 }

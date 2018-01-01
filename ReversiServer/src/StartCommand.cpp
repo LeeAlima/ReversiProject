@@ -1,16 +1,11 @@
-//
-// Created by lee on 21/12/17.
-//
 
 #include "../include/StartCommand.h"
-#include "../include/RunServer.h"
 
-StartCommand::StartCommand(RunServer *_run) : _run(_run) {}
+StartCommand::StartCommand(RunServer *run) : run(run) {}
 
-StartCommand::~StartCommand() {
-
-}
+StartCommand::~StartCommand() {}
 
 void StartCommand::execute(vector<string> args) {
-    _run->startNewGame(args);
+    // call startNewGame in RunServer
+    run->startNewGame(args);
 }

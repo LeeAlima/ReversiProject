@@ -17,29 +17,29 @@ public:
      * as the destructor - to free all the objects that were allocated.
      */
     ~Board();
-    
+
     /**
      * this method runs over the board's cells and checks
      * if all cells are full.
      * @return true - if the board is full and false otherwise.
      */
     bool checkAllCellsFull() const;
-    
+
     /**
      * this method returns the cell's type given its location.
      * @param r - as the row's location.
      * @param c - as the col's location.
      * @return char - as the cell's type.
      */
-    char returnCellType(int r,int c) const;
-    
+    char returnCellType(int r, int c) const;
+
     /**
      * this method set the cell's type.
      * @param r - as the row's location.
      * @param c - as the col's location.
      * @param t - as the type to change to.
      */
-    void setCellInBoard(int r, int c,char t) const;
+    void setCellInBoard(int r, int c, char t) const;
 
     /**
      * this method returns the board size
@@ -60,11 +60,11 @@ public:
     * @param number - int.
     * @return string.
     */
-    string toStringInt(int number) const ;
+    string toStringInt(int number) const;
 
 private:
     int size;
-    Cell *** my_matrix_;
+    Cell ***my_matrix_;
 };
 
 #endif //EX2_BOARD_H

@@ -19,8 +19,7 @@
 # define NotOkClose 7
 # define NotOkList 8
 
-GameFlow::GameFlow(int size) : size(size) {
-}
+GameFlow::GameFlow(int size) : size(size) {}
 
 GameFlow::~GameFlow() {
     delete game;
@@ -70,8 +69,8 @@ void GameFlow::run() {
 }
 
 void GameFlow::showScores() {
-    screen->printGameOver(this->game->returnsWhoWon()
-            , this->game->getPlayer1Score(), game->getPlayer2Score());
+    screen->printGameOver(this->game->returnsWhoWon(), this->game->getPlayer1Score(),
+                          game->getPlayer2Score());
 }
 
 void GameFlow::setUpGame() {
@@ -89,26 +88,26 @@ void GameFlow::setUpGame() {
             // for a game with a remote player
         case 3 :
             try {
-                pair<const char *, int> p=createClientFromFile();
-                Client client(p.first,p.second);
-            /*ifstream inFile;
-            inFile.open("config_client.txt");
-            string ip;
-            int port;
-            inFile >> ip;
-            inFile >> port;
-            Client client(ip.c_str(), port);*/
-            // call handleThirdCase to run this case
-            handleThirdCase(client);
+                /* pair<const char *, int> p=createClientFromFile();
+                 Client client(p.first,p.second);*/
+                ifstream inFile;
+                inFile.open("config_client.txt");
+                string ip;
+                int port;
+                inFile >> ip;
+                inFile >> port;
+                Client client(ip.c_str(), port);
+                // call handleThirdCase to run this case
+                handleThirdCase(client);
                 break;
-        } catch (const char *msg) {
+            } catch (const char *msg) {
                 // if there was an error than print a message
-        this->screen->printString("Failed to connect to server."
-                                          " Reason: ");
-        this->screen->printString(msg);
-        this->screen->printEndl();
-        return;
-    }
+                this->screen->printString("Failed to connect to server."
+                                                  " Reason: ");
+                this->screen->printString(msg);
+                this->screen->printEndl();
+                return;
+            }
         default:
             break;
     }
@@ -119,7 +118,7 @@ pair<const char *, int> GameFlow::createClientFromFile() {
     inFile.open("config_client.txt");
     string ip;
     int port;
-    getline(inFile,ip);
+    getline(inFile, ip);
     //inFile >> ip;
     inFile >> port;
     return make_pair(ip.c_str(), port);
@@ -139,12 +138,13 @@ void GameFlow::handleThirdCase(Client client) {
         user_sub_option.append("\0");
         // send the server the option
         client.sendMessage(user_sub_option.c_str());
-        // receive signal from the client (a number as represented in the
+        // receiveMove signal from the client (a number as represented in the
         // switch case.
         string msg_from_server = client.reciveMessage();
         // if the user asked to print list and it's not empty
-        if ( !strcmp(msg_from_server.c_str(),"-1")) {
-            this->screen->printString("The server is closed. We are sorry, goodbye...:)");
+        if (!strcmp(msg_from_server.c_str(), "-1")) {
+            this->screen->printString("The server is closed."
+                                              " We are sorry, goodbye...:)");
             exit(-1);
         } else {
             // save the signal from the server as an int
@@ -271,8 +271,9 @@ int GameFlow::getOrder(Client client) {
     if (n == -1) {
         throw "Error of reading from socket";
     }
-    if ( num_of_player != 1 && num_of_player != 2){
-        this->screen->printString("There is a problem with the server! The program will shut down");
+    if (num_of_player != 1 && num_of_player != 2) {
+        this->screen->printString("There is a problem with the server!"
+                                          " The program will shut down");
         this->screen->printEndl();
         exit(-1);
     }

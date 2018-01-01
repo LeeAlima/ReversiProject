@@ -14,7 +14,7 @@ public:
      * @param type - as char ('X' or 'O')
      * @param screen  - as the game screen
      */
-    AIPlayer(char type,ConsoleScreen *screen);
+    AIPlayer(char type, ConsoleScreen *screen);
 
     /**
      * In this method we run over all of the computer's options,
@@ -23,7 +23,7 @@ public:
      * @param game - as gameLogic object
      * @return string - the chosen cell.
      */
-    string chooseCell(GameLogic &game) ;
+    string chooseCell(GameLogic &game);
 
 };
 

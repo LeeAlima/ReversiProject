@@ -1,9 +1,9 @@
 #include "../include/Game.h"
 
-// initialize the sockets member to -1
-Game::Game() :first_socket_(-1),second_socket_(-1){ }
+// initialize both sockets members to -1
+Game::Game() : first_socket_(-1), second_socket_(-1) {}
 
-Game::~Game() { }
+Game::~Game() {}
 
 const string &Game::getName() const {
     return name;

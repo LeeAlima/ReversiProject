@@ -5,18 +5,18 @@
 #include "Command.h"
 #include "RunServer.h"
 
-class ListCommand: public Command {
+class ListCommand : public Command {
 public:
     /**
      * constructor of ListCommand
-     * @param _run - RunServer obj
+     * @param run - RunServer obj
      */
-    ListCommand(RunServer *_run);
+    ListCommand(RunServer *run);
 
     /**
      * destructor
      */
-    virtual ~ListCommand() ;
+    virtual ~ListCommand();
 
     /**
    * In this method I called listOfGames in RunServer

@@ -11,7 +11,7 @@ public:
      * @param type - as char ('X' or 'O')
      * @param screen  - as the game screen
      */
-    HumanPlayer(char type,ConsoleScreen *screen);
+    HumanPlayer(char type, ConsoleScreen *screen);
 
     /**
      * the human player is asked for a point, he enter a point,
@@ -19,7 +19,7 @@ public:
      * @param gameLogic - as the gameLogic object
      * @return string - the chosen cell
      */
-    string chooseCell(GameLogic &gameLogic) ;
+    string chooseCell(GameLogic &gameLogic);
 
 private:
     /**

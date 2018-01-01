@@ -5,47 +5,55 @@
 #include "../include/ServerContainer.h"
 
 ServerContainer::ServerContainer() {
-    this->list_of_games = new vector<Game*>;
+    this->vec_of_games_ = new vector<Game *>;
 }
 
 ServerContainer::~ServerContainer() {
-    delete list_of_games;
+    delete vec_of_games_;
 }
 
 void ServerContainer::addGame(Game *game) {
-    this->list_of_games->push_back(game);
+    this->vec_of_games_->push_back(game);
 }
 
 bool ServerContainer::removeGame(string name) {
-    for (vector<Game *>::iterator it = list_of_games->begin(); it != list_of_games->end(); ++it) {
+    // going over the vector of games and look for a game with the same name
+    // as the name received in this method
+    for (vector<Game *>::iterator it = vec_of_games_->begin();
+         it != vec_of_games_->end(); ++it) {
         if (!strcmp((*it)->getName().c_str(), name.c_str())) {
-            list_of_games->erase(it);
+            // if a game was found than erase it and return true
+            vec_of_games_->erase(it);
             return true;
         }
     }
+    // no game with the same name was found
     return false;
 }
+
 void ServerContainer::addClientSocket(int client_socket) {
-    this->client_sockets.push_back(client_socket);
+    this->client_sockets_.push_back(client_socket);
 }
 
 bool ServerContainer::removeClientSocket(int client_socket) {
-    for (vector<int>::iterator it = client_sockets.begin(); it != client_sockets.end(); ++it) {
-        if (*it==client_socket) {
-            client_sockets.erase(it);
+    // going over the vector of integers and look for a number
+    // as the same as the client socket
+    for (vector<int>::iterator it = client_sockets_.begin();
+         it != client_sockets_.end(); ++it) {
+        if (*it == client_socket) {
+            // if a number was found than erase if and return true
+            client_sockets_.erase(it);
             return true;
         }
     }
+    // there is no a number as the client_socket in the vec of int
     return false;
 }
 
-
 vector<Game *> *ServerContainer::getVecOfGames() {
-    return list_of_games;
+    return vec_of_games_;
 }
 
 vector<int> ServerContainer::getClient_sockets() const {
-    return client_sockets;
+    return client_sockets_;
 }
-
-

@@ -29,10 +29,11 @@ public:
      * @param obj - void * that will be case into a gameRoom object
      * @return void *
      */
-    static void* runGame(void* obj);
+    static void *runGame(void *obj);
 
 private:
     Game *game;
     ServerContainer *server_container_;
 };
+
 #endif //REVERSISERVER_GAMEROOM_H

@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <string>
+
 using namespace std;
 
 /**
@@ -15,7 +16,7 @@ class Command {
 public:
     /**
      * this method execute the command using the vector of args.
-     * this is a pute virtual method
+     * this is a pure virtual method
      * @param args - vector of string
      */
     virtual void execute(vector<string> args) = 0;

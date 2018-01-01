@@ -80,4 +80,5 @@ private:
     int second_socket_;
     STATUS status;
 };
+
 #endif //REVERSISERVER_GAME_H

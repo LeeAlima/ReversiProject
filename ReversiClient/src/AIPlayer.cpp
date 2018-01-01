@@ -2,7 +2,7 @@
 
 using namespace std;
 
-AIPlayer::AIPlayer(char type, ConsoleScreen *screen): Player(type,screen){
+AIPlayer::AIPlayer(char type, ConsoleScreen *screen) : Player(type, screen) {
 }
 
 string AIPlayer::chooseCell(GameLogic &game) {
@@ -27,7 +27,8 @@ string AIPlayer::chooseCell(GameLogic &game) {
             Board *board_after_com_move = new Board(game.getBoard()->getSize());
             game.getBoard()->copyBoardSourceAndTarget(
                     *game.getBoard(), *board_after_com_move);
-            vector<int> point_coordinate = player_screen_->cutPoint(vec_of_options[i]);
+            vector<int> point_coordinate = player_screen_->
+                    cutPoint(vec_of_options[i]);
             int O_x_coordinate = point_coordinate[0];
             int O_y_coordinate = point_coordinate[1];
             // update board
@@ -53,8 +54,9 @@ string AIPlayer::chooseCell(GameLogic &game) {
                     X_x_coordinate = second_vec_cor[0];
                     X_y_coordinate = second_vec_cor[1];
                     // update the game
-                    board_after_human_move = game.updateBoard(X_x_coordinate
-                            , X_y_coordinate, 'O',*board_after_human_move);
+                    board_after_human_move = game.updateBoard
+                            (X_x_coordinate, X_y_coordinate, 'O',
+                             *board_after_human_move);
                     // save the max difference
                     if (game.getScoresDifference(*board_after_human_move) > max) {
                         max = game.getScoresDifference(*board_after_human_move);

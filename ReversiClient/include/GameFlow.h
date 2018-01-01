@@ -16,7 +16,7 @@ public:
      * this is the constructor of the class.
      * @param size - as the board size.
      */
-    GameFlow(int size1);
+    GameFlow(int size);
 
     /**
      * this is the destructor of the game.
@@ -36,7 +36,7 @@ public:
 
 private:
     int size;
-    GameLogic* game;
+    GameLogic *game;
     ConsoleScreen *screen;
     bool computer;
     bool x_player_;
@@ -51,7 +51,7 @@ private:
      * this method read a file and save it's port and socket
      * @return pair
      */
-    pair<const char*,int> createClientFromFile();
+    pair<const char *, int> createClientFromFile();
 
     /**
      * this method handle the user choice for a
@@ -66,7 +66,7 @@ private:
      * @param client - client object
      * @param name - as the name of the game
      */
-    void startGameCommand(Client client,string name);
+    void startGameCommand(Client client, string name);
 
     /**
      * If joining a game is possible (known by the data received from

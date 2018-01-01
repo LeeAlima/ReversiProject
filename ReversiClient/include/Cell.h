@@ -30,5 +30,4 @@ private:
     char type;
 };
 
-
 #endif //EX2_CELL_H

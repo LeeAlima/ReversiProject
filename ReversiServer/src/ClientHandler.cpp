@@ -3,7 +3,6 @@
 #include <sys/socket.h>
 #include "../include/ClientHandler.h"
 
-
 ClientHandler::ClientHandler(int client_Socket, ServerContainer *serverContainer)
         : client_Socket_(client_Socket), server_container_(serverContainer) {
     run_server_ = new RunServer(client_Socket, serverContainer);
@@ -51,22 +50,12 @@ pair<string, vector<string> > ClientHandler::extractCommand(string msg) {
     if (pos == string::npos)
         // make pair and return it
         return make_pair(msg, args);
-    // save token
-    string token = msg.substr(prev, pos - prev);
-    if (!token.empty()) // append the token to message
-        cmd.append(token);
-    prev = pos + 1;
-    do { // continue splitting
-        pos = msg.find(" ", prev);
-        if (pos == string::npos) {
-            pos = msg.length();
-        }
-        string token = msg.substr(prev, pos - prev);
-        if (!token.empty()) { // push token to the vector
-            args.push_back(token);
-        }
-        prev = pos + 1;
-    } while (pos < msg.length() && prev < msg.length());
+    // save command
+    string command = msg.substr(prev, pos - prev);
+    if (!command.empty()) // append the command to message
+        cmd.append(command);
+    string game_name = msg.substr(pos + 1, msg.size() );
+    args.push_back(game_name);
     // return the pair
     return make_pair(cmd, args);
 }

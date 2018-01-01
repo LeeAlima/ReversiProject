@@ -39,7 +39,7 @@ public:
      * @param computer - true if computer is playing, false otherwise
      * @param type - the player type
      */
-    void printPossibleMoves(vector<string> &moves, bool computer,char type) const;
+    void printPossibleMoves(vector<string> &moves, bool computer, char type) const;
 
     /**
      * In this method the player is asked for a point
@@ -53,7 +53,7 @@ public:
      * @param num1 - row
      * @param num2 - col
      */
-    void printPlayerMove(char type,int num1,int num2) const;
+    void printPlayerMove(char type, int num1, int num2) const;
 
     /**
      * this method prints the open menu and ask the user for a
@@ -96,7 +96,7 @@ public:
      * this method prints the turns
      * @param type - as the current player type
      */
-    void printPlayerOrder(bool b,char type) const;
+    void printPlayerOrder(bool b, char type) const;
 
     /**
      * this method prints which player has no moves.
@@ -110,7 +110,7 @@ public:
      * and the second is the name of the game(args)
      * @return pair
      */
-    pair<string,string> handleSubMenu();
+    pair<string, string> handleSubMenu();
 
 private:
     /**

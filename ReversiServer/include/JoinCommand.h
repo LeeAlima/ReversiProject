@@ -5,13 +5,13 @@
 #include "../include/Command.h"
 #include "RunServer.h"
 
-class JoinCommand: public Command {
+class JoinCommand : public Command {
 public:
     /**
      * the constructor of JoinCommand
-     * @param _run - RunServer obj
+     * @param run - RunServer obj
      */
-    JoinCommand(RunServer *_run);
+    JoinCommand(RunServer *run);
 
     /**
      * destructor
@@ -27,4 +27,5 @@ public:
 private:
     RunServer *run;
 };
+
 #endif //REVERSISERVER_JOINCOMMAND_H

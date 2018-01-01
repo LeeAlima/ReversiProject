@@ -12,6 +12,8 @@ Client::Client(const char *serverIP, int serverPort) :
         client_socket_(0) {
 }
 
+Client::~Client() {}
+
 int Client::connectToServer() {
     client_socket_ = socket(AF_INET, SOCK_STREAM, 0);
     if (client_socket_ == -1) {
@@ -40,15 +42,14 @@ int Client::connectToServer() {
     }
 }
 
-char *Client::receive() const {
-    char *user_choice = new char[9];
+char *Client::receiveMove() const {
+    char *user_choice = new char[point_size];
     // read from socket the movement
-    int n = read(client_socket_, user_choice, 9);
+    int n = read(client_socket_, user_choice, point_size);
     // error in reading
     if (n == -1) {
         throw "Error of reading from socket";
-    }
-
+    } // return the point
     return user_choice;
 }
 
@@ -71,10 +72,10 @@ void Client::sendMessage(const char *msg) const {
 
 string Client::reciveMessage() const {
     // initialize buffer to scan the input from the server
-    char buffer[maxSize] = {0};
+    char buffer[max_size] = {0};
     string res = "";
-    // receive message from the server
-    int n = recv(client_socket_, buffer, maxSize - 1, 0);
+    // receiveMove message from the server
+    int n = recv(client_socket_, buffer, max_size - 1, 0);
     // if receiving data happened than save it
     if (n > 0) {
         res.append(buffer);
@@ -92,4 +93,3 @@ void Client::sendMove(char *user_choice) const {
         throw "Error of writing to socket";
     }
 }
-

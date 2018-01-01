@@ -1,20 +1,31 @@
-//
-// Created by lee on 21/12/17.
-//
 
 #ifndef REVERSISERVER_STARTCOMMAND_H
 #define REVERSISERVER_STARTCOMMAND_H
+
 #include "../include/Command.h"
 #include "RunServer.h"
 
-class StartCommand: public Command {
+class StartCommand : public Command {
 public:
-    StartCommand(RunServer *_run);
+    /**
+     * constructor for startCommand
+     * @param run - RunServer obj
+     */
+    StartCommand(RunServer *run);
 
+    /**
+     * destructor
+     */
     virtual ~StartCommand();
 
-    virtual void execute(vector<string> args) ;
+    /**
+   * In this method I called startNewGame in RunServer
+   * @param args - the arguments from the client
+   */
+    virtual void execute(vector<string> args);
+
 private:
-    RunServer *_run;
+    RunServer *run;
 };
+
 #endif //REVERSISERVER_STARTCOMMAND_H

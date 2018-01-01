@@ -9,6 +9,7 @@
 #include "ConsoleScreen.h"
 
 class Player;
+
 class GameLogic {
 public:
     /**
@@ -18,7 +19,7 @@ public:
      * @param player2 - second player
      * @param screen - a screen to show the game to the user
      */
-    GameLogic(int size,Player *player1,Player *player2,ConsoleScreen *screen);
+    GameLogic(int size, Player *player1, Player *player2, ConsoleScreen *screen);
 
     /**
      * this is the destructor of the game.
@@ -38,7 +39,7 @@ public:
      * @param board - to check if moves are possible
      * @return true - if there are possibe moves and false otherwise.
      */
-    bool checksIfMovesArePossible(char type,Board &board);
+    bool checksIfMovesArePossible(char type, Board &board);
 
     /**
      * this method checks if the game if over.
@@ -54,7 +55,7 @@ public:
      * @param type - as the current player type.
      * @return vector of string - of the possible moves.
      */
-    vector <string> findPossibleCells(Board & board,char type);
+    vector<string> findPossibleCells(Board &board, char type);
 
     /**
      * this method update the board based on the player's movement.
@@ -63,13 +64,13 @@ public:
      * @param type - as the user type.
      * @param board - to update
      */
-    Board* updateBoard(int row, int col, char type, Board &board);
+    Board *updateBoard(int row, int col, char type, Board &board);
 
     /**
      * this method returns the board's game
      * @return Board* - as the game's board object
      */
-    Board* getBoard();
+    Board *getBoard();
 
     /**
      * this method  the scores.
@@ -96,7 +97,7 @@ public:
      * @param board - to check a movement on it
      * @return true - if the movement is possible, false otherwise.
      */
-    bool checkPlayerMove(string user_input,char type,Board &board);
+    bool checkPlayerMove(string user_input, char type, Board &board);
 
     /**
      * this method changes the current player member
@@ -108,7 +109,7 @@ public:
      * @param type - as the player type
      * @return Player
      */
-    Player* getPlayer(char type);
+    Player *getPlayer(char type);
 
     /**
      * this method return the difference between the player's score
@@ -124,7 +125,7 @@ public:
      * @param default_number - the number i want to change
      * @param add_number - the number I want to add default_number
      */
-    void changeNumber(int &number,int flag,int default_number,int add_number);
+    void changeNumber(int &number, int flag, int default_number, int add_number);
 
     /**
     * this method receive 2 numbers and change them
@@ -136,10 +137,10 @@ public:
     void calculateScores(int &x_score, int &o_score, Board &board);
 
 private:
-    Player* first_player_;
-    Player* second_player_;
-    Board* my_board_;
-    ConsoleScreen* my_screen_;
+    Player *first_player_;
+    Player *second_player_;
+    Board *my_board_;
+    ConsoleScreen *my_screen_;
     char current_Player_;
 
     /**
@@ -152,7 +153,7 @@ private:
      * @param board - board to make a move on it
      */
     void makeAMove(int r, int c, char t, int row_change,
-                   int col_change,Board &board);
+                   int col_change, Board &board);
 
     /**
     * this method finds possible cell
@@ -165,7 +166,7 @@ private:
      * @return "(" - if no cell is possible and the cell's location otherwise
      */
     string findEmptyCellGeneral(int r, int c, char t, int row_change,
-                                int col_change,Board &board) ;
+                                int col_change, Board &board);
 
     /**
      * this method cuts duplication in a vector

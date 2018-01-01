@@ -9,7 +9,7 @@
  * this is the local player, he choose cell cell and send
  * the information to the server.
  */
-class LocalPlayer: public Player {
+class LocalPlayer : public Player {
 public:
     /**
      * this is the constructor
@@ -17,7 +17,7 @@ public:
      * @param screen - as ConsoleScreen Object
      * @param client - as a Client object
      */
-    LocalPlayer(char type,ConsoleScreen *screen,Client &client);
+    LocalPlayer(char type, ConsoleScreen *screen, Client &client);
 
     /**
      * the local player is asked for a point, he enter a point,
@@ -25,10 +25,11 @@ public:
      * @param gameLogic - as the gameLogic object
      * @return string - the chosen cell
      */
-    string chooseCell(GameLogic &gameLogic) ;
+    string chooseCell(GameLogic &gameLogic);
 
 private:
     Client client;
+
     /**
     * this method converts a point from a human representation to computer's.
     * @param user_choice - as the cell before the convert.

@@ -1,7 +1,7 @@
 
 #include "../include/CommandManager.h"
 
-CommandManager::CommandManager(RunServer *run_server){
+CommandManager::CommandManager(RunServer *run_server) {
     // for each key (start,list,join an close) sets (by creating) the
     // matches object as the value in the map
     commands_map["start"] = new StartCommand(run_server);

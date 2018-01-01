@@ -22,7 +22,7 @@ public:
      * @param type - the type of the player , 'X' or 'O'
      * @param screen - as a screen to print information.
      */
-    Player(char type,ConsoleScreen *screen);
+    Player(char type, ConsoleScreen *screen);
 
     /**
      * destructor of player, empty for now.
@@ -33,13 +33,13 @@ public:
      * this method return the player type.
      * @return char - as the player's type.
      */
-     char getType() const ;
+    char getType() const;
 
     /**
      * this method return the player score.
      * @return int - as the player's score.
      */
-    int getScore() const ;
+    int getScore() const;
 
     /**
      * this method sets the player's score.
@@ -61,6 +61,5 @@ protected:
     int score;
     ConsoleScreen *player_screen_;
 };
-
 
 #endif //EX2_PLAYER_H

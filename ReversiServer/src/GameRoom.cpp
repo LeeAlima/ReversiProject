@@ -23,7 +23,7 @@ bool GameRoom::handleMove(int sender, int receiver) {
     // if the move is "END" (end of the game)
     if (strcmp(buffer_local, "END") == 0) {
         // than print a message, change game status and remove the game
-        cout<<"end of game "<< game->getName() << endl;
+        cout << "end of game " << game->getName() << endl;
         game->setStatus(ENDGAME);
         server_container_->removeGame(game->getName());
         return false;
@@ -43,17 +43,17 @@ bool GameRoom::handleMove(int sender, int receiver) {
     return true;
 }
 
-void* GameRoom::runGame(void* obj) {
+void *GameRoom::runGame(void *obj) {
     // cast obj to GameRoom
     GameRoom *ptr = (GameRoom *) obj;
-    int num_of_client=1;
+    int num_of_client = 1;
     // write the client his number(1)
     write(ptr->game->getFirst_socket(), &num_of_client, sizeof(num_of_client));
     num_of_client = 2;
     // write the client his number(2)
     write(ptr->game->getSecond_socket(), &num_of_client, sizeof(num_of_client));
     bool ok = true;
-    int i=0;
+    int i = 0;
     while (ok) {
         // handle the moves and switch turns
         if (i % 2 == 0) {
