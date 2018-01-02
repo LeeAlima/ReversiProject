@@ -1,7 +1,7 @@
 
 #include "../include/ServerContainer.h"
 
-ServerContainer *ServerContainer::instance = nullptr;
+ServerContainer *ServerContainer::instance = 0;
 pthread_mutex_t ServerContainer::lock;
 
 ServerContainer *ServerContainer::getInstance() {

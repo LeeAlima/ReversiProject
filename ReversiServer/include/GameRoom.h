@@ -11,7 +11,16 @@
 class GameRoom {
 
 public:
+    /**
+     * constructor
+     * @param game - pointer to a game
+     */
     GameRoom(Game *game);
+
+    /**
+     * destructor
+     */
+    virtual ~GameRoom();
 
     /**
     * this method handle the client by trying to read from the socket

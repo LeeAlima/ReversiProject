@@ -31,9 +31,9 @@ void JoinCommand::execute(vector<string> args, int client_socket_) {
             // create a new GameRoom
             GameRoom *gr = new GameRoom(cur_game);
             cur_game->setStatus(PLAYING);
-            pthread_t *newThread = new pthread_t();
+            pthread_t newThread;
             // run the game in a thread
-            int rc = pthread_create(newThread, NULL, gr->runGame, (void *) gr);
+            int rc = pthread_create(&newThread, NULL, gr->runGame, (void *) gr);
             if (rc) { // can't create a thread
                 cout << "Error: unable to create thread, " << rc << endl;
                 pthread_exit(&newThread);

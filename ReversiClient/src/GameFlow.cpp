@@ -218,7 +218,7 @@ void GameFlow::startGameCommand(Client client, string name) {
     // create a game and run it
     this->game = new GameLogic(size, player1, player2, screen);
     run();
-    client.sendMove("END");
+    client.sendMove(const_cast<char *>("END"));
 }
 
 void GameFlow::joinGameCommand(Client client, string name) {
@@ -236,7 +236,7 @@ void GameFlow::joinGameCommand(Client client, string name) {
     // create a game and run it
     this->game = new GameLogic(size, player1, player2, screen);
     run();
-    client.sendMove("END");
+    client.sendMove(const_cast<char *>("END"));
 }
 
 void GameFlow::createGameHuman() {

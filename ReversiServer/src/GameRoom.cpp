@@ -4,6 +4,9 @@
 
 GameRoom::GameRoom(Game *game) : game(game) {}
 
+GameRoom::~GameRoom() {
+    delete game;
+}
 bool GameRoom::handleMove(int sender, int receiver) {
     char buffer_local[maxMove];
     cout << "wait for receiving move " << sender << endl;
@@ -64,4 +67,7 @@ void *GameRoom::runGame(void *obj) {
         }
         i++;
     }
+    //delete obj;
 }
+
+

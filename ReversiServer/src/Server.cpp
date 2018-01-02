@@ -3,7 +3,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
-
+#include <cstdlib>
 #define MAX_CONNECTED_CLIENTS 10
 using namespace std;
 
@@ -11,7 +11,7 @@ using namespace std;
  * This method creates a new ClientHandler with the clientSocket number
  * and handle its commands in a thread.
  * It also adds the thread to the list of threads.
- * @param obj - Server object in cast from void*
+ * @param obj - server socket in cast from void*
  * @return null for error in sending the message
  */
 static void *mainThread(void *obj);
@@ -40,7 +40,8 @@ void Server::start() {
         throw "Error on binding";
     }
     listen(server_socket_, MAX_CONNECTED_CLIENTS);
-    int exit_thread_result = pthread_create(&p_exit, NULL, mainThread, (void *) server_socket_);
+    int exit_thread_result = pthread_create(&p_exit, NULL, mainThread,
+                                            (void *) (intptr_t)server_socket_);
     if (exit_thread_result) {
         cout << "Exit thread creation failed, exiting" << endl;
         return;
@@ -56,7 +57,7 @@ void Server::stop() {
     string msg = "-1";
     // inform all client
     for (int i = 0; i < sockets.size(); i++) {
-        if (sockets[i] != NULL) {
+        if (sockets[i] != 0) {
             int n = send(sockets[i], msg.c_str(), msg.length(), 0);
             if (n == -1) { // error
                 cout << "Error writing buffer_local" << endl;
@@ -64,9 +65,7 @@ void Server::stop() {
             }
         }
     }
-    pthread_mutex_lock(&cout_mutex_);
     cout << "All done. All communications are closed!" << endl;
-    pthread_mutex_unlock(&cout_mutex_);
     // close server and exit
     close(server_socket_);
     exit(0);
@@ -91,7 +90,7 @@ void *mainThread(void *server_socket_) {
         // add thread to this client
         pthread_t threadId;
         int rc = pthread_create(&threadId, NULL, ClientHandler::handleCommand,
-                                (void *) client_socket_);
+                                (void *) (intptr_t)client_socket_);
         if (rc) {
             cout << "Error: unable to create thread, " << rc << endl;
         }
