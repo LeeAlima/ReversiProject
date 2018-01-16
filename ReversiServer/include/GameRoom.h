@@ -9,7 +9,6 @@
 #define maxMove 9
 
 class GameRoom {
-
 public:
     /**
      * constructor

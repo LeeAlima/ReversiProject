@@ -6,8 +6,8 @@
 #include "Game.h"
 
 class ServerContainer {
-public:
 
+public:
     /**
      * this method adds a Game object to the vector of games
      * @param game - Game object
@@ -47,6 +47,10 @@ public:
      */
     vector<Game *> *getVecOfGames();
 
+    /**
+     * this method returns the class instance
+     * @return ServerContainer - this class instance
+     */
     static ServerContainer* getInstance();
 
 private:
@@ -59,12 +63,10 @@ private:
      * destructor for server container
      */
     ~ServerContainer();
-
     static ServerContainer* instance;
     static pthread_mutex_t lock;
     vector<Game *> *vec_of_games_;
     vector<int> client_sockets_;
-
 };
 
 #endif //REVERSISERVER_SERVERCONTAINER_H

@@ -12,6 +12,10 @@
 #include "CommandManager.h"
 #include "ClientHandler.h"
 #include "ServerContainer.h"
+#include "ThreadPool.h"
+
+#define MAX_CONNECTED_CLIENTS 10
+#define THREADS_NUM 5
 
 using namespace std;
 
@@ -33,7 +37,6 @@ public:
      */
     void start();
 
-
     /**
      *  this method handle the exit command in server, it sends all of
      * the user the data about closing the server and print a message in the
@@ -41,12 +44,23 @@ public:
      */
     void stop();
 
+    /**
+     * this method returns the server socket
+     * @return int - server socket
+     */
+    int getServer_socket_() ;
+
+    /**
+     * this method returns the ThreadPool member
+     * @return ThreadPool - pool
+     */
+    ThreadPool *getPool() const;
 
 private:
     int port;
     int server_socket_;
     pthread_t p_exit;
-    pthread_mutex_t cout_mutex_;
+    ThreadPool *pool;
 };
 
 #endif /* SRC_SERVER_H_ */

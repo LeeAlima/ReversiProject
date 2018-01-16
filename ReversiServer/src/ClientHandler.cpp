@@ -3,6 +3,9 @@
 #include <sys/socket.h>
 #include "../include/ClientHandler.h"
 
+void *handleCommand(void *obj);
+
+
 ClientHandler::ClientHandler() {
 }
 

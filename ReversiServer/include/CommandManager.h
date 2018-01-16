@@ -21,6 +21,7 @@ public:
      * @return - the class instance
      */
     static CommandManager* getInstance();
+
     /**
      * This method call the execute method of the right command
      * using the map member
@@ -41,12 +42,12 @@ private:
      * destructor
      */
     ~CommandManager();
-    static CommandManager* instance;
-    static pthread_mutex_t lock;
     /*
      * a map that matches a string to a command object
      */
     map<string, Command *> commands_map;
+    static CommandManager* instance;
+    static pthread_mutex_t lock;
 };
 
 #endif //REVERSISERVER_COMMANDMANAGER_H

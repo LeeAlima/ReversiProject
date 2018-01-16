@@ -19,8 +19,8 @@ int main() {
 	Server server(port);
 	// try to connect
 	try {
-		server.start();
 		cout << "Enter exit to stop server\n" << endl;
+		server.start();
 		string str;
 		cin >> str;
 		if (str == "exit")

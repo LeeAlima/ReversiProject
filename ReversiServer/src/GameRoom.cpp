@@ -67,7 +67,7 @@ void *GameRoom::runGame(void *obj) {
         }
         i++;
     }
-    //delete obj;
+    delete obj;
 }
 
 
