@@ -1,7 +1,7 @@
 
 #include "../include/ServerContainer.h"
 
-ServerContainer *ServerContainer::instance = nullptr;
+ServerContainer *ServerContainer::instance = NULL;
 pthread_mutex_t ServerContainer::lock;
 
 ServerContainer *ServerContainer::getInstance() {
@@ -62,7 +62,6 @@ bool ServerContainer::removeClientSocket(int client_socket) {
             // if a number was found than erase if and return true
             client_sockets_.erase(it);
             pthread_mutex_unlock(&lock);
-
             return true;
         }
     }

@@ -1,7 +1,3 @@
-//
-// Created by omer on 16/01/18.
-//
-
 #ifndef REVERSISERVER_TASK_H
 #define REVERSISERVER_TASK_H
 
@@ -13,11 +9,11 @@ public:
      * @param func - void * as the function to execute
      * @param arg  - the args for the func
      */
-    Task(void * (*func)(void *arg), void* arg) :
+    Task(void *(*func)(void *arg), void *arg) :
             func(func), arg(arg) {}
 
     /**
-     * this methos executes the func with the args
+     * this method executes the func with the args
      */
     void execute() {
         func(arg);
@@ -29,7 +25,8 @@ public:
     virtual ~Task() {}
 
 private:
-    void * (*func)(void *arg);
+    void *(*func)(void *arg);
+
     void *arg;
 };
 

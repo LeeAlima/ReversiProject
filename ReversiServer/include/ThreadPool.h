@@ -1,6 +1,3 @@
-//
-// Created by omer on 16/01/18.
-//
 
 #ifndef REVERSISERVER_THREADPOOL_H
 #define REVERSISERVER_THREADPOOL_H

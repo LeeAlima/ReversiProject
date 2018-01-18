@@ -14,7 +14,6 @@
 #include "ServerContainer.h"
 #include "ThreadPool.h"
 
-#define MAX_CONNECTED_CLIENTS 10
 #define THREADS_NUM 5
 
 using namespace std;

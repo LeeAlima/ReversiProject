@@ -42,6 +42,7 @@ private:
      * destructor
      */
     ~CommandManager();
+
     /*
      * a map that matches a string to a command object
      */

@@ -1,14 +1,11 @@
 
 #include "../include/Server.h"
-#include "../include/ThreadPool.h"
-#include <sys/socket.h>
+#include <cstdlib>
 #include <netinet/in.h>
 #include <unistd.h>
 
 
 using namespace std;
-
-
 
 /**
  * This method creates a new ClientHandler with the clientSocket number
@@ -25,6 +22,7 @@ Server::Server(int _port) : port(_port), server_socket_(0){
 }
 
 Server::~Server() {
+    delete pool;
 }
 
 void Server::start() {
@@ -43,7 +41,7 @@ void Server::start() {
              sizeof(serverAddress)) == -1) {
         throw "Error on binding";
     }
-    listen(server_socket_, MAX_CONNECTED_CLIENTS);
+    listen(server_socket_, 0);
     int exit_thread_result = pthread_create(&p_exit, NULL, mainThread,
                                             (void *) this);
     if (exit_thread_result) {
@@ -84,32 +82,28 @@ ThreadPool *Server::getPool() const {
     return pool;
 }
 
-
 void *mainThread(void *args) {
-    Server *InerServer = (Server *) args;
+    Server *serverObj = (Server *) args;
     cout << "Waiting for clients connections..." << endl;
     struct sockaddr_in client_address;
     socklen_t client_address_len = sizeof(client_address);
     // as long as the server should be activated
     while (true) {
         // accept client requests to connect the server
-        int client_socket_ = accept(InerServer->getServer_socket_(), (struct sockaddr *) &client_address,
+        int client_socket_ = accept(serverObj->getServer_socket_(), (struct sockaddr *) &client_address,
                                     &client_address_len);
         if (client_socket_ == -1) {
             throw "Error on accept";
         }
         cout << "Client connected" << endl;
         // add the client socket to the list of clients socket in ServerContainer
+        // add socket to the serverContainer obj
         ServerContainer::getInstance()->addClientSocket(client_socket_);
-        ThreadPool *p = InerServer->getPool();
-        Task *t = new Task(ClientHandler::handleCommand, (void *) client_socket_ );
+        // save the thread pool
+        ThreadPool *p = serverObj->getPool();
+        // create a new task
+        Task *t = new Task(ClientHandler::handleCommand, (void *) (long)client_socket_ );
+        // add task to the queue
         p->addTask(t);
-        // add thread to this client
-        /*pthread_t threadId;
-        int rc = pthread_create(&threadId, NULL, ClientHandler::handleCommand,
-                                (void *) client_socket_);
-        if (rc) {
-            cout << "Error: unable to create thread, " << rc << endl;
-        }*/
     }
 }
